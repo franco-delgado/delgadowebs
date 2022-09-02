@@ -1,0 +1,25 @@
+body{
+    background: rgb(104, 100, 100);
+}
+.contenedor{
+    width: 50vh;
+    height: 80vh;
+    background: blue;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.filaA{
+    width: 100%;
+    height: 100%;
+    background: red;
+}
+.filaB{
+    width: 100%;
+    height: 100%;
+    background: green;
+}
+.caja{
+    width: 5vh;
+    height:4vh;
+    background: lightblue;
+}
