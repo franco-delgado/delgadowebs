@@ -13,9 +13,10 @@ h3{
 }
 .title{
   background: linear-gradient(#0a6901, #013601, #000000);
-  width: 100%;
+  width: 80%;
   height: 16vh;
   padding-top: 6px;
+  margin-left: 10%;
   margin-bottom: 1px;
 }
 h1{
@@ -30,12 +31,13 @@ h1{
   cursor: default;
 }
 .primerp{
-  height: 60vh;
-  width: 100%;
+  height: auto;
+  width: 80%;
   color: #ffffff;
   text-shadow: 2px 2px 5px #12a304;
   margin-top: 4vh;
 	margin-bottom: 10vh;
+  margin-left: 10%;
   display: grid;
   grid-template-columns: 60% 40%;
   font-family: verdana;
@@ -64,8 +66,9 @@ h1{
 /* mini cuadros */
 .UlminiCuadros{
   height: 35vh;
-  width: 100%;
-  margin-left: 1%;
+  width: 80%;
+  margin-top: 4vh;
+  margin-left:10%;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
 }
@@ -75,6 +78,7 @@ h1{
   margin: 0;
   display: grid;
   grid-template-rows: 20% 80%;
+  box-shadow: 0px 0px 8px 4px #0d8b01;
   cursor: pointer;
 }
 .ImgMiniCuadro{
@@ -87,23 +91,21 @@ h1{
   margin: 0;
   text-align: center;
   color: #ffffff;
+  text-shadow: 0px 0px 3px #ffffff;
   background-color: #0a69012c;
 }
-
-
-
-
-
 
 /* HOTEL */
 .prueba{
   height: 76vh;
-  width: 100%;
-	margin-top: 14vh;
-	margin-bottom: 20vh;
+  width: 80%;
+	margin-top: 50vh;
+	margin-bottom: 25vh;
+  margin-left:10%;
   background-image: url("hotel-background.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  box-shadow: 0px 0px 20px 4px #0d8b01;
 }
 .hotel{
   height: 76vh;
@@ -136,9 +138,11 @@ h1{
 /* BLOG */
 .conten-blog{
   height: 76vh;
-  width: 100%;
-	margin-top: 14vh;
-	margin-bottom: 20vh;
+  width: 80%;
+  margin-left:10%;
+	margin-top: 25vh;
+	margin-bottom: 25vh;
+  box-shadow: 0px 0px 20px 4px #0d8b01;
 }
 .conten-imgblog{
   height: 100%;
@@ -181,9 +185,11 @@ h1{
 /* ECOMER */
 .conten-interno{
   height: 76vh;
-  width: 100%;
-	margin-top: 14vh;
-	margin-bottom: 20vh;
+  width: 80%;
+  margin-left:10%;
+	margin-top: 25vh;
+	margin-bottom: 25vh;
+  box-shadow: 0px 0px 20px 4px #0d8b01;
 }
 .conten-imginterno{
   background-image: url("cliente2.jpg");
@@ -225,6 +231,17 @@ h1{
 	width: 80%;
 }
 /*interno*/
+.conten-cliente{
+  height: 76vh;
+  width: 80%;
+  margin-left:10%;
+	margin-top: 25vh;
+	margin-bottom: 25vh;
+  background-image: url("interno2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-shadow: 0px 0px 20px 4px #0d8b01;
+}
 .qr{
   height: 76vh;
   width: 100%;
@@ -258,35 +275,28 @@ h1{
 	height: 28vh;
 	width: 80%;
 }
-.conten-cliente{
-  height: 76vh;
-  width: 100%;
-	margin-top: 14vh;
-	margin-bottom: 20vh;
-  background-image: url("interno2.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
 /*AUTO*/
 .auto{
   height: 76vh;
-  width: 100%;
-	margin: 0;
-	margin-top: 30vh;
-	margin-bottom: 20vh;
+  width: 80%;
+  margin-left:10%;
+	margin-top: 25vh;
+	margin-bottom: 30vh;
 	display: grid;
 	grid-template-columns: 80% 20%;
-	background: linear-gradient(rgb(135, 235, 248),#020758);
-	cursor: pointer;
+	background: #000000 /* radial-gradient(#9db7ff,#6367b1) */;
+  box-shadow: 0px 0px 20px 4px #0d8b01;
 }
 .texauto{
 	font-size: 4vw;
+  color: #ffffff;
 	margin: 0;
   margin-left: 10px;
 	cursor: pointer;
 }
 .pauto{
 	font-size: 2vw;
+  color: #ffffff;
   margin-top: 10px;
   margin-left: 10px;
 	cursor: pointer;
@@ -298,12 +308,20 @@ h1{
 	width: 80%;
 }
 /*FOOTER*/
+footer{
+  height: 14vh;
+  width: 80%;
+  margin-left: 10%;
+  padding-bottom: 0;
+  background: linear-gradient(#000000, #0d8b01);
+}
 .pfin{
 	text-align: center;
+  font-size: 2vw;
+  color: #ffffff;
+  margin-top: 4vh;
+  margin-bottom: 0;
 	cursor: default;
-}
-.email{
-	cursor: pointer;
 }
 @media  screen and (max-width: 800px){
   p{
@@ -315,44 +333,95 @@ h1{
     font-family: serif;
   }
   .title{
-    background: linear-gradient(#020758,#87ebf8);
-    width: 100%;
+    background: linear-gradient(#0a6901, #013601, #000000);
+    width: 80%;
     height: 8vh;
     padding-top: 6px;
+    margin-left: 10%;
     margin-bottom: 1px;
   }
   h1{
     height: auto;
     width: auto;
-    color: rgb(0, 0, 0);
+    color: #000000;
+    text-shadow: 0px 2px 4px #ffffff;
     text-align: center;
-    font-size: 5vh;
+    font-size: 4vh;
     font-family: serif;
     margin: 0;
     cursor: default;
   }
   .primerp{
     height: auto;
-    width: 100%;
+    width: 80%;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px #12a304;
     margin-top: 7vh;
     margin-bottom: 7vh;
-    display: inline-block;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: 60% 40%;
     font-family: verdana;
   }
+  .primerp-left{
+    height: auto;
+    width: auto;
+    margin: 2vh;
+  }
   .pprimer{
-    font-size: 4vw;
+    font-size: 2vw;
     font-family: serif;
     text-align: center;
     margin-top: 1vh;
     margin-bottom: 4vh;
     cursor: default;
   }
+  .primerp-right{
+    height: auto;
+    width: 60%;
+    padding: 4vh;
+    border-radius: 50%;
+    background: radial-gradient(#0d8b01, #015a01, #013a01, #001300);
+    box-shadow: 0px 0px 5px 8px #000a00;
+  }
+  /* mini cuadros */
+  .UlminiCuadros{
+    height: 15vh;
+    width: 80%;
+    margin-top: 4vh;
+    margin-left:10%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+  .LiminiCuadros{
+    height: 98%;
+    width: 90%;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    box-shadow: 0px 0px 8px 4px #0d8b01;
+    cursor: pointer;
+  }
+  .ImgMiniCuadro{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+  .TextoMiniCuadro{
+    font-size: 2vw;
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0px 0px 3px #ffffff;
+    background-color: #0a69012c;
+  }
   
   /* HOTEL */
   .prueba{
     height: 60vh;
-    width: 100%;
+    width: 80%;
     margin-top: 14vh;
+    margin-left: 10%;
     margin-bottom: 20vh;
     background-image: url("hotel-background.jpg");
     background-repeat: no-repeat;
@@ -391,9 +460,11 @@ h1{
   /* BLOG */
   .conten-blog{
     height: 60vh;
-    width: 100%;
+    width: 80%;
     margin-top: 14vh;
+    margin-left: 10%;
     margin-bottom: 20vh;
+    box-shadow: 0px 0px 20px 4px #0d8b01;
   }
   .conten-imgblog{
     height: 100%;
@@ -430,9 +501,11 @@ h1{
   /* ECOMER */
   .conten-interno{
     height: 60vh;
-    width: 100%;
+    width: 80%;
     margin-top: 14vh;
+    margin-left: 10%;
     margin-bottom: 20vh;
+    box-shadow: 0px 0px 20px 4px #0d8b01;
   }
   .conten-imginterno{
     position: relative;
@@ -472,8 +545,9 @@ h1{
   /*interno*/
   .conten-cliente{
     height: 60vh;
-    width: 100%;
+    width: 80%;
     margin-top: 14vh;
+    margin-left: 10%;
     margin-bottom: 20vh;
     background-image: url("interno2.jpg");
     background-repeat: no-repeat;
@@ -512,13 +586,15 @@ h1{
   /*AUTO*/
   .auto{
     height: 80vh;
-    width: 100%;
+    width: 80%;
     margin: 0;
     margin-top: 30vh;
+    margin-left: 10%;
     margin-bottom: 20vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(rgb(135, 235, 248),#020758);
+    background: #000000;
+    box-shadow: 0px 0px 20px 4px #0d8b01;
     cursor: pointer;
   }
   .texauto{
@@ -544,9 +620,318 @@ h1{
   }
   /*FOOTER*/
   .pfin{
-    font-size: 15px;
     text-align: center;
+    font-size: 15px;
+    color: #ffffff;
+    margin-top: 4vh;
+    margin-bottom: 0;
+  }
+  .email{
+    cursor: pointer;
+  }
+}
+@media  screen and (max-width: 400px){
+  p{
     cursor: default;
+    font-family: serif;
+  }
+  h3{
+    cursor: default;
+    font-family: serif;
+  }
+  .title{
+    background: linear-gradient(#0a6901, #013601, #000000);
+    width: 80%;
+    height: 8vh;
+    padding-top: 6px;
+    margin-left: 10%;
+    margin-bottom: 1px;
+  }
+  h1{
+    height: auto;
+    width: auto;
+    color: #000000;
+    text-shadow: 0px 2px 4px #ffffff;
+    text-align: center;
+    font-size: 4vh;
+    font-family: serif;
+    margin: 0;
+    cursor: default;
+  }
+  .primerp{
+    height: auto;
+    width: 80%;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px #12a304;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    font-family: verdana;
+  }
+  .primerp-left{
+    height: auto;
+    width: auto;
+    margin: 2vh;
+  }
+  .pprimer{
+    font-size: 3vw;
+    font-family: serif;
+    text-align: center;
+    margin-top: 1vh;
+    margin-bottom: 4vh;
+    cursor: default;
+  }
+  .primerp-right{
+    height: auto;
+    width: 60%;
+    padding: 4vh;
+    border-radius: 50%;
+    background: radial-gradient(#0d8b01, #015a01, #013a01, #001300);
+    box-shadow: 0px 0px 5px 8px #000a00;
+  }
+  /* mini cuadros */
+  .UlminiCuadros{
+    height: auto;
+    width: 80%;
+    margin-top: 4vh;
+    margin-left:10%;
+    display: flex;
+    flex-direction: column;
+  }
+  .LiminiCuadros{
+    height: 80%;
+    width: 70%;
+    margin: 15%;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    box-shadow: 0px 0px 8px 4px #0d8b01;
+    cursor: pointer;
+  }
+  .ImgMiniCuadro{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+  .TextoMiniCuadro{
+    font-size: 4vw;
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0px 0px 3px #ffffff;
+    background-color: #0a69012c;
+  }
+  
+  /* HOTEL */
+  .prueba{
+    height: 50vh;
+    width: 80%;
+    margin-top: 14vh;
+    margin-left: 10%;
+    margin-bottom: 20vh;
+    background-image: url("hotel-background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+  }
+  .hotel{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: grid;
+    background-color: rgba(113, 140, 250, 0.315);
+    cursor: pointer;
+  }
+  .thotel{
+    font-size: 4vh;
+    margin-top: 0;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .photel{
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+  /*  text-shadow: 5px 5px 5px #ffffff;*/
+  }
+  .shoteli{
+    padding: 10%;
+    cursor: pointer;
+  }
+  .img-hotel{
+    height: 56vh;
+    width: 60vh;
+  }
+  /* BLOG */
+  .conten-blog{
+    height: 50vh;
+    width: 80%;
+    margin-top: 14vh;
+    margin-left: 10%;
+    margin-bottom: 20vh;
+    box-shadow: 0px 0px 20px 4px #0d8b01;
+  }
+  .conten-imgblog{
+    height: 100%;
+    background-image: url("landing-page.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .blog{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 99% 1%;
+    background-color: rgba(211, 180, 3, 0.514);
+    cursor: pointer;
+  }
+  .textblog{
+    font-size: 4vh;
+    margin-bottom: 6px;
+    margin-left: 10px;
+  }
+  .pblog{
+    font-size: 12px;
+    padding-left: 4px;
+    cursor: pointer;
+    margin: 0;
+  }
+  .spage{
+    padding-top: 2px;
+    padding-left: 2px;
+  }
+  .img-page{
+    display: none;
+  }
+  /* ECOMER */
+  .conten-interno{
+    height: 50vh;
+    width: 80%;
+    margin-top: 14vh;
+    margin-left: 10%;
+    margin-bottom: 20vh;
+    box-shadow: 0px 0px 20px 4px #0d8b01;
+  }
+  .conten-imginterno{
+    position: relative;
+    z-index: 1;
+    background-image: url("cliente2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .ecomer{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 99% 1%;
+    background: linear-gradient(rgba(253, 195, 108, 0.568),rgba(197, 122, 35, 0.356));
+    cursor: pointer;
+  }
+  .tecomer{
+    font-size: 4vh;
+    margin: 0;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .pecomer{
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .secomer{
+    padding-top: 2px;
+    padding-left: 2px;
+    cursor: pointer;
+  }
+  .img-cliente{
+    display: none;
+  }
+  /*interno*/
+  .conten-cliente{
+    height: 50vh;
+    width: 80%;
+    margin-top: 14vh;
+    margin-left: 10%;
+    margin-bottom: 20vh;
+    background-image: url("interno2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .qr{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    margin-top: 30vh;
+    margin-bottom: 20vh;
+    display: grid;
+    grid-template-columns: 99% 1%;
+    background: linear-gradient(rgba(122, 81, 43, 0.267),rgba(192, 146, 61, 0.445));
+    cursor: pointer;
+  }
+  .tqr{
+    font-size: 4vh;
+    margin: 0;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .pqr{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .sqr{
+    padding-left: 0;
+    cursor: pointer;
+  }
+  .img-interno{
+    display: none;
+  }
+  /*AUTO*/
+  .auto{
+    height: 70vh;
+    width: 80%;
+    margin: 0;
+    margin-top: 30vh;
+    margin-left: 10%;
+    margin-bottom: 20vh;
+    display: flex;
+    flex-direction: column;
+    background: #000000;
+    box-shadow: 0px 0px 20px 4px #0d8b01;
+    cursor: pointer;
+  }
+  .texauto{
+    font-size: 4vh;
+    margin: 0;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .pauto{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .scomer{
+    align-items: center;
+  }
+  .img-auto{
+    margin-top: 5px;
+    align-items: center;
+    height: 20vh;
+    width: 20vh;
+  }
+  /*FOOTER*/
+  .pfin{
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 4vh;
+    margin-bottom: 0;
   }
   .email{
     cursor: pointer;
