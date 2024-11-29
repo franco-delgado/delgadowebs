@@ -1,5 +1,5 @@
 body{
-	background: #000211;
+	background: #000000;
   margin: 0;
 	padding: 0;
 }
@@ -12,29 +12,38 @@ h3{
 	font-family: serif;
 }
 .title{
-  background: linear-gradient(#020758,#87ebf8);
+  background: linear-gradient(#0a6901, #013601, #000000);
   width: 100%;
-  height: auto;
+  height: 16vh;
   padding-top: 6px;
   margin-bottom: 1px;
 }
 h1{
   height: auto;
   width: auto;
-  color: rgb(0, 0, 0);
+  color: #000000;
+  text-shadow: 0px 2px 4px #ffffff;
   text-align: center;
-  font-size: 3vw;
+  font-size: 5vw;
   font-family: serif;
   margin: 0;
   cursor: default;
 }
 .primerp{
-  height: auto;
+  height: 60vh;
   width: 100%;
-  margin-top: 10vh;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px #12a304;
+  margin-top: 4vh;
 	margin-bottom: 10vh;
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 60% 40%;
   font-family: verdana;
+}
+.primerp-left{
+  height: auto;
+  width: auto;
+  margin: 2vh;
 }
 .pprimer{
   font-size: 2vw;
@@ -44,6 +53,47 @@ h1{
   margin-bottom: 6vh;
   cursor: default;
 }
+.primerp-right{
+  height: auto;
+  width: 60%;
+  padding: 6vh;
+  border-radius: 50%;
+  background: radial-gradient(#0d8b01, #015a01, #013a01, #001300);
+  box-shadow: 0px 0px 5px 8px #000a00;
+}
+/* mini cuadros */
+.UlminiCuadros{
+  height: 35vh;
+  width: 100%;
+  margin-left: 1%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+.LiminiCuadros{
+  height: 98%;
+  width: 90%;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 20% 80%;
+  cursor: pointer;
+}
+.ImgMiniCuadro{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+.TextoMiniCuadro{
+  font-size: 2vw;
+  margin: 0;
+  text-align: center;
+  color: #ffffff;
+  background-color: #0a69012c;
+}
+
+
+
+
+
 
 /* HOTEL */
 .prueba{
