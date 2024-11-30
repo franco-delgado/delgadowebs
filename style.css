@@ -12,12 +12,15 @@ h3{
 	font-family: serif;
 }
 .title{
+  top: 1px;
+  position: sticky;
   background: linear-gradient(#0a6901, #013601, #000000);
-  width: 80%;
+  width: 90%;
   height: 16vh;
   padding-top: 6px;
-  margin-left: 10%;
+  margin-left: 5%;
   margin-bottom: 1px;
+  z-index: 20;
 }
 h1{
   height: auto;
@@ -31,7 +34,7 @@ h1{
   cursor: default;
 }
 .primerp{
-  height: auto;
+  height: 110vh;
   width: 80%;
   color: #ffffff;
   text-shadow: 2px 2px 5px #12a304;
@@ -48,7 +51,7 @@ h1{
   margin: 2vh;
 }
 .pprimer{
-  font-size: 2vw;
+  font-size: 24px;
   font-family: serif;
   text-align: center;
   margin-top: 8vh;
@@ -56,7 +59,7 @@ h1{
   cursor: default;
 }
 .primerp-right{
-  height: auto;
+  height: 60%;
   width: 60%;
   padding: 6vh;
   border-radius: 50%;
@@ -95,17 +98,40 @@ h1{
   background-color: #0a69012c;
 }
 
+#ImMin1:hover {
+  transform: scale(1.5) translate(50%, -50%);
+  right: 50%;
+  top: 50%;
+}
+#ImMin2:hover {
+  transform: scale(1.2);
+  left: 50%;
+  transform: translateX(-50%) scale(1.2);
+}
+#ImMin3:hover {
+  transform: scale(1.2);
+  left: 50%;
+  transform: translateX(-50%) scale(1.2);
+}
+#ImMin4:hover {
+  transform: scale(1.2);
+  left: 50%;
+  transform: translateX(-50%) scale(1.2);
+}
+
 /* HOTEL */
 .prueba{
   height: 76vh;
-  width: 80%;
+  width: 50%;
 	margin-top: 50vh;
 	margin-bottom: 25vh;
-  margin-left:10%;
+  margin-left: 25%;
   background-image: url("hotel-background.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   box-shadow: 0px 0px 20px 4px #0d8b01;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
 }
 .hotel{
   height: 76vh;
@@ -116,7 +142,7 @@ h1{
 	cursor: pointer;
 }
 .thotel{
-	font-size: 4vw;
+	font-size: 2vw;
   margin-left: 10px;
 	cursor: pointer;
 }
@@ -139,16 +165,21 @@ h1{
 .conten-blog{
   height: 76vh;
   width: 80%;
-  margin-left:10%;
+  margin-left: 10%;
 	margin-top: 25vh;
 	margin-bottom: 25vh;
-  box-shadow: 0px 0px 20px 4px #0d8b01;
 }
 .conten-imgblog{
-  height: 100%;
+  position: absolute;
+  height: 90%;
+  width: 50%;
+  margin-left: 25%;
+  left: -100%;
   background-image: url("landing-page.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  box-shadow: 0px 0px 20px 4px #0d8b01;
+  transition: left 1s ease-in-out;
 }
 .blog{
   height: 100%;
@@ -156,7 +187,7 @@ h1{
 	margin: 0;
   background-color: rgba(211, 180, 3, 0.514);
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 70% 30%;
 	cursor: pointer;
 }
 .textblog{
@@ -166,7 +197,7 @@ h1{
 	cursor: pointer;
 }
 .pblog{
-	font-size: 2vw;
+	font-size: 23px;
 	cursor: pointer;
   margin-left: 10px;
   margin-right: 10px;
@@ -185,8 +216,8 @@ h1{
 /* ECOMER */
 .conten-interno{
   height: 76vh;
-  width: 80%;
-  margin-left:10%;
+  width: 50%;
+  margin-left: 25%;
 	margin-top: 25vh;
 	margin-bottom: 25vh;
   box-shadow: 0px 0px 20px 4px #0d8b01;
@@ -208,13 +239,13 @@ h1{
 	cursor: pointer;
 }
 .tecomer{
-	font-size: 4vw;
+	font-size: 3vw;
 	margin: 0;
   margin-left: 10px;
 	cursor: pointer;
 }
 .pecomer{
-	font-size: 2vw;
+	font-size: 20px;
 	cursor: pointer;
   margin-left: 10px;
   margin-right: 10px;
@@ -233,8 +264,8 @@ h1{
 /*interno*/
 .conten-cliente{
   height: 76vh;
-  width: 80%;
-  margin-left:10%;
+  width: 50%;
+  margin-left: 25%;
 	margin-top: 25vh;
 	margin-bottom: 25vh;
   background-image: url("interno2.jpg");
@@ -254,13 +285,13 @@ h1{
 	cursor: pointer;
 }
 .tqr{
-	font-size: 4vw;
+	font-size: 3vw;
 	margin: 0;
   margin-left: 10px;
 	cursor: pointer;
 }
 .pqr{
-	font-size: 2vw;
+	font-size: 20px;
   margin-top: 10px;
   margin-left: 10px;
 	cursor: pointer;
@@ -278,8 +309,8 @@ h1{
 /*AUTO*/
 .auto{
   height: 76vh;
-  width: 80%;
-  margin-left:10%;
+  width: 50%;
+  margin-left: 25%;
 	margin-top: 25vh;
 	margin-bottom: 30vh;
 	display: grid;
@@ -288,14 +319,14 @@ h1{
   box-shadow: 0px 0px 20px 4px #0d8b01;
 }
 .texauto{
-	font-size: 4vw;
+	font-size: 3vw;
   color: #ffffff;
 	margin: 0;
   margin-left: 10px;
 	cursor: pointer;
 }
 .pauto{
-	font-size: 2vw;
+	font-size: 20px;
   color: #ffffff;
   margin-top: 10px;
   margin-left: 10px;
@@ -309,11 +340,13 @@ h1{
 }
 /*FOOTER*/
 footer{
-  height: 14vh;
-  width: 80%;
-  margin-left: 10%;
+  height: 18vh;
+  width: 98%;
+  margin-left: 1%;
   padding-bottom: 0;
   background: linear-gradient(#000000, #0d8b01);
+  display: grid;
+  grid-template-columns: 85% 15%;
 }
 .pfin{
 	text-align: center;
@@ -323,6 +356,22 @@ footer{
   margin-bottom: 0;
 	cursor: default;
 }
+.up{
+  height: 60%;
+  width: 60%;
+  margin-top: 10%;
+  margin-left: 10%;
+  background-color: red;
+  clip-path: polygon(55% 0, 90% 38%, 92% 100%, 55% 82%, 19% 100%, 19% 38%);
+  padding: 0;
+  padding: center;
+}
+.pText{
+  text-align: center;
+  font-size: 17px;
+  color: #ffffff;
+}
+
 @media  screen and (max-width: 800px){
   p{
     cursor: default;
@@ -334,10 +383,10 @@ footer{
   }
   .title{
     background: linear-gradient(#0a6901, #013601, #000000);
-    width: 80%;
+    width: 98%;
     height: 8vh;
     padding-top: 6px;
-    margin-left: 10%;
+    margin-left: 1%;
     margin-bottom: 1px;
   }
   h1{
@@ -464,10 +513,9 @@ footer{
     margin-top: 14vh;
     margin-left: 10%;
     margin-bottom: 20vh;
-    box-shadow: 0px 0px 20px 4px #0d8b01;
   }
   .conten-imgblog{
-    height: 100%;
+    height: 70%;
     background-image: url("landing-page.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -641,10 +689,10 @@ footer{
   }
   .title{
     background: linear-gradient(#0a6901, #013601, #000000);
-    width: 80%;
+    width: 98%;
     height: 8vh;
     padding-top: 6px;
-    margin-left: 10%;
+    margin-left: 1%;
     margin-bottom: 1px;
   }
   h1{
@@ -771,10 +819,9 @@ footer{
     margin-top: 14vh;
     margin-left: 10%;
     margin-bottom: 20vh;
-    box-shadow: 0px 0px 20px 4px #0d8b01;
   }
   .conten-imgblog{
-    height: 100%;
+    height: 60%;
     background-image: url("landing-page.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;

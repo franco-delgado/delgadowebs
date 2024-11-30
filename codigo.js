@@ -1,3 +1,25 @@
+window.addEventListener('scroll', function () {
+  const prueba = document.querySelector(".prueba");
+  const contenBlog = document.querySelector(".conten-imgblog");
+  const scrollPosition = window.scrollY;
+  if (scrollPosition >= window.innerHeight) {
+    prueba.style.opacity = 1;
+  } else {
+    prueba.style.opacity = 0;
+  }
+  //contenBlog
+  if (scrollPosition >= 2 * window.innerHeight) {
+    contenBlog.style.left = '0';
+  } else {
+    contenBlog.style.left = '-100%';
+  }
+});
+
+
+
+
+/*
+bloquead para evitar errores en git 
 const hotel = document.querySelector(".hotel");
 const blog = document.querySelector(".blog");
 const ecomer = document.querySelector(".ecomer");
@@ -28,4 +50,4 @@ function irSoloPedidos() {
 auto.addEventListener("click",irAuto);
 function irAuto(){
     location.href = "autos/index.html";
-}
+} */
