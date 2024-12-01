@@ -15,8 +15,12 @@ window.addEventListener('scroll', function () {
   }
 });
 
-
-
+// codigos para regresar a la parte superior
+const divup = document.querySelector(".divup");
+function subir() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+divup.addEventListener("click", subir);
 
 /*
 bloquead para evitar errores en git 

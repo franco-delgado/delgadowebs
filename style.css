@@ -98,7 +98,7 @@ h1{
   background-color: #0a69012c;
 }
 
-#ImMin1:hover {
+/* #ImMin1:hover {
   transform: scale(1.5) translate(50%, -50%);
   right: 50%;
   top: 50%;
@@ -117,7 +117,7 @@ h1{
   transform: scale(1.2);
   left: 50%;
   transform: translateX(-50%) scale(1.2);
-}
+} */
 
 /* HOTEL */
 .prueba{
@@ -142,7 +142,7 @@ h1{
 	cursor: pointer;
 }
 .thotel{
-	font-size: 2vw;
+	font-size: 4vw;
   margin-left: 10px;
 	cursor: pointer;
 }
@@ -163,7 +163,7 @@ h1{
 }
 /* BLOG */
 .conten-blog{
-  height: 76vh;
+  height: 80vh;
   width: 80%;
   margin-left: 10%;
 	margin-top: 25vh;
@@ -215,7 +215,7 @@ h1{
 }
 /* ECOMER */
 .conten-interno{
-  height: 76vh;
+  height: 80vh;
   width: 50%;
   margin-left: 25%;
 	margin-top: 25vh;
@@ -223,12 +223,14 @@ h1{
   box-shadow: 0px 0px 20px 4px #0d8b01;
 }
 .conten-imginterno{
+  height: 100%;
+  width: 100%;
   background-image: url("cliente2.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 .ecomer{
-  height: 76vh;
+  height: 100%;
   width: 100%;
 	margin: 0;
 	margin-top: 30vh;
@@ -356,20 +358,22 @@ footer{
   margin-bottom: 0;
 	cursor: default;
 }
-.up{
+.divup{
   height: 60%;
   width: 60%;
   margin-top: 10%;
   margin-left: 10%;
-  background-color: red;
-  clip-path: polygon(55% 0, 90% 38%, 92% 100%, 55% 82%, 19% 100%, 19% 38%);
-  padding: 0;
-  padding: center;
+  background-color: rgba(134, 133, 133, 0.295);
+  clip-path: polygon(52% 0, 82% 30%, 85% 80%, 52% 60%, 19% 80%, 19% 30%);
+  cursor: pointer;
 }
 .pText{
   text-align: center;
-  font-size: 17px;
+  font-size: 19px;
+  font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
+  text-shadow: 0px 0px 3px #000000;
+  cursor: pointer;
 }
 
 @media  screen and (max-width: 800px){
@@ -508,14 +512,16 @@ footer{
   }
   /* BLOG */
   .conten-blog{
-    height: 60vh;
+    height: 90vh;
     width: 80%;
     margin-top: 14vh;
     margin-left: 10%;
     margin-bottom: 20vh;
   }
   .conten-imgblog{
-    height: 70%;
+    height: 100%;
+    width: 80%;
+    margin-left: 10%;
     background-image: url("landing-page.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -674,8 +680,11 @@ footer{
     margin-top: 4vh;
     margin-bottom: 0;
   }
-  .email{
-    cursor: pointer;
+  .divup{
+    clip-path: polygon(52% 0, 82% 30%, 85% 80%, 52% 60%, 19% 80%, 19% 30%);
+  }
+  .pText{
+    font-size: 18px;
   }
 }
 @media  screen and (max-width: 400px){
@@ -822,6 +831,8 @@ footer{
   }
   .conten-imgblog{
     height: 60%;
+    width: 80%;
+    margin-left: 10%;
     background-image: url("landing-page.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -980,8 +991,14 @@ footer{
     margin-top: 4vh;
     margin-bottom: 0;
   }
-  .email{
-    cursor: pointer;
+  .divup{
+    margin-top: 40%;
+    clip-path: polygon(50% 0, 82% 15%, 85% 50%, 52% 40%, 19% 50%, 19% 15%);
+  }
+  .pText{
+    position: relative;
+    top: 1px;
+    font-size: 9px;
   }
 }
 
