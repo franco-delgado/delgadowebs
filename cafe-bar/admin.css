@@ -1,0 +1,159 @@
+body{
+  background-color: #ffffc7;
+  padding: 0;
+}
+.superior{
+  background: #e0e0e0;
+  display: grid;
+  grid-template-columns: 15% 85%;
+/*  border: solid 2px #000;*/
+}
+.volver{
+  height: 80%;
+  width: 16vh;
+  margin: auto;
+  align-items: center;
+  font-size: 2vh;
+  border-radius: 25px;
+}
+h1{
+  margin: 0;
+  text-align: center;
+  font-size: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  color: #000000;
+}
+a{
+  background: transparent;
+  font-style: none;
+  text-decoration: none;
+  color:#000;
+}
+.botonRegresar{
+  height: auto;
+  width: auto;
+  font-size: 3vh;
+  font-family: 'Courier New', Courier, monospace;
+  background: #59d8f8;
+  color: #000000;
+  border: solid 2px #000;
+}
+.barra{
+  position: sticky;
+  top: 4px;
+  z-index: 20;
+  height: auto;
+  width: 100%;
+  margin-top: 2vh;
+  background: rgba(95, 158, 160, 0.445);
+  padding: 2px 0;
+  display: flex;
+  flex-direction: row;
+}
+a{
+  background-color: transparent;
+  text-decoration: none;
+  color: #cacaca;
+}
+.mesa{
+  height: 6vh;
+  width: 9vh;
+  margin: 0 auto;
+  background: rgb(43, 43, 42);
+  color: #cacaca;
+  display: inline-block;
+  cursor: pointer;
+}
+p{
+  margin-top: 0;
+  margin-bottom:10px;
+}
+h2{
+  height: 3vh;
+  width:auto;
+  margin-bottom: 4px;
+}
+.contenedor{
+  height: auto;
+  width: 90%;
+  margin: 4vh 5%;
+  display: flex;
+  flex-direction: column;
+}
+.contentTotal{
+  height: auto;
+  width: 100%;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  color: #000000;
+  background-color: #ffffff;
+}
+.contenido{
+  height: auto;
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 0;
+  padding: 0;
+  background: #ececec;
+}
+.contenpedido{
+  height: auto;
+  width: auto;
+  display: grid;
+  background: #ececec;
+  grid-template-columns: 60% 40%;
+}
+.totalp{
+  margin: 0;
+  margin-bottom: 1px;
+  margin-left: auto;
+  margin-right: 1px;
+  background: #ececec;
+}
+.pedido{
+  margin: 0;
+  margin-bottom: 1px;
+  background: #747474;
+}
+.textTotal{
+  height: 100%;
+  width: 100%;
+  margin-top: 20px;
+  color: rgb(25, 25, 26);
+  background: transparent;
+}
+.total{
+  height: 100%;
+  width: 100%;
+  margin-top: 10px;
+  text-align: right;
+  font-size: 5vh;
+  color: rgb(0, 0, 0);
+  background: transparent;
+}
+.finalizar{
+  height: 3vh;
+  width: 10vh;
+  padding-left: 4px;
+  padding-right: 4px;
+  background: #ececec;
+  font-size: 2vh;
+}
+.horainicio{
+  margin: 0;
+  margin-bottom: 1px;
+/*  border: solid 1px #000;*/
+  background: #ffffff;
+}
+.pedido{
+  margin: 0;
+  margin-bottom: 1px;
+  background: #ececec;
+}
+.horacierre{
+  margin: 0;
+  margin-bottom: 1px;
+  border: solid 1px #000;
+  background: #ececec;
+}

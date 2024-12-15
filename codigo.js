@@ -22,12 +22,19 @@ function subir() {
 }
 divup.addEventListener("click", subir);
 
+
+/*const qr = document.querySelector(".qr");
+
+qr.addEventListener("click", irSoloPedidos);*/
+function Pedidos() {
+    location.href = "cafe-bar/index.html";
+}
+
 /*
 bloquead para evitar errores en git 
 const hotel = document.querySelector(".hotel");
 const blog = document.querySelector(".blog");
 const ecomer = document.querySelector(".ecomer");
-const qr = document.querySelector(".qr");
 const auto = document.querySelector(".auto");
 //let texth = document.querySelector(".texth");
 //HOTEL
@@ -44,11 +51,6 @@ function irABlog() {
 ecomer.addEventListener("click", irEcomer);
 function irEcomer() {
     location.href = "restorant/index.html";
-}
-
-qr.addEventListener("click", irSoloPedidos);
-function irSoloPedidos() {
-    location.href = "SoloPedidos/index.html";
 }
 
 auto.addEventListener("click",irAuto);

@@ -1,0 +1,130 @@
+body {
+  background-image: url("../imagenes/fondo1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0;
+}
+.contenedor-logo {
+  height: auto;
+  width: 100%;
+  margin-top: 2vh;
+  padding-bottom: 1vh;
+  background: #0000007c;
+}
+.logo {
+  height: 10vh;
+  width: 100%;
+  font-size: 6vh;
+  font-family: "Lucida Handwriting", cursive;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #929292;
+}
+.detalle-cuenta {
+  height: auto;
+  width: 100%;
+  font-size: 3vh;
+  font-family: "Lucida Handwriting", cursive;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #929292;
+}
+.contenedorsuperior {
+  position: sticky;
+  top: 1px;
+  z-index: 20;
+}
+.vista-previa {
+  height: 6vh;
+  width: 100%;
+  margin-top: 3vh;
+  display: none;
+}
+#pedido {
+  height: 14vh;
+  width: 96%;
+  margin: 0;
+  padding: 4px;
+  background-color: rgb(189, 187, 187);
+  border: solid 6px #000;
+  color: rgb(5, 5, 5);
+  overflow-x: scroll;
+  font-size: 20px;
+}
+h3 {
+  height: 100%;
+  width: auto;
+  font-size: 4vh;
+}
+.menuPrincipal {
+  margin-top: 0;
+  font-family: "Lucida Handwriting", cursive;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px #929292;
+  text-align: center;
+  background: #0000007c;
+}
+.contenedor-de-opciones{
+  width: 40%;
+  margin-left: 30%;
+}
+.opciones {
+  height: auto;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 2vh;
+  background: transparent;
+  font-size: 5vh;
+  font-family: "Lucida Handwriting", cursive;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px #929292;
+  text-align: center;
+  cursor: pointer;
+}
+center {
+  height: auto;
+  width: 100%;
+  margin: 3vh 0;
+}
+a {
+  margin-top: 6vh;
+  background: transparent;
+  font-size: 4vh;
+  color: #ffffff;
+  text-decoration: none;
+}
+/*CUENTA*/
+.cuerpoPrincipal {
+  height: 20vh;
+  width: 100%;
+  margin: 4vh 0vh;
+  background-color: bisque;
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+.imgenMuestra {
+  height: auto;
+  width: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.contenedorTexto {
+  height: auto;
+  width: 100%;
+}
+.footer {
+  height: auto;
+  width: 100%;
+  background: #0000007c;
+  padding-top: 2vh;
+  padding-bottom: 6vh;
+}
+.contact {
+  margin-top: 0;
+  font-size: 4vh;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px #929292;
+  font-family: "Lucida Handwriting", cursive;
+  text-align: center;
+}

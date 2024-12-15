@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, .user-scalable=no,.initial-scale=1.0,.minimum-scale=1.0">
+  <meta name="keywords" content="web desarrollo pagina sitio">
+  <meta name="description" content="pagina para los turnos de las farmacias aimogasta, negocios, publicidad">
+  <meta name="autor" content="Franco Delgado">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="admin.css" <link rel="icon" href="icon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Muestra</title>
+</head>
+
+<body style="background-color: gainsboro;">
+  <center>
+    <h1 style="font-family: cursive; color:#003">BIENVENIDO</h1>
+  </center><!--MODIFICADO LOS BOTONES Y CURSOR. ESPERANDO PARA SUBIR-->
+  <p style="font-size: 24px; color:#003; ">Porfavor seleccione la opcione ser cliente para realizar sus pedidos,luego
+    retroseda a este punto e ingrese a la opcion ser administrador en esta opcion podra ingresar a la parte
+    administrativa ingresar muevas opciones para sus clientes o ver los pedidos realizados.</p>
+
+  <div style="height: 20vh; width: 100%;display: grid; grid-template-columns: 1/3 2/3 3/3">
+    <div>
+      <button onclick="cargarDatos()"
+        style="height: 10vh; width: 20vh; margin: auto; font-size: 80%; background-color: rgb(162, 165, 165); cursor: pointer">ser
+        administrador</button>
+      <button onclick="cliente()"
+        style="height: 10vh; width: 20vh; margin: auto; font-size: 80%; background-color: rgb(162, 165, 165); cursor: pointer">ser
+        cliente</button>
+    </div>
+  </div>
+  <script>
+    function administrador() {
+      location.href = "administracion-bar/pedidos/index.html";
+    }
+    function cargarDatos() {
+      location.href = "administracion-bar/inicio/index.html";
+    }
+    function cliente() {
+      location.href = "cliente/cliente.html";
+    }
+  </script>
+</body>
+
+</html>
