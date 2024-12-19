@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="style/estiloParaClientes.css">
+  <title>Carta digital de tu bar</title>
+</head>
+
+<body>
+  <div class="titulo">
+    <div class="regresar" onclick="location='cliente.html'"></div>
+    <h1>Bebidas</h1>
+  </div>
+
+  <div class="contenedorMuestra">
+    <p type="text" class="inputMuestra"></p>
+    <div class="botonesMuestra">
+      <button onclick="listo()" class="guardarMuestra">CONFIRMAR</button>
+      <button onclick="listo()" class="borrarMuestra">CANCELAR</button>
+    </div>
+  </div>
+  <div class="contenedor">
+    <input type="number" class="input">
+    <div class="botones">
+      <button onclick="listo()" class="guardar">Cargar</button>
+      <button onclick="listo()" class="borrar">Cancelar</button>
+    </div>
+    <div class="conten">
+      <div class="imagen"></div>
+      <div class="nombre">nombre</div>
+      <div class="descripcion">descripcion</div>
+      <div class="precio">precio</div>
+    </div>
+  </div>
+  <script>
+    function listo(){
+      alert("listo");
+    }
+  </script>
+</body>
+
+</html>

@@ -1,8 +1,15 @@
 body {
-  background-image: url("../imagenes/fondo1.jpg");
+  background-color: #929292;
+  padding: 0;
+}
+.conten-gral{
+  height: 90%;
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 15%;
+  background-image: url("imagen/interno.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding: 0;
 }
 .contenedor-logo {
   height: auto;
