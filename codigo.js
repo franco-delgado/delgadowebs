@@ -29,7 +29,9 @@ qr.addEventListener("click", irSoloPedidos);*/
 function Pedidos() {
     location.href = "cafe-bar/index.html";
 }
-
+function blog() {
+  location.href = "landing-page/index.html";
+}
 /*
 bloquead para evitar errores en git 
 const hotel = document.querySelector(".hotel");
