@@ -32,9 +32,9 @@ h1 {
 }
 /*MUESTRA*/
 .contenedorMuestra {
-  height: 10vh;
-  width: 96%;
-  margin: 5% 2%;
+  height: 18vh;
+  width: 70%;
+  margin: 5% 15%;
   background: #6969694b;
   display: none; /*modi*/
   grid-template-columns: 75% 25%;
@@ -64,11 +64,10 @@ h1 {
   grid-template-rows: 50% 50%;
 }
 .guardarMuestra {
-  height: 60%;
+  height: 68%;
   width: 98%;
   background: #a3a3a3;
-  margin-top: 10%;
-  font-size: 30px;
+  font-size: 16px;
   font-family: "Lucida Handwriting", cursive;
 }
 .borrarMuestra {
@@ -76,7 +75,7 @@ h1 {
   width: 98%;
   background: #a3a3a3;
   margin-top: 10%;
-  font-size: 30px;
+  font-size: 16px;
   font-family: "Lucida Handwriting", cursive;
 }
 /*MANTO*/
@@ -90,14 +89,13 @@ h1 {
 }
 /*INPUT PEDIDOS*/
 .contenedor {
-  height: 26vh;
-  width: 46vh;
+  height: 30vh;
+  width: 40vh;
   margin: auto;
-  background-image: url("../imagen/interno.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   padding: 0;
-  display: grid; /*modi*/
+  display: none; /*modi*/
   grid-template-columns: 50% 50%;
   position: sticky;
   top: 30vh;
@@ -111,7 +109,7 @@ h1 {
   font-family: "Lucida Handwriting", cursive;
 }
 .botones {
-  height: 90%;
+  height: 98%;
   width: 90%;
   background: none;
   display: grid;
@@ -119,18 +117,18 @@ h1 {
 }
 .guardar {
   height: 60%;
-  width: 80%;
+  width: 100%;
   margin: 20% 5%;
   background: #a3a3a3;
-  font-size: 40px;
+  font-size: 20px;
   font-family: "Lucida Handwriting", cursive;
 }
 .borrar {
   height: 60%;
-  width: 80%;
+  width: 100%;
   margin: 20% 5%;
   background: #a3a3a3;
-  font-size: 40px;
+  font-size: 18px;
   font-family: "Lucida Handwriting", cursive;
 }
 /*SEGUNDO MANTO*/
@@ -162,15 +160,18 @@ h1 {
 /*MUESTRA CARTA*/
 .conten {
   height: 40vh;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+  width: 30vh;
+  margin: auto;
   margin-bottom: 2vh;
+  border: solid 1px #000000;
+/*  margin-left: 10%;
+  margin-right: 10%;*/
   background: rgba(216, 216, 216, 0.397);
   display: grid;
   grid-template-rows: 55% 15% 15% 15%;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 .imagen {
   height: 100%;
