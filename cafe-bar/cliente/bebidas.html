@@ -14,7 +14,7 @@
     <h1>Bebidas</h1>
   </div>
 
-  <div class="contenedorMuestra">
+  <div class="contenedorMuestra" action="../../administrador">
     <p type="text" class="inputMuestra"></p>
     <div class="botonesMuestra">
       <button onclick="listo()" class="guardarMuestra">CONFIRMAR</button>
@@ -22,52 +22,27 @@
     </div>
   </div>
   <div class="manto">
-  <div class="contenedor">
-    <input type="number" class="input">
-    <div class="botones">
-      <button onclick="cargar()" class="guardar">Cargar</button>
-      <button onclick="cancelar()" class="borrar">Cancelar</button>
+    <div class="contenedor">
+      <input type="number" class="input">
+      <div class="botones">
+        <button onclick="cargar()" class="guardar">Cargar</button>
+        <button onclick="cancelar()" class="borrar">Cancelar</button>
+      </div>
     </div>
   </div>
-</div>
-    <div onclick="habilitar()" class="conten">
+    <div onclick="habilitar1()" class="conten">
       <img class="imagen" src="imagen/imagen.png">
       <div class="nombre">nombre</div>
       <div class="descripcion">descripcion</div>
       <div class="precio">precio</div>
     </div>
-    <div onclick="habilitar()" class="conten">
+    <div onclick="habilitar2()" class="conten">
       <img class="imagen" src="imagen/imagen.png">
       <div class="nombre">nombre</div>
       <div class="descripcion">descripcion</div>
       <div class="precio">precio</div>
     </div>
-  <script>
-    let contenedorMuestra = document.querySelector(".contenedorMuestra");
-    let inputMuestra = document.querySelector(".inputMuestra");
-    let manto = document.querySelector(".manto");
-    let contenedor = document.querySelector(".contenedor");
-    var input = document.querySelector(".input")
-    let cantidadPedido = null;
-    function cargar(){
-      cantidadPedido = input.value;
-      input.value = null;
-      alert(" cantidad: "+cantidadPedido);
-      manto.style.display  = "none";
-      contenedor.style.display = "none";
-      contenedorMuestra.style.display = "grid";
-      inputMuestra.innerHTML = cantidadPedido
-    }
-    function cancelar(){
-      input.value = null;
-      manto.style.display  = "none";
-      contenedor.style.display = "none";
-    }
-    function habilitar(){
-      manto.style.display  = "grid";
-      contenedor.style.display = "grid";
-    }
-  </script>
+  <script src="../../cafe-bar/principal.js"></script>
 </body>
 
 </html>
