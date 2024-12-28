@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estiloadministrador.css">
   <title>Document</title>
 </head>
-
 <body>
-<h1>pedidos</h1>
-<div class="pedidos">
-  <p class="cantidad"></p>
-  <p class="orden"></p>
-  <p class="precio"></p>
-</div>
+    <h1>Guardar y Mostrar Datos</h1>
+    <p class="nombre"></p>
+    <p class="cantidad"></p>
+    <button onclick="mostrarDatos()">Mostrar Datos</button>
+
 </body>
-<script src="../../cafe-bar/principal.js"></script>
+<script>
+let nombre = document.querySelector(".nombre");
+let cantidad = document.querySelector(".cantidad");
+function mostrarDatos() {
+  // Obtener los datos de localStorage
+  name = localStorage.getItem('nombre');
+  num = localStorage.getItem('cantidad');
+  nombre.innerHTML = name;
+  cantidad.innerHTML =  num;
+
+  // Mostrar los datos en la pantalla
+  if (name && num) {
+
+    alert("Nombre: " + name + "\nCantidad: " + num);
+  } else {
+    alert("No hay datos guardados en localStorage.");
+  }
+}
+
+</script>
 </html>
