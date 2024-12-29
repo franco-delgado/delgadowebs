@@ -1,23 +1,21 @@
-*{
+body{
   background-color: #c0c0c0;
 }
 h1{
   text-align: center;
   background-color: #dadada;
   border: solid 1px #000000;
+  font-size: 2em;
 }
 .cuadroDePedidos{
   height: 20vh;
-  width: 60vh;
+  width: 80%;
+  margin-left: 10%;
   background-color: #dadada;
   display: grid;
   grid-template-rows: 20% 64% 16%;
   border: solid 1px #000000;
   box-shadow: 2px 2px 5px #000000;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  align-items: center;
 }
 .mesaDePedidos{
   background: transparent;
@@ -58,4 +56,67 @@ h1{
   width: 15vh;
   margin-top: 2px;
   margin-left: 70%;
+}
+@media only screen and (max-width: 600px) {
+  body{
+    background-color: aqua;
+  }
+  h1{
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    background-color: #dadada;
+    border: solid 1px #000000;
+    font-size: 20px;
+  }
+  .cuadroDePedidos{
+    height: 20vh;
+    width: 80%;
+    margin-left: 10%;
+    background-color: #dadada;
+    display: grid;
+    grid-template-rows: 20% 64% 16%;
+    border: solid 1px #000000;
+    box-shadow: 2px 2px 5px #000000;
+  }
+  .mesaDePedidos{
+    background: transparent;
+    height: 2vh;
+    margin: 0;
+    margin-bottom: 2vh;
+  }
+  .contenedorDePedidos{
+    height: 10vh;
+    width: 98%;
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+  }
+  .cantidad{
+    height: 10vh;
+    width: 100%;
+    margin-top: 0;
+    font-size: 5vw;
+    border: solid 1px #000000;
+  }
+  .nombre{
+    height: 10vh;
+    width: 100%;
+    margin-top: 0;
+    font-size: 5vw;
+    border: solid 1px #000000;
+  }
+  .precio{
+    height: 10vh;
+    width: 100%;
+    margin-top: 0;
+    font-size: 5vw;
+    border: solid 1px #000000;
+  }
+  .limpiar{
+    height: 3vh;
+    width: 15vh;
+    margin-top: 2px;
+    margin-left: 70%;
+  }
 }
