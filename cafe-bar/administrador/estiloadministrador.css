@@ -1,26 +1,61 @@
-.pedidos{
-  height: 15vh;
-  width: 60vh;
-  background-color: antiquewhite;
-  display: grid;
-  grid-template-rows: 33% 34% 33%;
+*{
+  background-color: #c0c0c0;
+}
+h1{
+  text-align: center;
+  background-color: #dadada;
   border: solid 1px #000000;
+}
+.cuadroDePedidos{
+  height: 20vh;
+  width: 60vh;
+  background-color: #dadada;
+  display: grid;
+  grid-template-rows: 20% 64% 16%;
+  border: solid 1px #000000;
+  box-shadow: 2px 2px 5px #000000;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  align-items: center;
+}
+.mesaDePedidos{
+  background: transparent;
+  height: 2vh;
+  margin: 0;
+  margin-bottom: 2vh;
+}
+.contenedorDePedidos{
+  height: 10vh;
+  width: 98%;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
 }
 .cantidad{
-  height: 100%;
+  height: 10vh;
   width: 100%;
-  font-size: 4px;
+  margin-top: 0;
+  font-size: 2vw;
   border: solid 1px #000000;
 }
-.orden{
-  height: 100%;
+.nombre{
+  height: 10vh;
   width: 100%;
-  font-size: 4px;
+  margin-top: 0;
+  font-size: 2vw;
   border: solid 1px #000000;
 }
 .precio{
-  height: 100%;
+  height: 10vh;
   width: 100%;
-  font-size: 4px;
+  margin-top: 0;
+  font-size: 2vw;
   border: solid 1px #000000;
+}
+.limpiar{
+  height: 3vh;
+  width: 15vh;
+  margin-top: 2px;
+  margin-left: 70%;
 }

@@ -1,4 +1,3 @@
-alert("correct")
 /*ADMINISTRADOR*/
 let cantidad = document.querySelector(".cantidad")
 
@@ -30,7 +29,6 @@ function habilitar2() {
 function cargar() {
   cantidadPedido = input.value;
   input.value = null;
-  alert(pedido+" Cantidad: " + cantidadPedido);
   manto.style.display = "none";
   contenedor.style.display = "none";
   contenedorMuestra.style.display = "grid";

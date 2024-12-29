@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="estiloadministrador.css">
 </head>
 <body>
-    <h1>Guardar y Mostrar Datos</h1>
-    <p class="nombre"></p>
-    <p class="cantidad"></p>
-    <button onclick="mostrarDatos()">Mostrar Datos</button>
-
+  <h1>Pedidos</h1>
+  <div class="cuadroDePedidos">
+    <h3 class="mesaDePedidos">mesa 1</h3>
+    <div class="contenedorDePedidos">
+      <p class="nombre"></p>
+      <p class="cantidad"></p>
+      <p class="precio">$ ***,**</p>
+    </div>
+    <button class="limpiar" onclick="limpiar()">ELIMINAR</button>
+  </div>
 </body>
 <script>
 let nombre = document.querySelector(".nombre");
@@ -21,14 +27,14 @@ function mostrarDatos() {
   num = localStorage.getItem('cantidad');
   nombre.innerHTML = name;
   cantidad.innerHTML =  num;
-
-  // Mostrar los datos en la pantalla
-  if (name && num) {
-
-    alert("Nombre: " + name + "\nCantidad: " + num);
-  } else {
-    alert("No hay datos guardados en localStorage.");
-  }
+}
+window.onload = function(){
+  setTimeout(mostrarDatos, 1000)
+}
+function limpiar(){
+  localStorage.clear();
+  alert("free localstorage")
+  window.location.href = "../index.html"
 }
 
 </script>
