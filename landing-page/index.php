@@ -1,4 +1,18 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, .user-scalable=no,.initial-scale=1.0,.minimum-scale=1.0">
+	<meta name="keywords" content="web desarrollo pagina sitio">
+	<meta name="description" content="pagina para los turnos de las farmacias aimogasta, negocios, publicidad">
+	<meta name="autor" content="Franco Delgado">
+	<meta name="robots" content="index, aimogasta, farmacia, turno, rioja">
+	<meta charset="utf-8">
+	<link rel="icon" href="icon.jpg">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Muestra</title>
+</head>
+<body style="background-color: gainsboro;">
+    <?php
 require('fpdf/fpdf.php'); // Incluye la clase FPDF
 $texto = "funciona bien";
 
@@ -52,3 +66,5 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // Generar el archivo PDF y forzar la descarga (o guardar en el servidor)
 $pdf->Output('ticket.pdf', 'D'); // 'D' para descarga, 'F' para guardar en archivo
 ?>
+</body>
+</html>
