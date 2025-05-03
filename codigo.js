@@ -30,7 +30,7 @@ function Pedidos() {
     location.href = "cafe-bar/index.html";
 }
 function blog() {
-  location.href = "landing-page/index.html";
+  location.href = "landing-page/index.php";
 }
 /*
 bloquead para evitar errores en git 
