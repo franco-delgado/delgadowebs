@@ -1,9 +1,7 @@
 window.addEventListener('scroll', function () {
   const prueba = document.querySelector(".prueba");
   const contenBlog = document.querySelector(".conten-imgblog");
-  const scrollPosition = window.scrollY; 
-  const idhotel = document.getElementById("ImMin1");
-  const hotel = document.querySelector(".hotel");
+  const scrollPosition = window.scrollY;
   if (scrollPosition >= window.innerHeight) {
     prueba.style.opacity = 1;
   } else {
@@ -16,7 +14,9 @@ window.addEventListener('scroll', function () {
     contenBlog.style.left = '-100%';
   }
 });
-
+ 
+const idhotel = document.getElementById("ImMin1");
+const hotel = document.querySelector(".hotel");
 // codigos para regresar a la parte superior
 const divup = document.querySelector(".divup");
 function subir() {
