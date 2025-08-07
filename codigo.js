@@ -1,7 +1,9 @@
 window.addEventListener('scroll', function () {
   const prueba = document.querySelector(".prueba");
   const contenBlog = document.querySelector(".conten-imgblog");
-  const scrollPosition = window.scrollY;
+  const scrollPosition = window.scrollY; 
+  const idhotel = document.getElemenById("ImMin1");
+  const hotel = document.querySelector(".hotel");
   if (scrollPosition >= window.innerHeight) {
     prueba.style.opacity = 1;
   } else {
@@ -26,6 +28,12 @@ divup.addEventListener("click", subir);
 /*const qr = document.querySelector(".qr");
 
 qr.addEventListener("click", irSoloPedidos);*/
+function irAHotel(){
+  location.href = "https://franco-delgado.github.io/hotel/";
+}
+idhotel.addEventListener("click", irAHotel())
+hotel.addEventListener("click", irAHotel())
+
 function Pedidos() {
     location.href = "cafe-bar/index.html";
 }
@@ -33,8 +41,7 @@ function blog() {
   location.href = "landing-page/index.php";
 }
 /*
-bloquead para evitar errores en git 
-const hotel = document.querySelector(".hotel");
+bloquead para evitar errores en git
 const blog = document.querySelector(".blog");
 const ecomer = document.querySelector(".ecomer");
 const auto = document.querySelector(".auto");
