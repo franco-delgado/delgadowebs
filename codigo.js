@@ -15,8 +15,6 @@ window.addEventListener('scroll', function () {
   }
 });
  
-const idhotel = document.getElementById("ImMin1");
-const hotel = document.querySelector(".hotel");
 // codigos para regresar a la parte superior
 const divup = document.querySelector(".divup");
 function subir() {
@@ -31,8 +29,6 @@ qr.addEventListener("click", irSoloPedidos);*/
 function irAHotel(){
   location.href = "https://franco-delgado.github.io/hotel/";
 }
-idhotel.addEventListener("click", irAHotel)
-hotel.addEventListener("click", irAHotel)
 
 function Pedidos() {
     location.href = "cafe-bar/index.html";
