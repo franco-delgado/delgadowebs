@@ -31,8 +31,8 @@ qr.addEventListener("click", irSoloPedidos);*/
 function irAHotel(){
   location.href = "https://franco-delgado.github.io/hotel/";
 }
-idhotel.addEventListener("click", irAHotel())
-hotel.addEventListener("click", irAHotel())
+idhotel.addEventListener("click", irAHotel)
+hotel.addEventListener("click", irAHotel)
 
 function Pedidos() {
     location.href = "cafe-bar/index.html";
