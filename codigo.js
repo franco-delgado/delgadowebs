@@ -2,7 +2,7 @@ window.addEventListener('scroll', function () {
   const prueba = document.querySelector(".prueba");
   const contenBlog = document.querySelector(".conten-imgblog");
   const scrollPosition = window.scrollY; 
-  const idhotel = document.getElemenById("ImMin1");
+  const idhotel = document.getElementById("ImMin1");
   const hotel = document.querySelector(".hotel");
   if (scrollPosition >= window.innerHeight) {
     prueba.style.opacity = 1;
