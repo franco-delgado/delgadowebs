@@ -33,6 +33,9 @@ function irAHotel(){
 function Pedidos() {
     location.href = "cafe-bar/index.html";
 }
+function Concesionaria() {
+  location.href = "https://franco-delgado.github.io/autos/";
+}
 function blog() {
   location.href = "landing-page/index.php";
 }
