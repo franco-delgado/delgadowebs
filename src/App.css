@@ -1,0 +1,225 @@
+/* RESET Y GLOBALES */
+body {
+  background: #0a0c1a;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-family: serif;
+}
+
+p,
+h3,
+h1,
+h2 {
+  cursor: default;
+  margin: 0;
+}
+
+/* CONTENEDOR PRINCIPAL RE-INTRODUCIDO */
+.conten-principal {
+  width: 70%;
+  margin-left: 15%;
+  background: linear-gradient(#91fad2, #6caafc);
+  border: solid 6px #000;
+}
+
+/* ENCABEZADO Y PRESENTACIÓN */
+.title {
+  background: linear-gradient(#020758, #87ebf8);
+  width: 100%;
+  height: 14vh;
+  padding-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 5vw;
+}
+
+.primerp {
+  width: 100%;
+  margin: 10vh 0;
+  font-family: verdana;
+}
+
+.pprimer {
+  font-size: 2vw;
+  text-align: center;
+  padding: 0 5%;
+}
+
+/* CONTENEDORES DE BLOQUE (CON FONDOS) */
+.prueba,
+.conten-blog,
+.conten-interno,
+.conten-cliente {
+  height: 67vh;
+  width: 80%;
+  margin: 14vh 10% 20vh 10%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.hotel {
+  background-image: url("/hotel-background.jpg");
+}
+.conten-blog {
+  background-image: url("https://images.pexels.com/photos/3584923/pexels-photo-3584923.jpeg");
+}
+.conten-interno {
+  background-image: url("/cliente2.jpg");
+}
+.conten-cliente {
+  background-image: url("/interno2.jpg");
+}
+
+/* CONTENEDORES DE CLIC INTERNOS */
+.hotel,
+.blog,
+.ecomer,
+.qr,
+.auto {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  cursor: pointer;
+}
+
+.hotel {
+  background-color: rgba(209, 209, 209, 0.432);
+}
+.blog {
+  height: 67vh;
+  background-color: rgba(189, 182, 252, 0.171);
+  grid-template-columns: 80% 20%;
+}
+.ecomer {
+  height: 67vh;
+  background: linear-gradient(
+    rgba(253, 195, 108, 0.5),
+    rgba(197, 122, 35, 0.3)
+  );
+  grid-template-columns: 80% 20%;
+}
+.qr {
+  background: linear-gradient(
+    rgba(233, 233, 232, 0.2),
+    rgba(243, 224, 190, 0.4)
+  );
+  grid-template-columns: 80% 20%;
+}
+.auto {
+  background: linear-gradient(rgb(135, 235, 248), #020758);
+}
+
+/* ENLACES Y TEXTOS DE TARJETAS */
+.thotel,
+.textblog,
+.tecomer,
+.tqr,
+.texauto {
+  font-size: 4vw;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.photel,
+.pblog,
+.pecomer,
+.pqr,
+.pauto {
+  font-size: 2vw;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+/* ELEMENTOS DE IMAGEN */
+.spage,
+.secomer,
+.sqr {
+  padding-top: 2px;
+  padding-left: 2px;
+}
+
+.img-page,
+.img-cliente,
+.img-interno,
+.img-auto {
+  margin-top: 50px;
+  height: 28vh;
+  width: 80%;
+  object-fit: contain;
+}
+
+/* FOOTER */
+.pfin {
+  text-align: center;
+  padding: 20px 0;
+}
+.email {
+  cursor: pointer;
+}
+
+/* RESPONSIVE (MÓVILES) */
+@media screen and (max-width: 800px) {
+  .conten-principal {
+    width: 90%;
+    margin-left: 5%;
+    background: linear-gradient(#91fad2, #6caafc);
+    border: solid 6px #000;
+  }
+  .title {
+    height: 8vh;
+  }
+  h1 {
+    font-size: 5vh;
+  }
+  .pprimer {
+    font-size: 4vw;
+  }
+
+  .prueba,
+  .conten-blog,
+  .conten-interno,
+  .conten-cliente,
+  .auto {
+    height: 38vh;
+  }
+
+  .thotel,
+  .textblog,
+  .tecomer,
+  .tqr,
+  .texauto {
+    font-size: 4vh;
+  }
+  .photel,
+  .pblog,
+  .pecomer,
+  .pqr,
+  .pauto {
+    font-size: 3vw;
+  }
+
+  .img-page,
+  .img-cliente,
+  .img-interno {
+    display: none;
+  }
+  .blog,
+  .ecomer,
+  .qr {
+    grid-template-columns: 100%;
+  }
+
+  .img-auto {
+    height: 20vh;
+    width: auto;
+    margin: 10px auto;
+  }
+  .pfin {
+    font-size: 15px;
+  }
+}

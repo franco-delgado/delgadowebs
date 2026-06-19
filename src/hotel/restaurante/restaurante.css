@@ -1,0 +1,388 @@
+body {
+  background: #f5deb3;
+}
+.barra-superior {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-rows: 90% 10%;
+  top: 1px;
+  position: sticky;
+  z-index: 2;
+}
+.contenedor-h1-menu {
+  height: 10vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 92% 8%;
+  background-color: #dbc49a7a;
+}
+h1 {
+  background: transparent;
+  font-size: 6vh;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
+}
+.back {
+  height: 6vh;
+  width: 6vh;
+  max-width: 6vh;
+  margin: 0;
+  right: 1px;
+  margin-top: 6px;
+  background-image: url("./back.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.botonbarra {
+  height: 98%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  margin: auto;
+  font-size: 2vh;
+  cursor: pointer;
+}
+/*CUERPO PRINCIPAL*/
+.cuerpo-principal {
+  height: 48vh;
+  width: 98%;
+  margin: 10vh 3vh;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.contenImagen {
+  height: 48vh;
+  width: 98%;
+  margin: auto;
+  border: solid 6px rgb(230, 188, 73);
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  position: relative;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.carrusel-contenedor {
+  height: 48vh;
+  width: 100%;
+  position: relative;
+}
+
+/*BOTONES IZQ & DER*/
+#left {
+  height: 8vh;
+  width: 8vh;
+  top: 40%;
+  bottom: 40%;
+  left: 8px;
+  background-color: rgb(219, 196, 154);
+  clip-path: polygon(65% 4%, 20% 52%, 66% 91%, 46% 91%, 0% 50%, 46% 4%);
+  position: absolute;
+  cursor: pointer;
+}
+#right {
+  height: 8vh;
+  width: 8vh;
+  top: 40%;
+  bottom: 40%;
+  right: 8px;
+  background-color: rgb(219, 196, 154);
+  clip-path: polygon(61% 4%, 100% 50%, 58% 100%, 39% 99%, 80% 51%, 40% 4%);
+  position: absolute;
+  cursor: pointer;
+}
+/*TEXTO DESCRIPTIBO*/
+.textohabitacin {
+  height: 100%;
+  width: 100%;
+  background-color: #dbc49a;
+}
+h2 {
+  margin: 0;
+  background: transparent;
+  text-align: center;
+  font-family: cursive;
+  font-size: 98%;
+}
+ul {
+  font-size: 90%;
+}
+.texto-detalle-habitacion {
+  background: transparent;
+  text-align: center;
+  font-family: cursive;
+}
+.h2Habitacion {
+  font-size: 4vh;
+}
+.liHabitacion {
+  font-size: 2vh;
+}
+img {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.textohabitacion {
+  height: 96%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+/*FOOTER*/
+#footer {
+  height: 35vh;
+  width: 100%;
+  background-color: rgb(219, 196, 154);
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+#footer-izquierdo {
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+#contactos {
+  height: 90%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1/3 2/3 3/3;
+}
+#footer-derecho {
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+#redes {
+  height: 90%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1/3 2/3 3/3;
+}
+.divIcon {
+  height: 2vh;
+  width: 100%;
+  max-width: 20vh;
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+.img-icon {
+  height: 90%;
+  width: 90%;
+}
+.icon {
+  height: 4vh;
+  width: 4vh;
+}
+.pIcon {
+  margin: auto;
+  margin-left: 4px;
+  text-align: center;
+}
+p {
+  width: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+  .barra-superior {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-rows: 90% 10%;
+    top: 1px;
+    position: sticky;
+    z-index: 2;
+  }
+  .contenedor-h1-menu {
+    height: 7vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    background-color: rgba(219, 196, 154, 0.479);
+  }
+  h1 {
+    background: transparent;
+    font-size: 3vh;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: default;
+  }
+  .back {
+    height: 3vh;
+    width: 3vh;
+    max-width: 6vh;
+    margin: 0;
+    margin: auto;
+    right: 1px;
+    margin-top: 10px;
+    background-image: url("../iconos/back.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  .botonbarra {
+    height: 98%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    margin: auto;
+    font-size: 2vh;
+  }
+  /*CUERPO PRINCIPAL*/
+  .cuerpo-principal {
+    height: 37vh;
+    width: 96%;
+    margin: 10vh 2%;
+    display: flex;
+    flex-direction: row;
+  }
+  .contenImagen {
+    height: 35vh;
+    width: 98%;
+    margin: auto;
+    border: solid 6px rgb(230, 188, 73);
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    position: relative;
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  /*BOTONES IZQ & DER*/
+  #left {
+    height: 4vh;
+    width: 4vh;
+    top: 40%;
+    bottom: 40%;
+    left: 8px;
+    background-color: rgb(219, 196, 154);
+    clip-path: polygon(65% 4%, 20% 52%, 66% 91%, 46% 91%, 0% 50%, 46% 4%);
+    position: absolute;
+    cursor: pointer;
+  }
+  #right {
+    height: 4vh;
+    width: 4vh;
+    top: 40%;
+    bottom: 40%;
+    right: 8px;
+    background-color: rgb(219, 196, 154);
+    clip-path: polygon(61% 4%, 100% 50%, 58% 100%, 39% 99%, 80% 51%, 40% 4%);
+    position: absolute;
+    cursor: pointer;
+  }
+  /*TEXTO DESCRIPTIBO*/
+  .textohabitacin {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(219, 196, 154);
+  }
+  h2 {
+    margin: 0;
+    margin-left: 2px;
+    margin-right: 1px;
+    background: transparent;
+    text-align: center;
+    font-size: 4vw;
+    font-family: cursive;
+  }
+  ul {
+    font-size: 3vw;
+    text-align: left;
+  }
+  .texto-detalle-habitacion {
+    background: transparent;
+    text-align: center;
+    font-family: cursive;
+  }
+  img {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .textohabitacion {
+    height: 96%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    display: grid;
+    grid-template-rows: 20% 80%;
+  }
+  /*FOOTER*/
+  #footer {
+    height: 60vh;
+    width: 100%;
+    background: transparent;
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 50% 50%;
+  }
+  #footer-izquierdo {
+    height: 90%;
+    width: 90%;
+    font-size: 4vw;
+    text-align: center;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 20% 80%;
+  }
+  #contactos {
+    height: 90%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1/3 2/3 3/3;
+  }
+  #footer-derecho {
+    height: 90%;
+    width: 90%;
+    font-size: 2vh;
+    text-align: center;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 20% 80%;
+  }
+  #redes {
+    height: 90%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1/3 2/3 3/3;
+  }
+  .divIcon {
+    height: auto;
+    width: 100%;
+    max-width: 20vh;
+    font-size: 3vw;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 20% 80%;
+  }
+  .img-icon {
+    height: 80%;
+    width: 80%;
+  }
+  .icon {
+    height: 4vh;
+    width: 4vh;
+  }
+  .pIcon {
+    margin: auto;
+    margin-left: 4px;
+    text-align: center;
+  }
+  p {
+    margin: 0;
+    width: 100%;
+  }
+}

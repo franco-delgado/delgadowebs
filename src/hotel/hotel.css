@@ -1,0 +1,124 @@
+.botonbarra:hover {
+  color: rgb(240, 255, 255) !important;
+}
+.barra-superior {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-rows: 90% 10%;
+  top: 1px;
+  position: sticky;
+  z-index: 2;
+}
+.contenedor-h1 {
+  height: 10vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 92% 8%;
+  background-color: rgba(11, 127, 156, 0.479);
+}
+h1 {
+  background: transparent;
+  font-size: 6vh;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
+}
+.menu {
+  height: 8vh;
+  width: 8vh;
+  max-width: 10vh;
+  margin: 0;
+  margin: auto;
+  right: 1px;
+  margin-top: 6px;
+  background-image: url("iconos/Menu_icon_icon-icons.com_71858.ico");
+  background-color: transparent;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: solid 1px;
+  cursor: pointer;
+}
+#barramenu {
+  width: 40vh;
+  top: 10vh;
+  right: 2px;
+  background-color: rgba(11, 127, 156, 0.479);
+  padding: auto;
+  display: none;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  position: absolute;
+  z-index: 6;
+}
+.botonbarra {
+  height: 98%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  margin: auto;
+  font-size: 2vh;
+  cursor: pointer;
+}
+.contenedor-imagen {
+  height: 30vh;
+  width: 90%;
+  max-width: 50vh;
+}
+.img-principal {
+  height: 90vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/*FOOTER*/
+#footer {
+  height: 35vh;
+  width: 100%;
+  background-color: rgb(219, 196, 154);
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+#footer-izquierdo {
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+#contactos {
+  height: 90%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1/3 2/3 3/3;
+}
+#footer-derecho {
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+#redes {
+  height: 90%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1/3 2/3 3/3;
+}
+.divIcon {
+  height: 2vh;
+  width: 100%;
+  max-width: 20vh;
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+.img-icon {
+  height: 90%;
+  width: 90%;
+}
+.pIcon {
+  width: 100%;
+  margin: auto;
+  margin-left: 4px;
+  text-align: center;
+}

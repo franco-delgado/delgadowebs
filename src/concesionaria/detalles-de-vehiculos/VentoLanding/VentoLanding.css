@@ -1,0 +1,331 @@
+/* --- VARIABLES Y CONFIGURACIÓN GENERAL --- */
+:root {
+  --font-primary: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --text-light: #aeaeae;
+  --accent-color: #001f3f; /* Azul profundo premium */
+  --accent-hover: #003366;
+  --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.landing-container {
+  font-family: var(--font-primary);
+  color: var(--text-main);
+  background-color: var(--bg-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* --- BARRA DE NAVEGACIÓN --- */
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.back-button {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s var(--transition-smooth);
+}
+
+.back-button:hover {
+  background-color: var(--text-main);
+  color: var(--bg-primary);
+  border-color: var(--text-main);
+}
+
+.brand-logo {
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--text-main);
+}
+
+/* --- SECCIÓN HERO (PORTADA PRINCIPAL) --- */
+.hero-section {
+  background-image: url("https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1920&q=80"); /* Fondo automotriz elegante */
+  background-size: cover;
+  background-position: center;
+  height: 65vh;
+  position: relative;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 5% 60px 5%;
+  box-sizing: border-box;
+}
+
+.hero-title {
+  color: var(--bg-primary);
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  animation: fadeInUp 0.8s var(--transition-smooth);
+}
+
+/* --- SECCIÓN NOVEDADES --- */
+.novedades-section {
+  padding: 80px 5%;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-main-title {
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.video-container {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.video-container:hover .highlight-image {
+  transform: scale(1.02);
+}
+
+/* --- SECCIÓN CARACTERÍSTICAS (GRID ALTERNADO) --- */
+.features-section {
+  background-color: var(--bg-secondary);
+  padding: 100px 5%;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.features-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.features-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 8%;
+  max-width: 1200px;
+  margin: 0 auto 100px auto;
+}
+
+.feature-row:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Inversión de columnas nativa usando flex-direction */
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-image-block {
+  flex: 1;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.feature-image-block img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.feature-text-block {
+  flex: 1;
+}
+
+.feature-text-block h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.feature-text-block h4 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.feature-text-block p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* --- BOTONES FLOTANTES DE CONTACTO --- */
+.floating-actions {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2000;
+}
+
+.floating-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.3s ease,
+    cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+}
+
+.floating-btn:hover {
+  transform: scale(1.1) translateY(-3px);
+}
+
+.whatsapp-btn {
+  background-color: #25d366;
+  color: white;
+}
+
+.contact-btn {
+  background-color: var(--text-main);
+  color: white;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- RESPONSIVE DESIGN (MEDIA QUERIES) --- */
+@media (max-width: 992px) {
+  .feature-row,
+  .feature-row.reverse {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 70px;
+  }
+
+  .feature-image-block img {
+    height: 300px;
+  }
+
+  .feature-text-block {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .landing-nav {
+    padding: 15px 4%;
+  }
+
+  .brand-logo {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-section {
+    height: 50vh;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .section-main-title {
+    font-size: 1.7rem;
+  }
+
+  .features-header h2 {
+    font-size: 2rem;
+  }
+
+  .feature-text-block h4 {
+    font-size: 1.6rem;
+  }
+
+  .floating-actions {
+    bottom: 20px;
+    right: 20px;
+  }
+}

@@ -1,0 +1,526 @@
+/* ==========================================================================
+   --- CONFIGURACIÓN BASE ---
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.site-layout {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+.main-content {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+}
+
+/* ==========================================================================
+   --- BARRA SUPERIOR (NAVBAR) ---
+   ========================================================================== */
+.navbar {
+  background-color: #0f172a;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.nav-logo {
+  grid-column: 2;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin: 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nav-spacer {
+  grid-column: 1;
+}
+
+.nav-actions-group {
+  grid-column: 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* BOTÓN VOLVER */
+.back-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  height: 6vh;
+  width: 6vh;
+  max-width: 6vh;
+  margin-top: 6px;
+  background-image: url("../../public/back.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: background-color 200ms;
+}
+
+/* DROPDOWN */
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-trigger-btn {
+  background-color: #dc2626;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 300ms;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-trigger-btn:hover {
+  background-color: #b91c1c;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 14rem;
+  background-color: #ffffff;
+  color: #1f2937;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem 0;
+  z-index: 100;
+}
+
+.dropdown-section-title {
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dropdown-item-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: #1f2937;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-item-btn:hover {
+  background-color: #fef2f2;
+}
+
+.dropdown-divider {
+  border-top: 1px solid #f3f4f6;
+  margin: 0.25rem 0;
+}
+
+.dropdown-link-email,
+.dropdown-link-whatsapp {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.dropdown-link-email {
+  color: #334155;
+}
+.dropdown-link-email:hover {
+  background-color: #f1f5f9;
+}
+
+.dropdown-link-whatsapp {
+  color: #16a34a;
+}
+.dropdown-link-whatsapp:hover {
+  background-color: #f0fdf4;
+}
+
+/* COLORES EN TEXTO */
+.text-highlight-red {
+  color: #ef4444;
+}
+.text-danger-red {
+  color: #dc2626;
+}
+
+/* --- PORTADA / HERO --- */
+.hero-banner {
+  background-color: #1e293b;
+  color: #ffffff;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   --- SECCIÓN CATEGORÍAS (Botonera Ancha y Profesional) ---
+   ========================================================================== */
+.categories-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  padding: 0 1rem;
+}
+
+.categories-section .section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-left: 4px solid #ef4444;
+  padding-left: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.category-card-btn {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #334155;
+}
+
+.category-card-btn.active {
+  background-color: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.category-card-btn.inactive {
+  background-color: #1e293b;
+  color: #cbd5e1;
+}
+
+.category-card-btn.inactive:hover {
+  background-color: #334155;
+  color: #ffffff;
+  border-color: #475569;
+}
+
+/* ==========================================================================
+   --- SECCIÓN MARCAS (Contenedor Premium Visible) ---
+   ========================================================================== */
+.brands-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 4rem auto;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.brands-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.1em;
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+  text-align: center;
+}
+
+.brands-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.brand-item {
+  font-weight: 800;
+  color: #f1f5f9;
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  font-style: italic;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.brand-item:hover {
+  opacity: 1;
+  color: #ef4444;
+}
+
+/* ==========================================================================
+   --- LISTADO DE VEHÍCULOS (TARJETAS) ---
+   ========================================================================== */
+.showcase-section {
+  margin-bottom: 3rem;
+}
+
+.showcase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear-filters-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ef4444;
+  font-size: 0.875rem;
+}
+
+.clear-filters-btn:hover {
+  text-decoration: underline;
+}
+
+.vehicles-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.vehicle-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 300ms;
+}
+
+.vehicle-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-image-wrapper {
+  width: 100%;
+  height: 14rem;
+  padding: 0.5rem;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vehicle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.vehicle-info-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vehicle-category-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ef4444;
+}
+
+.vehicle-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 0.25rem;
+}
+
+.vehicle-brand-label {
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.vehicle-action-area {
+  margin-top: 1rem;
+}
+
+.vehicle-price-tag {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.vehicle-buttons-group {
+  margin-top: 1rem;
+  display: flex !important; /* Forzamos el comportamiento flex para evitar herencias de layouts rotos */
+  flex-direction: row !important;
+  gap: 0.75rem !important;
+  width: 100%;
+}
+
+.btn-details {
+  flex: 1;
+  background-color: #dc2626;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 200ms ease;
+  display: block;
+}
+
+.btn-details:hover {
+  background-color: #b91c1c;
+}
+
+.btn-query {
+  flex: 1;
+  background-color: #020617;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 200ms ease;
+  border: 1px solid #1e293b;
+}
+
+.btn-query:hover {
+  background-color: #1e293b;
+}
+
+.btn-details {
+  flex: 1;
+  background-color: #dc2626;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 200ms;
+}
+
+.btn-details:hover {
+  background-color: #b91c1c;
+}
+
+.btn-query {
+  background-color: #020617;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 200ms;
+}
+
+.btn-query:hover {
+  background-color: #1e293b;
+}
+
+.no-results-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #6b7280;
+  padding: 2rem 0;
+}
+
+/* ==========================================================================
+   --- FOOTER ---
+   ========================================================================== */
+.site-footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+  border-top: 1px solid #1e293b;
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   --- RESPONSIVIDAD (Media Queries Limpios) ---
+   ========================================================================== */
+@media (min-width: 768px) {
+  .vehicles-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .vehicles-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
