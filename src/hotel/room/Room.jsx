@@ -1,5 +1,9 @@
 import { useState, useRef } from "react";
 import "./room.css";
+//IMAGENES
+import habitacion1 from "../../assets/habitacion1.jpg";
+import habitacion2 from "../../assets/habitacion2.jpg";
+import habitacion3 from "../../assets/habitacion3.jpg";
 
 // Si estás usando Vite y las imágenes están en la carpeta 'public', dejalas como strings: "/imagen/..."
 // Si están dentro de 'src', recordá importarlas arriba (ej: import hab1 from '../imagen/habitacion1.jpg')
@@ -17,42 +21,42 @@ export default function Room() {
     {
       id: 1,
       tipo: "room-1",
-      img: "/habitacion1.jpg",
+      img: habitacion1,
       nombre: "Habitación Simple",
       ruta: "Single",
     },
     {
       id: 2,
       tipo: "room-2",
-      img: "/habitacion2.jpg",
+      img: habitacion2,
       nombre: "Habitación Doble",
       ruta: "Doble",
     },
     {
       id: 3,
       tipo: "room-3",
-      img: "/habitacion3.jpg",
+      img: habitacion3,
       nombre: "Habitación Suite",
       ruta: "Suit",
     },
     {
       id: 4,
       tipo: "room-1",
-      img: "/habitacion1.jpg",
+      img: habitacion1,
       nombre: "Habitación Simple",
       ruta: "Single",
     },
     {
       id: 5,
       tipo: "room-2",
-      img: "/habitacion2.jpg",
+      img: habitacion2,
       nombre: "Habitación Doble",
       ruta: "Doble",
     },
     {
       id: 6,
       tipo: "room-3",
-      img: "/habitacion3.jpg",
+      img: habitacion3,
       nombre: "Habitación Suite",
       ruta: "Suit",
     },
@@ -134,7 +138,7 @@ export default function Room() {
 
       {/* IMAGEN PRINCIPAL */}
       <div className="imagenprincipal">
-        <img src="/habitacion1.jpg" alt="Principal" />
+        <img src={habitacion1} alt="Principal" />
       </div>
 
       {/* CUERPO PRINCIPAL (HABITACIONES) */}
@@ -161,22 +165,22 @@ export default function Room() {
       </div>
 
       {/* FOOTER */}
-      <div id="footer">
+      <div id="footer-room">
         <div id="footer-izquierdo">
           <h3>CONTACTOS Y DIRECCIÓN</h3>
           <div id="contactos">
             <div className="divIcon">
-              <img className="img-icon" src="/phone.svg" alt="Teléfono" />
+              <img className="img-icon" src="./phone.svg" alt="Teléfono" />
               <p className="licon-tel">TEL: ************</p>
             </div>
             <div className="divIcon">
-              <img className="img-icon" src="/message.svg" alt="Email" />
+              <img className="img-icon" src="./message.svg" alt="Email" />
               <p className="licon-emal">Email: ****@****.com</p>
             </div>
             <div className="divIcon">
               <img
                 className="img-icon"
-                src="/map-location-dot.svg"
+                src="./map-location-dot.svg"
                 alt="Ubicación"
               />
               <p className="licon-dir">Dir: **************</p>
@@ -190,7 +194,7 @@ export default function Room() {
             <div className="divIcon">
               <img
                 className="img-icon"
-                src="/square-facebook.svg"
+                src="./square-facebook.svg"
                 alt="Facebook"
               />
               <p className="pIcon">Facebook</p>
@@ -198,7 +202,7 @@ export default function Room() {
             <div className="divIcon">
               <img
                 className="img-icon"
-                src="/square-twitter.svg"
+                src="./square-twitter.svg"
                 alt="Twitter"
               />
               <p className="pIcon">Twitter</p>
@@ -206,7 +210,7 @@ export default function Room() {
             <div className="divIcon">
               <img
                 className="img-icon"
-                src="/square-instagram.svg"
+                src="./square-instagram.svg"
                 alt="Instagram"
               />
               <p className="pIcon">Instagram</p>

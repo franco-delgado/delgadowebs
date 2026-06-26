@@ -1,113 +1,178 @@
-body {
+/* --- ESTILOS GENERALES (BASE / MÓVIL) --- */
+* {
+  box-sizing: border-box; /* Evita que el padding rompa los anchos */
+  margin: 0;
   padding: 0;
+}
+
+body {
   background: #576;
 }
+
 .barra-superior {
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-rows: 90% 10%;
-  top: 1px;
+  grid-template-rows: auto; /* Dejamos que se adapte al contenido */
+  top: 0;
   position: sticky;
-  z-index: 2;
+  z-index: 10;
 }
+
 .contenedor-h1 {
-  height: 10vh;
+  height: 70px; /* Es mejor usar un alto fijo en px para barras de navegación */
   width: 100%;
   display: grid;
-  grid-template-columns: 92% 8%;
-  background-color: c;
+  grid-template-columns: 1fr auto; /* Distribución flexible */
+  align-items: center;
+  padding: 0 15px;
+  background-color: #3e5343; /* Corregido el 'background-color: c;' que tenías */
 }
+
 h1 {
   background: transparent;
-  font-size: 6vh;
+  font-size: 1.8rem; /* Rem es mucho más estable para fuentes */
   font-family: Arial, Helvetica, sans-serif;
   cursor: default;
+  color: white;
 }
+
 .menu {
-  height: 8vh;
-  width: 8vh;
-  max-width: 10vh;
-  margin: 0;
-  margin: auto;
-  right: 1px;
-  margin-top: 6px;
+  height: 40px;
+  width: 40px;
   background-image: url("../iconos/Menu_icon_icon-icons.com_71858.ico");
   background-color: transparent;
-  background-size: 100% 100%;
+  background-size: contain;
   background-repeat: no-repeat;
-  border: solid 1px;
+  background-position: center;
+  border: none;
   cursor: pointer;
 }
+
 #barramenu {
-  width: 40vh;
-  top: 10vh;
-  right: 2px;
-  background-color: rgba(247, 221, 174, 0.281);
-  padding: auto;
+  width: 100%; /* En móviles ocupa todo el ancho */
+  max-width: 300px; /* En pantallas un poco más grandes no se desborda */
+  top: 70px; /* Debe coincidir con el alto de .contenedor-h1 */
+  right: 0;
+  background-color: rgba(
+    247,
+    221,
+    174,
+    0.95
+  ); /* Más opaco en móvil para que se lea bien */
   display: none;
-  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-rows: repeat(4, auto);
   position: absolute;
-  z-index: 6;
+  z-index: 20;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .botonbarra {
-  height: 98%;
+  padding: 15px;
   width: 100%;
   background: transparent;
   border: none;
-  margin: auto;
-  font-size: 2vh;
+  font-size: 1.1rem;
   cursor: pointer;
+  text-align: center;
 }
-/*IMAGEN PRINCIPAL*/
+
+/* IMAGEN PRINCIPAL */
 .imagenprincipal {
-  height: 90vh;
+  height: 60vh; /* Reducido para móviles, 90vh es demasiado alto en vertical */
   width: 100%;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-size: cover; /* 'cover' evita que la imagen se estire feo */
+  background-position: center;
 }
-/*CUERPO PRINCIPAL*/
+
+/* CUERPO PRINCIPAL (HABITACIONES) */
 .room-principal {
-  width: 98%;
-  margin-top: 8vh;
-  margin-bottom: 8vh;
+  background-color: rgb(219, 196, 154);
+  width: 100%;
+  padding: 20px;
+  padding-top: 4vh;
   display: grid;
-  grid-template-columns: 33% 34% 33%;
+  grid-template-columns: 1fr; /* 1 Sola columna en móviles */
+  gap: 20px; /* Espacio entre tarjetas */
+  justify-items: center;
 }
+
 .contenedor {
-  height: 40vh;
-  width: 90%;
-  margin-bottom: 6vh;
+  height: 350px; /* Alto fijo para que las tarjetas mantengan estructura */
+  width: 100%;
+  max-width: 400px; /* Evita que en pantallas medianas se estiren demasiado */
   background-color: rgb(71, 105, 88);
   display: grid;
   grid-template-rows: 60% 15% 25%;
   position: relative;
   cursor: pointer;
+  border-radius: 8px; /* Un toque estético */
+  overflow: hidden;
 }
-h2 {
-  margin: 0;
-  background: transparent;
-  text-align: center;
-  font-family: cursive;
-}
+
+h2,
 .texto-detalle-habitacion {
   background: transparent;
   text-align: center;
-  font-family: cursive;
+  font-family:
+    "Courier New", Courier, monospace; /* Caída limpia si cursive falla */
+  color: #fff;
 }
+
 img {
   height: 100%;
   width: 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  object-fit: cover; /* Clave: hace que la imagen no se deforme */
 }
-.textohabitacion {
-  height: 96%;
+
+/* FOOTER */
+#footer-room {
+  min-height: 20vh;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
+  background-color: rgb(219, 196, 154);
   display: grid;
-  grid-template-rows: 20% 80%;
+  grid-template-columns: 1fr; /* 1 columna en móvil */
+  gap: 20px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+/* --- 🖥️ MEDIA QUERIES (PANTALLAS MEDIANAS Y GRANDES) --- */
+
+/* Tablets (desde 768px en adelante) */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.3rem;
+  }
+
+  .imagenprincipal {
+    height: 80vh; /* Recuperamos más presencia en pantallas grandes */
+  }
+
+  .room-principal {
+    grid-template-columns: repeat(2, 1fr); /* 2 Columnas para tablets */
+  }
+
+  .contenedor {
+    max-width: 100%; /* Que use el espacio del grid */
+  }
+
+  #footer-room {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en footer */
+    text-align: left;
+  }
+}
+
+/* Laptops y Computadoras de escritorio (desde 1024px en adelante) */
+@media (min-width: 1024px) {
+  .room-principal {
+    grid-template-columns: repeat(3, 1fr); /* 3 Columnas en pantallas grandes */
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 0 auto;
+  }
+
+  #barramenu {
+    max-width: 250px;
+  }
 }

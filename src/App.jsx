@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import Hotel from "./hotel/hotel";
 import Room from "./hotel/room/Room";
 import Single from "./hotel/room/single/Single";
@@ -13,11 +19,9 @@ import Concesionaria from "./concesionaria/Concesionaria";
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
 
-// Componente para la página de inicio (mantiene todas tus clases intactas)
+// Componente para la página de inicio
 function Inicio() {
-  const irA = (ruta) => {
-    window.location.href = ruta;
-  };
+  const navigate = useNavigate(); // 👈 Usamos el hook de React Router para navegación interna
 
   return (
     <div className="conten-principal">
@@ -32,16 +36,14 @@ function Inicio() {
         </h2>
       </div>
 
-      {/* SECCIÓN HOTEL: Usa Link para ir a tu componente .jsx respetando el CSS */}
+      {/* SECCIÓN HOTEL */}
       <div className="prueba">
         <Link to="/hotel" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="hotel">
-            <div className="texth">
-              <h3 className="thotel">HOTEL</h3>
-              <p className="photel">
-                ¿Listo para dar vida a tu hotel en línea?...
-              </p>
-            </div>
+          <div className="text">
+            <h3 className="thotel">HOTEL</h3>
+            <p className="photel">
+              ¿Listo para dar vida a tu hotel en línea?...
+            </p>
           </div>
         </Link>
       </div>
@@ -49,7 +51,8 @@ function Inicio() {
       {/* SECCIÓN BLOG */}
       <div className="conten-blog">
         <div className="conten-imgblog">
-          <div className="blog" onClick={() => irA("/LandingPage")}>
+          {/* 👈 Modificado para usar navigate en lugar de window.location.href */}
+          <div className="blog" onClick={() => navigate("/LandingPage")}>
             <div className="text">
               <h3 className="textblog">Expandí tu Presencia Digital</h3>
               <p className="pblog">
@@ -64,11 +67,14 @@ function Inicio() {
       {/* SECCIÓN RESTORANT */}
       <div className="conten-interno">
         <div className="conten-imginterno">
+          {/* Aquí se mantiene window.location.href porque es un enlace externo a Netlify */}
           <div
             className="ecomer"
-            onClick={() => irA("https://pedidos-qr.netlify.app/")}
+            onClick={() =>
+              (window.location.href = "https://pedidos-qr.netlify.app/")
+            }
           >
-            <div className="texte">
+            <div className="text">
               <h3 className="tecomer">CAFE-BAR pedidos por clientes</h3>
               <p className="pecomer">Descubre la eficiencia y comodidad...</p>
             </div>
@@ -78,19 +84,18 @@ function Inicio() {
           </div>
         </div>
       </div>
-
-      {/* SECCIÓN AUTOS */}
-      <div className="auto" onClick={() => irA("/concesionaria")}>
-        <div className="text">
-          <h3 className="texauto">Concesionaria</h3>
-          <p className="pauto">
-            Explora nuestra plantilla de muestra para páginas de
-            concesionarias...
-          </p>
+      <div className="conten-auto">
+        <div className="auto" onClick={() => navigate("/concesionaria")}>
+          <div className="img-auto">
+            <div className="text">
+              <h3 className="texauto">Concesionaria</h3>
+              <p className="pauto">
+                Explora nuestra plantilla de muestra para páginas de
+                concesionarias...
+              </p>
+            </div>
+          </div>
         </div>
-        <span className="secomer">
-          <img className="img-auto" src="/imagen2.jpg" alt="Auto" />
-        </span>
       </div>
 
       <footer>
@@ -110,7 +115,8 @@ function Inicio() {
 // Componente App que maneja el enrutamiento limpio
 function App() {
   return (
-    <Router>
+    // 🚀 AQUÍ agregamos el basename sin la "s"
+    <Router basename="/delgadowebs">
       <Routes>
         {/* Ruta principal */}
         <Route path="/" element={<Inicio />} />

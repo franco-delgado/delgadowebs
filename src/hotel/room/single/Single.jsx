@@ -2,19 +2,20 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Carrusel from "../../Carrusel.jsx";
 import "../Habitaciones.css"; // Recordá verificar la ruta de tus estilos
+import Footer from "../../footer/Footer.jsx";
+//IMAGENES
+import habitacion1 from "../../../assets/habitacion1.jpg";
+import habitacion2 from "../../../assets/habitacion3.jpg";
+import habitacion3 from "../../../assets/habitacion3.jpg";
+import habitacion4 from "../../../assets/habitacion4.jpg";
 
 export default function Single() {
   const navigate = useNavigate();
   // Lista de imágenes apuntando directamente a tu carpeta 'public'
-  const imagenes = [
-    "/habitacion1.jpg",
-    "/habitacion2.jpg",
-    "/habitacion3.jpg",
-    "/habitacion4.jpg",
-  ];
+  const imagenes = [habitacion1, habitacion2, habitacion3, habitacion4];
 
   return (
-    <>
+    <div className="habitacion-container">
       {/* BARRA SUPERIOR */}
       <div className="barra-superior">
         <div className="contenedor-h1-menu">
@@ -25,7 +26,7 @@ export default function Single() {
       </div>
 
       {/* CUERPO PRINCIPAL */}
-      <div className="cuerpo-principal">
+      <div className="cuerpo-principal-habitacion">
         {/* Pasamos el estilo dinámico del fondo directo al div de forma limpia en React */}
         <Carrusel imagenes={imagenes} className="contenImagen" />
 
@@ -41,59 +42,7 @@ export default function Single() {
         </div>
       </div>
 
-      {/* FOOTER */}
-      <div id="footer">
-        <div id="footer-izquierdo">
-          <h3>CONTACTOS Y DIRECCIÓN</h3>
-          <div id="contactos">
-            <div className="divIcon">
-              <img className="img-icon" src="/phone.svg" alt="Teléfono" />
-              <p className="licon-tel">TEL: ************</p>
-            </div>
-            <div className="divIcon">
-              <img className="img-icon" src="/message.svg" alt="Email" />
-              <p className="licon-emal">Email: ****@****.com</p>
-            </div>
-            <div className="divIcon">
-              <img
-                className="img-icon"
-                src="/map-location-dot.svg"
-                alt="Ubicación"
-              />
-              <p className="licon-dir">Dir: **************</p>
-            </div>
-          </div>
-        </div>
-        <div id="footer-derecho">
-          <h3>REDES SOCIALES</h3>
-          <div id="redes">
-            <div className="divIcon">
-              <img
-                className="img-icon"
-                src="/square-facebook.svg"
-                alt="Facebook"
-              />
-              <p className="pIcon">Facebook</p>
-            </div>
-            <div className="divIcon">
-              <img
-                className="img-icon"
-                src="/square-twitter.svg"
-                alt="Twitter"
-              />
-              <p className="pIcon">Twitter</p>
-            </div>
-            <div className="divIcon">
-              <img
-                className="img-icon"
-                src="/square-instagram.svg"
-                alt="Instagram"
-              />
-              <p className="pIcon">Instagram</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+      <Footer />
+    </div>
   );
 }

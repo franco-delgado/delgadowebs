@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   color: #000;
-  font-family: serif;
+  font-family: sans-serif; /* Un cambio a sans-serif suele verse más moderno en web */
 }
 
 p,
@@ -15,114 +15,113 @@ h2 {
   margin: 0;
 }
 
-/* CONTENEDOR PRINCIPAL RE-INTRODUCIDO */
+/* CONTENEDOR PRINCIPAL - Flexible con max-width */
 .conten-principal {
-  width: 70%;
-  margin-left: 15%;
+  width: 90%;
+  max-width: 1200px; /* Evita que en monitores gigantes se estire infinito */
+  margin: 0 auto; /* Lo centra perfectamente sin importar el porcentaje */
   background: linear-gradient(#91fad2, #6caafc);
   border: solid 6px #000;
+  box-sizing: border-box;
 }
 
 /* ENCABEZADO Y PRESENTACIÓN */
 .title {
   background: linear-gradient(#020758, #87ebf8);
   width: 100%;
-  height: 14vh;
-  padding-top: 6px;
+  min-height: 80px; /* Usamos min-height en vez de vh para que no colapse */
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 h1 {
-  font-size: 5vw;
+  font-size: 2.5rem; /* Unidades rem son mucho más estables para textos */
+  text-align: center;
 }
 
 .primerp {
   width: 100%;
-  margin: 10vh 0;
-  font-family: verdana;
+  margin: 40px 0;
 }
 
 .pprimer {
-  font-size: 2vw;
+  font-size: 1.2rem;
   text-align: center;
   padding: 0 5%;
+  line-height: 1.5;
 }
 
-/* CONTENEDORES DE BLOQUE (CON FONDOS) */
+/* CONTENEDORES DE BLOQUE (TARJETAS) */
 .prueba,
 .conten-blog,
 .conten-interno,
-.conten-cliente {
-  height: 67vh;
-  width: 80%;
-  margin: 14vh 10% 20vh 10%;
+.conten-cliente,
+.conten-auto {
+  min-height: 400px; /* Altura mínima adaptable */
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto; /* Centrado automático y márgenes más amigables */
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover; /* Cambiado a cover para que la imagen no se deforme */
+  background-position: center;
 }
 
-.hotel {
+/* IMÁGENES DE FONDO */
+.prueba {
   background-image: url("/hotel-background.jpg");
 }
 .conten-blog {
   background-image: url("https://images.pexels.com/photos/3584923/pexels-photo-3584923.jpeg");
 }
 .conten-interno {
-  background-image: url("/cliente2.jpg");
+  background-image: url("../src/assets/cliente2.jpg");
 }
-.conten-cliente {
-  background-image: url("/interno2.jpg");
+.conten-auto {
+  background-image: url("https://images.unsplash.com/photo-1692863211226-cbba732754c9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNvbmNlc2lvbmFyaW8lMjBkZSUyMGF1dG9tJUMzJUIzdmlsZXN8ZW58MHx8MHx8fDA%3D");
 }
 
-/* CONTENEDORES DE CLIC INTERNOS */
+/* CONTENEDORES DE CLIC INTERNOS (GRID DE DOS COLUMNAS) */
 .hotel,
 .blog,
 .ecomer,
 .qr,
 .auto {
-  height: 100%;
-  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
   display: grid;
+  grid-template-columns: 1fr; /* Por defecto en móviles es 1 columna */
+  gap: 20px;
+  align-items: center;
   cursor: pointer;
 }
 
-.hotel {
-  background-color: rgba(209, 209, 209, 0.432);
+.text {
+  background-color: #91909091;
 }
-.blog {
-  height: 67vh;
-  background-color: rgba(189, 182, 252, 0.171);
-  grid-template-columns: 80% 20%;
-}
-.ecomer {
-  height: 67vh;
-  background: linear-gradient(
-    rgba(253, 195, 108, 0.5),
-    rgba(197, 122, 35, 0.3)
-  );
-  grid-template-columns: 80% 20%;
-}
-.qr {
+
+/* Fondos y gradientes */
+.hotel,
+.blog,
+.ecomer,
+.qr,
+.auto {
   background: linear-gradient(
     rgba(233, 233, 232, 0.2),
     rgba(243, 224, 190, 0.4)
   );
-  grid-template-columns: 80% 20%;
-}
-.auto {
-  background: linear-gradient(rgb(135, 235, 248), #020758);
 }
 
-/* ENLACES Y TEXTOS DE TARJETAS */
+/* TEXTOS DE TARJETAS */
 .thotel,
 .textblog,
 .tecomer,
 .tqr,
 .texauto {
-  font-size: 4vw;
-  margin-left: 10px;
-  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 .photel,
@@ -130,96 +129,49 @@ h1 {
 .pecomer,
 .pqr,
 .pauto {
-  font-size: 2vw;
-  margin: 0 10px;
-  cursor: pointer;
+  font-size: 1.1rem;
 }
 
 /* ELEMENTOS DE IMAGEN */
-.spage,
-.secomer,
-.sqr {
-  padding-top: 2px;
-  padding-left: 2px;
-}
-
 .img-page,
 .img-cliente,
 .img-interno,
 .img-auto {
-  margin-top: 50px;
-  height: 28vh;
-  width: 80%;
+  max-width: 100%;
+  height: auto;
+  max-height: 200px;
   object-fit: contain;
+  margin: 0 auto;
 }
 
 /* FOOTER */
 .pfin {
   text-align: center;
-  padding: 20px 0;
+  padding: 30px 10px;
+  font-size: 1rem;
 }
 .email {
   cursor: pointer;
+  word-break: break-all; /* Evita que correos largos rompan la pantalla en celular */
 }
 
-/* RESPONSIVE (MÓVILES) */
-@media screen and (max-width: 800px) {
-  .conten-principal {
-    width: 90%;
-    margin-left: 5%;
-    background: linear-gradient(#91fad2, #6caafc);
-    border: solid 6px #000;
-  }
-  .title {
-    height: 8vh;
-  }
-  h1 {
-    font-size: 5vh;
-  }
-  .pprimer {
-    font-size: 4vw;
-  }
-
-  .prueba,
-  .conten-blog,
-  .conten-interno,
-  .conten-cliente,
-  .auto {
-    height: 38vh;
-  }
-
-  .thotel,
-  .textblog,
-  .tecomer,
-  .tqr,
-  .texauto {
-    font-size: 4vh;
-  }
-  .photel,
-  .pblog,
-  .pecomer,
-  .pqr,
-  .pauto {
-    font-size: 3vw;
-  }
-
-  .img-page,
-  .img-cliente,
-  .img-interno {
-    display: none;
-  }
+/* ==========================================================
+   MEDIA QUERIES (PANTALLAS MEDIANAS Y GRANDES)
+   ========================================================== */
+@media screen and (min-width: 768px) {
+  /* En pantallas grandes, activamos el diseño de dos columnas */
   .blog,
   .ecomer,
-  .qr {
-    grid-template-columns: 100%;
+  .qr,
+  .auto {
+    grid-template-columns: 3fr 1fr;
   }
 
-  .img-auto {
-    height: 20vh;
-    width: auto;
-    margin: 10px auto;
+  .conten-principal {
+    width: 80%;
   }
-  .pfin {
-    font-size: 15px;
+
+  h1 {
+    font-size: 3.5rem;
   }
 }
