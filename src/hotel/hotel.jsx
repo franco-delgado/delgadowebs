@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./hotel.css";
 import Footer from "./footer/Footer.jsx";
 
 export default function Hotel() {
   // Estado para controlar si el menú desplegable está abierto o cerrado
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const navigate = useNavigate();
 
   // Función para alternar el menú
   const clickMenu = () => {
@@ -13,7 +15,7 @@ export default function Hotel() {
 
   // Manejadores de navegación (Rutas)
   const navegarA = (ruta) => {
-    window.location.href = ruta;
+    navigate(ruta);
   };
 
   // Estilo dinámico para el menú basado en el estado (reemplaza la animación por setInterval)
@@ -37,7 +39,7 @@ export default function Hotel() {
           <button
             className="botonbarra"
             id="room"
-            onClick={() => navegarA("/Room")}
+            onClick={() => navegarA("/room")}
           >
             ROOM
           </button>
@@ -45,7 +47,7 @@ export default function Hotel() {
           <button
             className="botonbarra"
             id="restaurante"
-            onClick={() => navegarA("Restaurante")}
+            onClick={() => navegarA("/restaurante")}
           >
             RESTAURANTE
           </button>
@@ -53,15 +55,15 @@ export default function Hotel() {
           <button
             className="botonbarra"
             id="contacto"
-            onClick={() => navegarA("ContactoHotel")}
+            onClick={() => navegarA("/ContactoHotel")}
           >
             CONTACTANOS
           </button>
           <button
             className="botonbarra"
             id="exit"
-            onClick={() =>
-              navegarA("https://franco-delgado.github.io/delgadowebs/")
+            onClick={
+              () => navegarA("LandingPage") // Cambié a LandingPage para que sea consistente con la ruta definida en App.jsx
             }
           >
             EXIT

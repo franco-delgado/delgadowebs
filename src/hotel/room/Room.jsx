@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./room.css";
+import Footer from "../footer/Footer.jsx";
 //IMAGENES
 import habitacion1 from "../../assets/habitacion1.jpg";
 import habitacion2 from "../../assets/habitacion2.jpg";
@@ -11,6 +13,7 @@ import habitacion3 from "../../assets/habitacion3.jpg";
 export default function Room() {
   // Estado para controlar si el menú desplegable está abierto o cerrado
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const navigate = useNavigate();
 
   // Usamos una referencia para poder manipular la altura de la barra con la animación tradicional
   const barraMenuRef = useRef(null);
@@ -62,9 +65,9 @@ export default function Room() {
     },
   ];
 
-  // Navegación (Mantenemos tus rutas originales por ahora)
-  const irA = (ruta) => {
-    window.location.href = ruta;
+  // Manejadores de navegación (Rutas)
+  const navegarA = (ruta) => {
+    navigate(ruta);
   };
 
   // Función animada del menú adaptada a React
@@ -111,21 +114,21 @@ export default function Room() {
         <nav id="barramenu" ref={barraMenuRef} style={{ display: "none" }}>
           <button
             className="botonbarra"
-            onClick={() => irA("hotel")}
+            onClick={() => navegarA("hotel")}
             id="galeria"
           >
             HOME
           </button>
           <button
             className="botonbarra"
-            onClick={() => irA("../restaurante/restaurante.html")}
+            onClick={() => navegarA("restaurante")}
             id="productos"
           >
             RESTAURANTE
           </button>
           <button
             className="botonbarra"
-            onClick={() => irA("../contacto/index.php")}
+            onClick={() => navegarA("/ContactoHotel")}
             id="contacto"
           >
             CONTACTANOS

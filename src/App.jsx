@@ -1,6 +1,7 @@
 import React from "react";
+//import { BrowserRoute as Router, Routes, Route } from "react-router-dom";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Link,
@@ -116,7 +117,7 @@ function Inicio() {
 function App() {
   return (
     // 🚀 AQUÍ agregamos el basename sin la "s"
-    <Router basename="/delgadowebs">
+    <Router>
       <Routes>
         {/* Ruta principal */}
         <Route path="/" element={<Inicio />} />
@@ -127,7 +128,7 @@ function App() {
         <Route path="/single" element={<Single />} />
         <Route path="/doble" element={<Doble />} />
         <Route path="/suit" element={<Suit />} />
-        <Route path="/restaurante" element={<Restaurante />} />
+        <Route path="/Restaurante" element={<Restaurante />} />
         <Route path="/contactoHotel" element={<ContactoHotel />} />
         <Route path="/LandingPage" element={<LandingPage />} />
         <Route path="/concesionaria" element={<Concesionaria />} />
