@@ -1,106 +1,62 @@
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import "./room.css";
 import Footer from "../footer/Footer.jsx";
-//IMAGENES
+import { useMenu } from "../../hooks/useMenu.js";
+import MenuNav from "../../components/MenuNav";
+
+// IMAGENES
 import habitacion1 from "../../assets/habitacion1.jpg";
 import habitacion2 from "../../assets/habitacion2.jpg";
 import habitacion3 from "../../assets/habitacion3.jpg";
 
-// Si estás usando Vite y las imágenes están en la carpeta 'public', dejalas como strings: "/imagen/..."
-// Si están dentro de 'src', recordá importarlas arriba (ej: import hab1 from '../imagen/habitacion1.jpg')
-
 export default function Room() {
-  // Estado para controlar si el menú desplegable está abierto o cerrado
-  const [menuAbierto, setMenuAbierto] = useState(false);
-  const navigate = useNavigate();
+  // Traemos la lógica reutilizable del Hook
+  const { barraMenuRef, clickMenu, navegarA } = useMenu();
 
-  // Usamos una referencia para poder manipular la altura de la barra con la animación tradicional
-  const barraMenuRef = useRef(null);
-  const animacionRef = useRef(null);
-
-  // Datos de las habitaciones para no repetir código HTML (Don't Repeat Yourself)
   const habitaciones = [
     {
       id: 1,
       tipo: "room-1",
       img: habitacion1,
       nombre: "Habitación Simple",
-      ruta: "Single",
+      ruta: "/Single",
     },
     {
       id: 2,
       tipo: "room-2",
       img: habitacion2,
       nombre: "Habitación Doble",
-      ruta: "Doble",
+      ruta: "/Doble",
     },
     {
       id: 3,
       tipo: "room-3",
       img: habitacion3,
       nombre: "Habitación Suite",
-      ruta: "Suit",
+      ruta: "/Suit",
     },
     {
       id: 4,
       tipo: "room-1",
       img: habitacion1,
       nombre: "Habitación Simple",
-      ruta: "Single",
+      ruta: "/Single",
     },
     {
       id: 5,
       tipo: "room-2",
       img: habitacion2,
       nombre: "Habitación Doble",
-      ruta: "Doble",
+      ruta: "/Doble",
     },
     {
       id: 6,
       tipo: "room-3",
       img: habitacion3,
       nombre: "Habitación Suite",
-      ruta: "Suit",
+      ruta: "/Suit",
     },
   ];
-
-  // Manejadores de navegación (Rutas)
-  const navegarA = (ruta) => {
-    navigate(ruta);
-  };
-
-  // Función animada del menú adaptada a React
-  const clickMenu = () => {
-    clearInterval(animacionRef.current);
-    const elemento = barraMenuRef.current;
-
-    if (!menuAbierto) {
-      setMenuAbierto(true);
-      elemento.style.display = "grid";
-      let pos = 0;
-      animacionRef.current = setInterval(() => {
-        if (pos >= 200) {
-          clearInterval(animacionRef.current);
-        } else {
-          pos += 4; // Un poquito más rápido para compensar el render de React
-          elemento.style.height = pos + "px";
-        }
-      }, 2);
-    } else {
-      let pos = 200;
-      animacionRef.current = setInterval(() => {
-        if (pos <= 0) {
-          clearInterval(animacionRef.current);
-          elemento.style.display = "none";
-          setMenuAbierto(false);
-        } else {
-          pos -= 4;
-          elemento.style.height = pos + "px";
-        }
-      }, 2);
-    }
-  };
 
   return (
     <>
@@ -111,32 +67,8 @@ export default function Room() {
           <div className="menu" onClick={clickMenu}></div>
         </div>
 
-        <nav id="barramenu" ref={barraMenuRef} style={{ display: "none" }}>
-          <button
-            className="botonbarra"
-            onClick={() => navegarA("hotel")}
-            id="galeria"
-          >
-            HOME
-          </button>
-          <button
-            className="botonbarra"
-            onClick={() => navegarA("restaurante")}
-            id="productos"
-          >
-            RESTAURANTE
-          </button>
-          <button
-            className="botonbarra"
-            onClick={() => navegarA("/ContactoHotel")}
-            id="contacto"
-          >
-            CONTACTANOS
-          </button>
-          <button className="botonbarra" id="nosotros">
-            QUIENES SOMOS
-          </button>
-        </nav>
+        {/* Usamos el componente del menú inyectándole los datos del Hook */}
+        <MenuNav barraMenuRef={barraMenuRef} navegarA={navegarA} />
       </div>
 
       {/* IMAGEN PRINCIPAL */}
@@ -150,8 +82,7 @@ export default function Room() {
           <div
             key={room.id}
             className={`contenedor ${room.tipo}`}
-            onClick={() => irA(room.ruta)}
-            // Reemplazamos los addEventListener de JS por eventos nativos de React
+            onClick={() => navegarA(room.ruta)} // Corregido: usa navegarA con rutas absolutas
             onMouseEnter={(e) =>
               (e.currentTarget.style.boxShadow = "10px 10px 5px #000")
             }

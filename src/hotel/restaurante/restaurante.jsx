@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Carrusel from "../Carrusel";
-import "./restaurante.css"; // Asegurate de adaptar los estilos aquí
-import Footer from "../footer/Footer";
+import "./restaurante.css";
+import Footer from "../footer/Footer.jsx";
 
 const Restaurante = () => {
   const navigate = useNavigate();
