@@ -1,111 +1,159 @@
+/* --- ENCABEZADO (Móvil primero) --- */
 .contenedor-h1-menu {
-  height: 10vh;
   width: 100%;
-  display: grid;
-  grid-template-columns: 92% 8%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  display: flex; /* Cambiado a flexbox para evitar que el botón 'back' se aplaste */
+  justify-content: space-between;
+  align-items: center;
   background-color: #dbc49a7a;
 }
+
 h1 {
   background: transparent;
-  font-size: 6vh;
+  font-size: clamp(
+    1.8rem,
+    5vw,
+    2.5rem
+  ); /* Fluido: no se rompe en pantallas chicas */
   font-family: Arial, Helvetica, sans-serif;
   cursor: default;
-}
-.back {
-  height: 6vh;
-  width: 6vh;
-  max-width: 6vh;
   margin: 0;
-  right: 1px;
-  margin-top: 6px;
+}
+
+.back {
+  height: 40px;
+  width: 40px;
   background-image: url("./back.svg");
-  background-size: 100% 100%;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
-/*CALENDARIO*/
+
+/* --- CALENDARIO --- */
 .calendario {
   background: #dbc49a;
-  width: 80%;
-  max-width: 600px;
-  margin: 1em auto;
-  padding: 0.5em 0;
+  width: 95%; /* Ocupa casi todo el ancho en móviles */
+  max-width: 600px; /* No se estira de más en PC */
+  margin: 1.5em auto;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
+
 h4 {
   text-align: center;
+  margin-top: 0;
 }
+
 .calendarInfo {
-  display: grid;
-  grid-template-columns: 10% 55% 25% 10%;
-  font-size: 1.2em;
+  display: flex; /* Flexbox distribuye mejor el espacio del mes/flechas en cualquier pantalla */
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
   text-transform: uppercase;
+  margin-bottom: 15px;
+  padding: 0 5px;
 }
+
 .calendarMonth {
   text-align: center;
+  flex-grow: 1;
 }
-#nextMonth {
-  color: #e2a350;
-  margin-left: auto;
-  cursor: pointer;
-  font-size: 1.3em;
-}
+
+#nextMonth,
 #prevMonth {
   color: #e2a350;
-  margin-right: auto;
   cursor: pointer;
-  font-size: 1.3em;
+  font-size: 1.4em;
+  padding: 0 10px; /* Área de click más cómoda en celulares */
 }
-.calendarWeek {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 10px;
-}
-.calendarItem {
-  text-align: center;
-  line-height: 2;
-  margin: auto;
-}
+
+/* Grillas del calendario optimizadas */
+.calendarWeek,
 .calendarDates {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-gap: 10px;
+  grid-gap: 5px; /* Espacio más controlado para pantallas angostas */
 }
-/*FORMULARIO*/
+
+.calendarItem {
+  text-align: center;
+  line-height: 2.2;
+  margin: auto;
+  width: 100%;
+  font-size: clamp(0.85rem, 2.5vw, 1rem); /* Evita que los números se encimen */
+}
+
+/* --- FORMULARIO (Totalmente corregido) --- */
 .formul {
-  padding: 50px 20px;
+  box-sizing: border-box;
   background: #dbc49a;
-  margin: calc(25% + 100px);
-  margin-top: 70px;
-  padding-top: 28px;
-  margin-bottom: 30px;
+  width: 95%; /* En móviles usa casi toda la pantalla */
+  max-width: 550px; /* En PC se limita a un tamaño elegante */
+  margin: 30px auto; /* Centrado perfecto sin romper los laterales */
+  padding: 30px 20px;
+  border-radius: 8px;
 }
+
 h2 {
   text-align: center;
   padding: 12px;
   color: #000000;
+  margin: 0 0 10px 0;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
 }
+
 input {
-  width: calc(100% - 20px);
-  padding: 9px;
-  margin: auto;
+  width: 100%; /* Cambiado a 100% junto con box-sizing */
+  box-sizing: border-box;
+  padding: 12px;
   margin-top: 12px;
   font-size: 16px;
   background-color: #fcfcfc;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
+
 textarea {
-  margin-top: 22px;
-  width: 100% !important;
-  height: 260px !important;
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 180px; /* Reducido un poco para móviles por defecto */
   background-color: #fcfcfc;
-  font-size: 3vh;
+  font-size: 16px; /* Cambiado de 3vh a px fijos para estabilidad al escribir */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; /* Permite al usuario estirarlo solo hacia abajo */
+  padding: 12px;
 }
-/* EXTRA */
-/* Días deshabilitados (fechas pasadas) */
+
+/* --- EXTRA --- */
 .day-disabled {
-  color: rgba(255, 255, 255, 0.25); /* Color de texto opaco */
+  color: rgba(255, 255, 255, 0.35);
   cursor: not-allowed;
-  pointer-events: none; /* Bloquea interacciones extra en el navegador */
+  pointer-events: none;
 }
+
 .calendarDay {
   cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.calendarDay:hover:not(.day-disabled) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- 🖥️ MEDIA QUERY PARA PANTALLAS GRANDES --- */
+@media (min-width: 768px) {
+  .calendarWeek,
+  .calendarDates {
+    grid-gap: 10px; /* Más espacio entre días si hay pantalla de sobra */
+  }
+
+  textarea {
+    height: 250px; /* Más espacio para el texto en escritorio */
+  }
 }

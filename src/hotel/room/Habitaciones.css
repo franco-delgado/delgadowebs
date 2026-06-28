@@ -1,5 +1,7 @@
+/* --- CONFIGURACIÓN BASE Y RESPONSIVA --- */
+
 .habitacion-container {
-  height: 100%;
+  min-height: 100vh; /* Cambiado a min-height para que no se corte el fondo si el contenido crece */
   width: 100%;
   background-color: rgb(219, 196, 154);
 }
@@ -7,108 +9,140 @@
 .barra-superior {
   width: 100%;
   height: auto;
-  display: grid;
-  grid-template-rows: 90% 10%;
-  top: 1px;
   position: sticky;
-  z-index: 2;
+  top: 0;
+  z-index: 10;
 }
+
 .contenedor-h1-menu {
-  height: 10vh;
+  height: auto; /* Dejamos que el padding maneje el alto para evitar desbordes */
+  padding: 10px 20px;
   width: 100%;
-  display: grid;
-  grid-template-columns: 92% 8%;
+  display: flex; /* Flexbox es más limpio aquí para alinear h1 y el botón de volver */
+  justify-content: space-between;
+  align-items: center;
   background-color: rgba(219, 196, 154, 0.479);
 }
+
 h1 {
   background: transparent;
-  font-size: 6vh;
+  font-size: clamp(
+    1.8rem,
+    4vw,
+    2.5rem
+  ); /* Tamaño fluido: no se hace gigante ni minúsculo */
   font-family: Arial, Helvetica, sans-serif;
   cursor: default;
-}
-.back {
-  height: 6vh;
-  width: 6vh;
-  max-width: 6vh;
   margin: 0;
-  margin: auto;
-  right: 1px;
-  margin-top: 6px;
+}
+
+.back {
+  height: 40px;
+  width: 40px;
   background-image: url("./back.svg");
-  background-size: 100% 100%;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
 }
-/*CUERPO PRINCIPAL*/
+
+/* --- CUERPO PRINCIPAL --- */
+
 .cuerpo-principal-habitacion {
-  height: 60vh;
+  box-sizing: border-box;
   width: 100%;
-  padding: 10vh 3vh;
+  padding: 40px 20px;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 1fr; /* Por defecto en móviles: 1 sola columna abajo de la otra */
+  gap: 20px;
 }
+
 .contenImagen {
-  height: 48vh;
-  width: 98%;
-  margin: auto;
-  border: solid 6px rgb(230, 188, 73);
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat !important;
-  position: relative;
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
-.textohabitacion {
-  height: 96%;
+  height: 45vh; /* Alto controlado para el carrusel */
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  display: grid;
-  grid-template-rows: 20% 80%;
-  background-color: rgb(219, 196, 154);
+  border: solid 6px rgb(230, 188, 73);
+  background-size: cover !important; /* 'cover' evita que se deforme la imagen */
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  position: relative;
 }
+
+.textohabitacion {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Sutil contraste para separar el texto */
+  border-radius: 8px;
+}
+
 h2 {
-  margin: 0;
+  margin: 0 0 15px 0;
   background: transparent;
   text-align: center;
   font-family: cursive;
-  font-size: 4vh;
+  font-size: 1.8rem;
 }
+
 ul {
-  font-size: 90%;
+  font-size: 1rem;
+  padding-left: 20px;
+  margin: 0;
 }
+
 .liHabitacion {
-  font-size: 2vh;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
-/*INOCIO CARRUSEL*/
+
+/* --- CARRUSEL --- */
+
 .carrusel-contenedor {
-  height: 48vh;
+  height: 100%;
   width: 100%;
   position: relative;
 }
-/*BOTONES IZQ & DER*/
-#left {
-  height: 8vh;
-  width: 8vh;
-  top: 40%;
-  bottom: 40%;
-  left: 8px;
-  background-color: rgb(219, 196, 154);
-  clip-path: polygon(65% 4%, 20% 52%, 66% 91%, 46% 91%, 0% 50%, 46% 4%);
-  position: absolute;
-  cursor: pointer;
-}
+
+/* Botones con tamaños fijos en px para que no se vuelvan gigantes en monitores */
+#left,
 #right {
-  height: 8vh;
-  width: 8vh;
-  top: 40%;
-  bottom: 40%;
-  right: 8px;
+  height: 50px;
+  width: 50px;
+  top: 50%;
+  transform: translateY(-50%); /* Centrado vertical perfecto */
   background-color: rgb(219, 196, 154);
-  clip-path: polygon(61% 4%, 100% 50%, 58% 100%, 39% 99%, 80% 51%, 40% 4%);
   position: absolute;
   cursor: pointer;
 }
-/*FIN carrusel*/
+
+#left {
+  left: 10px;
+  clip-path: polygon(65% 4%, 20% 52%, 66% 91%, 46% 91%, 0% 50%, 46% 4%);
+}
+
+#right {
+  right: 10px;
+  clip-path: polygon(61% 4%, 100% 50%, 58% 100%, 39% 99%, 80% 51%, 40% 4%);
+}
+
+/* --- 🖥️ MEDIA QUERY PARA PANTALLAS GRANDES (PC / TABLETS HORIZONTALES) --- */
+@media (min-width: 768px) {
+  .cuerpo-principal-habitacion {
+    grid-template-columns: 60% 40%; /* Volvemos a las dos columnas lado a lado */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenido en pantallas ultra anchas */
+  }
+
+  .contenImagen {
+    height: 50vh; /* Un poco más de altura en pantallas grandes */
+  }
+}

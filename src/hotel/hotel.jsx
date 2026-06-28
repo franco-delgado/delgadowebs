@@ -63,7 +63,7 @@ export default function Hotel() {
             className="botonbarra"
             id="exit"
             onClick={
-              () => navegarA("LandingPage") // Cambié a LandingPage para que sea consistente con la ruta definida en App.jsx
+              () => navegarA("/") // Cambié a LandingPage para que sea consistente con la ruta definida en App.jsx
             }
           >
             EXIT
