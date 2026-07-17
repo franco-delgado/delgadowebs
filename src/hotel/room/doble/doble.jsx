@@ -9,7 +9,7 @@ import habitacion2 from "../../../assets/habitacion3.jpg";
 import habitacion3 from "../../../assets/habitacion3.jpg";
 import habitacion4 from "../../../assets/habitacion4.jpg";
 
-export default function doble() {
+export default function Doble() {
   const navigate = useNavigate();
   // Lista de imágenes apuntando directamente a tu carpeta 'public'
   const imagenes = [habitacion1, habitacion2, habitacion3, habitacion4];

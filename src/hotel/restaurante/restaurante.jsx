@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Carrusel from "../Carrusel";
+import Carrusel from "../Carrusel.jsx";
 import "./restaurante.css";
 import Footer from "../footer/Footer.jsx";
 import MensajeWhatsapp from "../../components/mensajeWhatsapp.jsx";
