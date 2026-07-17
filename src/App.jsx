@@ -12,7 +12,7 @@ import Room from "./hotel/room/Room";
 import Single from "./hotel/room/single/Single";
 import Doble from "./hotel/room/doble/Doble";
 import Suit from "./hotel/room/suite/Suite";
-import Restaurante from "./hotel/restaurante/Restaurante";
+import Restaurante from "./hotel/restaurante/restaurante-temp";
 import ContactoHotel from "./hotel/contacto/ContactoHotel";
 import LandingPage from "./LandingPage/LandingPage";
 import Concesionaria from "./concesionaria/Concesionaria";
