@@ -1,7 +1,7 @@
 /* --- CONFIGURACIÓN BASE Y RESPONSIVA --- */
 
 .habitacion-container {
-  min-height: 100vh; /* Cambiado a min-height para que no se corte el fondo si el contenido crece */
+  min-height: 100vh; /* Evita que se corte el fondo si el contenido crece */
   width: 100%;
   background-color: rgb(219, 196, 154);
 }
@@ -15,10 +15,10 @@
 }
 
 .contenedor-h1-menu {
-  height: auto; /* Dejamos que el padding maneje el alto para evitar desbordes */
+  height: auto; /* El padding maneja el alto para evitar desbordes */
   padding: 10px 20px;
   width: 100%;
-  display: flex; /* Flexbox es más limpio aquí para alinear h1 y el botón de volver */
+  display: flex; /* Flexbox para alinear h1 y el botón de volver */
   justify-content: space-between;
   align-items: center;
   background-color: rgba(219, 196, 154, 0.479);
@@ -26,11 +26,7 @@
 
 h1 {
   background: transparent;
-  font-size: clamp(
-    1.8rem,
-    4vw,
-    2.5rem
-  ); /* Tamaño fluido: no se hace gigante ni minúsculo */
+  font-size: clamp(1.8rem, 4vw, 2.5rem); /* Tamaño de fuente fluido */
   font-family: Arial, Helvetica, sans-serif;
   cursor: default;
   margin: 0;
@@ -48,41 +44,54 @@ h1 {
 
 /* --- CUERPO PRINCIPAL --- */
 
+/* --- CUERPO PRINCIPAL --- */
+
 .cuerpo-principal-habitacion {
   box-sizing: border-box;
   width: 100%;
   padding: 40px 20px;
   display: grid;
-  grid-template-columns: 1fr; /* Por defecto en móviles: 1 sola columna abajo de la otra */
-  gap: 20px;
+  grid-template-columns: 1fr; /* Móviles: Una sola columna */
+  gap: 30px;
+  align-items: center; /* Centra verticalmente el carrusel y el texto */
 }
 
-.contenImagen {
-  height: 45vh; /* Alto controlado para el carrusel */
-  width: 100%;
+/* 🎯 CORRECCIÓN: TAMAÑO FIJO DIRECTO AL CONTENEDOR DEL CARRUSEL */
+.carrusel-contenedor {
+  height: 350px !important; /* Alto fijo estricto en móviles */
+  width: 100% !important;
+  max-width: 650px; /* Evita que se estire infinitamente a lo ancho */
+  margin: 0 auto; /* Lo centra horizontalmente */
   border: solid 6px rgb(230, 188, 73);
-  background-size: cover !important; /* 'cover' evita que se deforme la imagen */
-  background-repeat: no-repeat !important;
-  background-position: center !important;
+  border-radius: 12px; /* Esquinas curvas premium */
+  overflow: hidden; /* Clave: recorta las imágenes que se salgan del contenedor */
   position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.textohabitacion {
+/* 🖼️ AJUSTE PERFECTO DE LAS IMÁGENES INTERNAS */
+.carrusel-contenedor img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Fuerza a la imagen a rellenar el espacio sin deformarse */
+}
+
+.textohabitacin {
   width: 100%;
-  padding: 20px;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 25px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.15
-  ); /* Sutil contraste para separar el texto */
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
 }
+
+/* --- (Los estilos de h2, ul, li y btn-reservar se mantienen igual) --- */
 
 h2 {
   margin: 0 0 15px 0;
@@ -94,13 +103,47 @@ h2 {
 
 ul {
   font-size: 1rem;
-  padding-left: 20px;
-  margin: 0;
+  padding-left: 0; /* Centramos visualmente la lista eliminando padding izquierdo */
+  list-style-position: inside; /* Mantiene los puntos alineados adentro */
+  margin: 0 0 20px 0;
+  width: 100%;
+  text-align: center;
 }
 
 .liHabitacion {
   font-size: 1.1rem;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  list-style-type: none; /* Quitamos los círculos clásicos para un diseño más premium */
+  font-family: Arial, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+/* 🟢 BOTÓN RESERVAR ESTILO PREMIUM */
+.btn-reservar {
+  width: 100%;
+  max-width: 280px;
+  padding: 14px 20px;
+  background-color: #1a1a1a; /* Fondo oscuro super elegante */
+  color: #e6bc49; /* Texto dorado haciendo juego con el borde del carrusel */
+  border: 2px solid #e6bc49;
+  border-radius: 30px; /* Bordes totalmente redondeados tipo pastilla */
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transición suave */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-reservar:hover {
+  background-color: #e6bc49; /* Invierte colores al pasar el cursor */
+  color: #1a1a1a;
+  transform: translateY(-2px); /* Pequeño salto hacia arriba intermedio */
+  box-shadow: 0 6px 15px rgba(230, 188, 73, 0.3);
+}
+
+.btn-reservar:active {
+  transform: translateY(1px);
 }
 
 /* --- CARRUSEL --- */
@@ -111,38 +154,51 @@ ul {
   position: relative;
 }
 
-/* Botones con tamaños fijos en px para que no se vuelvan gigantes en monitores */
 #left,
 #right {
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 45px;
   top: 50%;
-  transform: translateY(-50%); /* Centrado vertical perfecto */
-  background-color: rgb(219, 196, 154);
+  transform: translateY(-50%);
+  background-color: rgba(219, 196, 154, 0.9); /* Un poco translúcido */
+  border-radius: 50%; /* Botones circulares */
   position: absolute;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#left:hover,
+#right:hover {
+  background-color: rgb(230, 188, 73);
 }
 
 #left {
-  left: 10px;
-  clip-path: polygon(65% 4%, 20% 52%, 66% 91%, 46% 91%, 0% 50%, 46% 4%);
+  left: 15px;
+  clip-path: polygon(65% 15%, 25% 50%, 65% 85%, 50% 85%, 10% 50%, 50% 15%);
 }
 
 #right {
-  right: 10px;
-  clip-path: polygon(61% 4%, 100% 50%, 58% 100%, 39% 99%, 80% 51%, 40% 4%);
+  right: 15px;
+  clip-path: polygon(35% 15%, 75% 50%, 35% 85%, 50% 85%, 90% 50%, 50% 15%);
 }
 
-/* --- 🖥️ MEDIA QUERY PARA PANTALLAS GRANDES (PC / TABLETS HORIZONTALES) --- */
+/* --- 🖥️ MEDIA QUERY PARA PANTALLAS GRANDES (PC / TABLETS) --- */
 @media (min-width: 768px) {
-  .cuerpo-principal-habitacion {
-    grid-template-columns: 60% 40%; /* Volvemos a las dos columnas lado a lado */
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto; /* Centra el contenido en pantallas ultra anchas */
+  .contenImagen {
+    height: 400px; /* Un poquito más alto en PC, pero sigue siendo fijo */
+    max-width: 600px;
   }
 
-  .contenImagen {
-    height: 50vh; /* Un poco más de altura en pantallas grandes */
+  .cuerpo-principal-habitacion {
+    grid-template-columns: 55% 45%;
+    max-width: 1100px;
+    margin: 40px auto;
+    gap: 40px;
+  }
+
+  /* Redefinimos el tamaño fijo del carrusel para pantallas grandes */
+  .carrusel-contenedor {
+    height: 400px !important; /* Un poco más alto para PC */
+    max-width: 600px;
   }
 }

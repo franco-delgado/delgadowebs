@@ -1,0 +1,84 @@
+/* ==========================================
+   --- FOOTER ADAPTADO Y RESPONSIVO --- 
+   ========================================== */
+
+/* Contenedor principal del footer (Mobile First - Por defecto para celulares) */
+#footer-hotel {
+  display: flex;
+  flex-direction: column;   /* En celulares va uno abajo del otro */
+  align-items: center;      /* Centra todo el bloque en pantallas chicas */
+  gap: 40px;                /* Espacio vertical moderado para el celu */
+  width: 100%;
+  padding: 40px 20px;       /* Margen interno superior/inferior y lateral por seguridad */
+  box-sizing: border-box;
+  background-color: rgb(219, 196, 154); /* Manteniendo el color de fondo */
+}
+
+/* Columna Izquierda (Contactos) y Derecha (Redes) */
+#footer-izquierdo,
+#footer-derecho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* Centrado de contenidos */
+  min-width: 250px;      
+  width: 100%;              /* Ocupa el ancho disponible en celulares */
+}
+
+/* Títulos h3 internos */
+#footer-izquierdo h3,
+#footer-derecho h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+/* Bloques contenedores de los ítems individuales */
+#contactos,
+#redes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;                /* Espacio vertical entre cada fila de ícono + texto */
+  width: 100%;
+}
+
+/* Filas individuales (Ícono + Texto) */
+.divIcon {
+  display: flex;
+  align-items: center;      /* Centra verticalmente el ícono con el texto de la derecha */
+  gap: 12px;                /* Espacio exacto entre la imagen del ícono y el texto */
+  width: 100%;              /* Ocupa todo el contenedor interno */
+  justify-content: flex-start; /* Alinea los íconos alineados a la izquierda del bloque centrado */
+  max-width: 280px;         /* Limita el ancho para que queden agrupados y prolijos */
+}
+
+/* Ajuste general para que los íconos se vean idénticos en tamaño */
+.img-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Reseteo de márgenes de los textos para evitar desfases */
+.licon-tel,
+.licon-emal,
+.licon-dir,
+.pIcon {
+  margin: 0;
+}
+
+/* --- CAMBIO A PANTALLAS GRANDES (Tablets y PC) --- */
+@media screen and (min-width: 768px) {
+  #footer-hotel {
+    flex-direction: row;    /* Cambia a formato horizontal (uno al lado del otro) */
+    justify-content: center;/* Centra las columnas horizontalmente en la pantalla */
+    align-items: flex-start;/* Alinea los bloques por la parte superior */
+    gap: 100px;             /* Tu espacio original de separación en PC */
+  }
+
+  #footer-izquierdo,
+  #footer-derecho {
+    width: auto;            /* Ya no necesitan forzar el 100% */
+  }
+}

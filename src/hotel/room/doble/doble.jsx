@@ -14,6 +14,13 @@ export default function Single() {
   // Lista de imágenes apuntando directamente a tu carpeta 'public'
   const imagenes = [habitacion1, habitacion2, habitacion3, habitacion4];
 
+  // Función para manejar la redirección enviando el nombre de la habitación
+  const handleReservar = () => {
+    navigate("/contactoHotel", {
+      state: { habitacionSeleccionada: "Doble" }, // Enviamos el tipo de habitación en el estado de la ruta
+    });
+  };
+
   return (
     <div className="habitacion-container">
       {/* BARRA SUPERIOR */}
@@ -39,6 +46,11 @@ export default function Single() {
             <li className="liHabitacion">Escritorio</li>
             <li className="liHabitacion">WI-FI</li>
           </ul>
+
+          {/* NUEVO BOTÓN DE RESERVA */}
+          <button className="btn-reservar" onClick={handleReservar}>
+            RESERVAR ESTA HABITACIÓN
+          </button>
         </div>
       </div>
 

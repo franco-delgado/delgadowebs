@@ -1,22 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./ContactoHotel.css";
 
 const ContactoHotel = () => {
   const navigate = useNavigate();
+  const location = useLocation(); // Leemos el estado de React Router
 
-  // Estados del Formulario
+  // Estados del Formulario (agregamos 'habitacion' para guardar lo que viene de la suite)
   const [formulario, setFormulario] = useState({
     nombre: "",
     email: "",
     tel: "",
+    habitacion: "",
     consulta: "",
   });
 
-  // Estados del Calendario (Mes actual de visualización)
-  const [fechaActual, setFechaActual] = useState(new Date());
+  // Si el usuario venía de "suite.jsx", auto-completamos la habitación
+  useEffect(() => {
+    if (location.state?.habitacionSeleccionada) {
+      setFormulario((prevData) => ({
+        ...prevData,
+        habitacion: location.state.habitacionSeleccionada,
+      }));
+    }
+  }, [location]);
 
-  // Estados para la selección de rango
+  // Estados del Calendario
+  const [fechaActual, setFechaActual] = useState(new Date());
   const [fechaIngreso, setFechaIngreso] = useState(null);
   const [fechaSalida, setFechaSalida] = useState(null);
 
@@ -38,7 +48,6 @@ const ContactoHotel = () => {
   const año = fechaActual.getFullYear();
   const mes = fechaActual.getMonth();
 
-  // Captura los cambios del formulario
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormulario((prevData) => ({
@@ -47,7 +56,6 @@ const ContactoHotel = () => {
     }));
   };
 
-  // Navegación de meses
   const mesAnterior = () => {
     setFechaActual(new Date(año, mes - 1, 1));
   };
@@ -56,20 +64,16 @@ const ContactoHotel = () => {
     setFechaActual(new Date(año, mes + 1, 1));
   };
 
-  // Lógica para generar los días del mes en cuadrícula
-  // Lógica para generar los días del mes en cuadrícula
   const generarDias = () => {
     const primerDiaMes = new Date(año, mes, 1).getDay();
     const numeroPrimerDia = primerDiaMes === 0 ? 6 : primerDiaMes - 1;
     const totalDiasMes = new Date(año, mes + 1, 0).getDate();
 
-    // Obtener la fecha de hoy a la medianoche para comparar correctamente
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
 
     const dias = [];
 
-    // Rellenar espacios vacíos del inicio del mes
     for (let i = 0; i < numeroPrimerDia; i++) {
       dias.push(
         <div
@@ -79,15 +83,12 @@ const ContactoHotel = () => {
       );
     }
 
-    // Crear los días del mes actual
     for (let dia = 1; dia <= totalDiasMes; dia++) {
       const fechaDia = new Date(año, mes, dia);
-      fechaDia.setHours(0, 0, 0, 0); // Normalizar hora
+      fechaDia.setHours(0, 0, 0, 0);
 
-      // Verificar si la fecha ya pasó
       const esPasado = fechaDia < hoy;
 
-      // Determinar clases CSS según selección y estado
       let claseSeleccion = "";
       if (esPasado) {
         claseSeleccion = " pasado";
@@ -121,7 +122,6 @@ const ContactoHotel = () => {
     return dias;
   };
 
-  // Manejo de la selección del rango
   const handleSeleccionarFecha = (fecha) => {
     if (!fechaIngreso || (fechaIngreso && fechaSalida)) {
       setFechaIngreso(fecha);
@@ -135,12 +135,14 @@ const ContactoHotel = () => {
     }
   };
 
-  // Envío del formulario
+  // Función de envío por WhatsApp
   const handleEnviar = (e) => {
     e.preventDefault();
 
-    if (!formulario.nombre || !formulario.consulta || !formulario.tel) {
-      alert("Por favor, completa al menos tu nombre y el mensaje.");
+    if (!formulario.nombre || !formulario.tel) {
+      alert(
+        "Por favor, completa al menos tu nombre y un teléfono de contacto.",
+      );
       return;
     }
 
@@ -151,20 +153,37 @@ const ContactoHotel = () => {
       ? fechaSalida.toLocaleDateString()
       : "No seleccionada";
 
-    alert(
-      `Este mensaje es solo una muestra de que su mensaje se guardo correctamente y esta seria la informacion que veria desde su navegador como administrador\n\n` +
-        `¡Se guardó con éxito el mensaje!\n\n` +
-        `Detalles guardados:\n` +
-        `- Nombre: ${formulario.nombre}\n` +
-        `- Email: ${formulario.email || "No provisto"}\n` +
-        `- Teléfono: ${formulario.tel}\n` +
-        `- Fecha Ingreso: ${ingresoStr}\n` +
-        `- Fecha Salida: ${salidaStr}\n` +
-        `- Mensaje: "${formulario.consulta}"`,
-    );
+    // Reemplazá este número con el de tu cliente (código de país + número sin espacios ni símbolos)
+    const numeroTelefonoWhatsapp = "5491111111111";
 
-    // Reset total
-    setFormulario({ nombre: "", email: "", tel: "", consulta: "" });
+    // Mensaje predeterminado estructurado con emojis para que quede muy visual
+    const mensajeWhatsApp =
+      `🏨 *Nueva Solicitud de Reserva*\n\n` +
+      `👤 *Huésped:* ${formulario.nombre}\n` +
+      `📞 *Teléfono:* ${formulario.tel}\n` +
+      `📧 *Email:* ${formulario.email || "No especificado"}\n` +
+      `🛏️ *Habitación:* ${formulario.habitacion || "No especificada"}\n` +
+      `📅 *Ingreso:* ${ingresoStr}\n` +
+      `📅 *Salida:* ${salidaStr}\n\n` +
+      `💬 *Consulta:* ${formulario.consulta || "Sin comentarios adicionales"}`;
+
+    const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
+    const urlWhatsapp = `https://api.whatsapp.com/send?phone=${numeroTelefonoWhatsapp}&text=${mensajeCodificado}`;
+
+    // Alerta demostrativa para el administrador
+    alert("Redirigiendo a WhatsApp con los detalles de tu reserva...");
+
+    // Abrimos el chat de WhatsApp en una pestaña nueva
+    window.open(urlWhatsapp, "_blank");
+
+    // Reseteamos el formulario
+    setFormulario({
+      nombre: "",
+      email: "",
+      tel: "",
+      habitacion: "",
+      consulta: "",
+    });
     setFechaIngreso(null);
     setFechaSalida(null);
   };
@@ -202,12 +221,10 @@ const ContactoHotel = () => {
           <div className="calendarDay calendarItemHeader">D</div>
         </div>
 
-        {/* Renderizado dinámico de los días */}
         <div className="calendarDates" id="dates">
           {generarDias()}
         </div>
 
-        {/* Visualizador opcional del rango */}
         <div className="rango-info">
           <p>
             <strong>Ingreso:</strong>{" "}
@@ -223,12 +240,32 @@ const ContactoHotel = () => {
       {/* FORMULARIO */}
       <form className="formul" onSubmit={handleEnviar}>
         <h2>¡DEJANOS TU MENSAJE!</h2>
+
+        {/* Banner informativo de la habitación preseleccionada si existe */}
+        {formulario.habitacion && (
+          <div
+            style={{
+              backgroundColor: "#f0f7f4",
+              borderLeft: "4px solid #128C7E",
+              padding: "10px",
+              marginBottom: "15px",
+              borderRadius: "4px",
+              fontSize: "0.9em",
+              textAlign: "left",
+            }}
+          >
+            Estás consultando por la habitación:{" "}
+            <strong>{formulario.habitacion}</strong>
+          </div>
+        )}
+
         <input
           id="nombre"
           type="text"
           placeholder="Nombre completo"
           value={formulario.nombre}
           onChange={handleChange}
+          required
         />
         <input
           id="email"
@@ -243,6 +280,7 @@ const ContactoHotel = () => {
           placeholder="N° tel:"
           value={formulario.tel}
           onChange={handleChange}
+          required
         />
         <textarea
           id="consulta"
@@ -251,7 +289,7 @@ const ContactoHotel = () => {
           onChange={handleChange}
         ></textarea>
 
-        <input id="enviarForm" type="submit" value="Enviar" />
+        <input id="enviarForm" type="submit" value="Enviar por WhatsApp" />
       </form>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./hotel.css";
 import Footer from "./footer/Footer.jsx";
+import MensajeWhatsapp from "../components/mensajeWhatsapp.jsx";
 
 export default function Hotel() {
   // Estado para controlar si el menú desplegable está abierto o cerrado
@@ -16,28 +17,26 @@ export default function Hotel() {
   // Manejadores de navegación (Rutas)
   const navegarA = (ruta) => {
     navigate(ruta);
-  };
-
-  // Estilo dinámico para el menú basado en el estado (reemplaza la animación por setInterval)
-  const estiloBarraMenu = {
-    display: menuAbierto ? "grid" : "none",
-    height: menuAbierto ? "200px" : "0px",
-    transition: "height 0.3s ease", // Esto hace la animación suave sin usar JS pesado
+    setMenuAbierto(false); // Cierra el menú automáticamente al hacer click en una opción
   };
 
   return (
     <div className="hotel-container">
-      {/* BARRA SUPERIOR */}
-      <div className="barra-superior">
-        <div className="contenedor-h1-menu-hotel">
+      <div className="barra-superior-hotel">
+        {/* SECCIÓN SUPERIOR: Título */}
+        <div className="contenedor-titulo-hotel">
           <h1>EL HOTEL</h1>
-          <div className="menu-hotel" onClick={clickMenu}></div>
         </div>
 
-        {/* Pasamos el estilo dinámico al nav */}
-        <nav id="barramenu" style={estiloBarraMenu}>
+        {/* BOTÓN HAMBURGUESA: Llama a clickMenu al tocarlo */}
+        <button className="menu-toggle-hotel" onClick={clickMenu}>
+          {menuAbierto ? "✕" : "☰"} {/* Cambia el icono a una X si está abierto */}
+        </button>
+
+        {/* SECCIÓN INFERIOR: Contenedor de los botones (Se le suma la clase 'open' dinámicamente) */}
+        <div className={`barramenu-hotel ${menuAbierto ? "open" : ""}`}>
           <button
-            className="botonbarra"
+            className="botonbarra-hotel"
             id="room"
             onClick={() => navegarA("/room")}
           >
@@ -45,7 +44,7 @@ export default function Hotel() {
           </button>
 
           <button
-            className="botonbarra"
+            className="botonbarra-hotel"
             id="restaurante"
             onClick={() => navegarA("/restaurante")}
           >
@@ -53,22 +52,21 @@ export default function Hotel() {
           </button>
 
           <button
-            className="botonbarra"
+            className="botonbarra-hotel"
             id="contacto"
             onClick={() => navegarA("/ContactoHotel")}
           >
             CONTACTANOS
           </button>
+
           <button
-            className="botonbarra"
+            className="botonbarra-hotel"
             id="exit"
-            onClick={
-              () => navegarA("/") // Cambié a LandingPage para que sea consistente con la ruta definida en App.jsx
-            }
+            onClick={() => navegarA("/")}
           >
             EXIT
           </button>
-        </nav>
+        </div>
       </div>
 
       {/* IMAGEN PRINCIPAL */}
@@ -79,6 +77,7 @@ export default function Hotel() {
           alt="Imagen ilustrativa"
         />
       </span>
+      <MensajeWhatsapp />
 
       {/* FOOTER */}
       <Footer />

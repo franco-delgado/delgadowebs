@@ -19,6 +19,7 @@ import Concesionaria from "./concesionaria/Concesionaria";
 /*CODIGOS DE VEHICULOS*/
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
+import MensajeWhatsapp from "./components/mensajeWhatsapp";
 
 // Componente para la página de inicio
 function Inicio() {
@@ -109,6 +110,7 @@ function Inicio() {
           </p>
         </div>
       </footer>
+      <MensajeWhatsapp />
     </div>
   );
 }

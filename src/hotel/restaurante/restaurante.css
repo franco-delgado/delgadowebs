@@ -23,7 +23,7 @@
 }
 
 /* --- BARRA SUPERIOR --- */
-.barra-superior {
+.barra-superior-restaurante {
   width: 100%;
   background-color: var(--color-blanco);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);

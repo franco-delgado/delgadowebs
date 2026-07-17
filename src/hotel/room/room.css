@@ -6,107 +6,126 @@
 }
 
 body {
-  background: #576;
+  background: #576; /* Conserva tu color de fondo original */
 }
 
-.barra-superior {
+/* --- CONTENEDOR PADRE HEADER (ADAPTADO) --- */
+.barra-superior-room {
   width: 100%;
   height: auto;
-  display: grid;
-  grid-template-rows: auto; /* Dejamos que se adapte al contenido */
-  top: 0;
+  background-color: #3e5343; 
+  display: flex;                /* Cambiado a flex para ubicar el botón hamburguesa */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  top: 0;                       /* Fijado arriba perfectamente */
   position: sticky;
-  z-index: 10;
+  z-index: 10;                  /* Mayor prioridad de capa */
 }
 
-.contenedor-h1 {
-  height: 70px; /* Es mejor usar un alto fijo en px para barras de navegación */
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto; /* Distribución flexible */
+/* BARRA SUPERIOR: Contenedor del Título */
+.contenedor-titulo-room {
+  display: flex;
   align-items: center;
-  padding: 0 15px;
-  background-color: #3e5343; /* Corregido el 'background-color: c;' que tenías */
 }
 
 h1 {
   background: transparent;
-  font-size: 1.8rem; /* Rem es mucho más estable para fuentes */
+  font-size: 1.5rem;            /* Ajustado para móviles */
   font-family: Arial, Helvetica, sans-serif;
   cursor: default;
-  color: white;
+  margin: 0;
+  text-align: left;
 }
 
-.menu {
-  height: 40px;
-  width: 40px;
-  background-image: url("../iconos/Menu_icon_icon-icons.com_71858.ico");
-  background-color: transparent;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: none;
+/* --- BOTÓN DE MENÚ HAMBURGUESA (Solo Mobile) --- */
+.menu-toggle-room {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 1.2rem;
   cursor: pointer;
+  display: block;               /* Visible en celulares */
+  color: #000000;
 }
 
-#barramenu {
-  width: 100%; /* En móviles ocupa todo el ancho */
-  max-width: 300px; /* En pantallas un poco más grandes no se desborda */
-  top: 70px; /* Debe coincidir con el alto de .contenedor-h1 */
-  right: 0;
-  background-color: rgba(
-    247,
-    221,
-    174,
-    0.95
-  ); /* Más opaco en móvil para que se lea bien */
-  display: none;
-  grid-template-rows: repeat(4, auto);
+/* BARRA INFERIOR: Contenedor de Botones (Desplegable vertical) */
+.barramenu-room {
   position: absolute;
-  z-index: 20;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  top: 100%;                    /* Se despliega justo debajo del header */
+  left: 0;
+  width: 100%;
+  height: 0;                    /* Altura 0 oculta los botones */
+  overflow: hidden;
+  background: rgba(62, 83, 67, 0.98); /* Fondo sólido a juego con el header */
+  display: flex;
+  flex-direction: column;       /* Un botón abajo del otro en celular */
+  padding: 0 20px;
+  gap: 10px;
+  transition: all 0.35s ease-in-out; /* Animación de cortina */
+  z-index: 9;
 }
 
-.botonbarra {
-  padding: 15px;
-  width: 100%;
-  background: transparent;
-  border: none;
-  font-size: 1.1rem;
+/* Clase dinámica que inyecta React al abrir */
+.barramenu-room.open {
+  height: auto;
+  padding: 20px;
+}
+
+.botonbarra-room {
+  width: 100%;                  /* Ocupa todo el ancho en móviles */
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.4); 
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #000000; 
   cursor: pointer;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
-/* IMAGEN PRINCIPAL */
+.botonbarra-room:hover {
+  background-color: rgba(255, 255, 255, 0.4); 
+  color: #ffffff;
+}
+
+/* --- IMAGEN PRINCIPAL --- */
 .imagenprincipal {
-  height: 60vh; /* Reducido para móviles, 90vh es demasiado alto en vertical */
+  height: 60vh;
   width: 100%;
-  background-size: cover; /* 'cover' evita que la imagen se estire feo */
-  background-position: center;
 }
 
-/* CUERPO PRINCIPAL (HABITACIONES) */
+.imagenprincipal img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* --- CUERPO PRINCIPAL (HABITACIONES) --- */
 .room-principal {
-  background-color: rgb(219, 196, 154);
+  background-color: rgb(219, 196, 154); 
   width: 100%;
   padding: 20px;
   padding-top: 4vh;
   display: grid;
-  grid-template-columns: 1fr; /* 1 Sola columna en móviles */
-  gap: 20px; /* Espacio entre tarjetas */
+  grid-template-columns: 1fr; /* 1 columna en móvil */
+  gap: 20px;
   justify-items: center;
 }
 
 .contenedor {
-  height: 350px; /* Alto fijo para que las tarjetas mantengan estructura */
+  height: 350px;
   width: 100%;
-  max-width: 400px; /* Evita que en pantallas medianas se estiren demasiado */
-  background-color: rgb(71, 105, 88);
+  max-width: 400px;
+  background-color: rgb(71, 105, 88); 
   display: grid;
   grid-template-rows: 60% 15% 25%;
   position: relative;
   cursor: pointer;
-  border-radius: 8px; /* Un toque estético */
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -114,39 +133,118 @@ h2,
 .texto-detalle-habitacion {
   background: transparent;
   text-align: center;
-  font-family:
-    "Courier New", Courier, monospace; /* Caída limpia si cursive falla */
+  font-family: "Courier New", Courier, monospace;
   color: #fff;
+  padding: 5px;
 }
 
-img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover; /* Clave: hace que la imagen no se deforme */
-}
-
-/* FOOTER */
+/* --- FOOTER ADAPTADO --- */
 #footer-room {
-  min-height: 20vh;
+  display: flex;
+  flex-direction: column;       /* Apilado vertical en celulares */
+  align-items: center;
+  gap: 40px;
   width: 100%;
   background-color: rgb(219, 196, 154);
-  display: grid;
-  grid-template-columns: 1fr; /* 1 columna en móvil */
-  gap: 20px;
-  padding: 30px 20px;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+#footer-izquierdo,
+#footer-derecho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 250px;
+}
+
+#footer-izquierdo h3,
+#footer-derecho h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
   text-align: center;
+}
+
+#contactos,
+#redes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.divIcon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 280px;
+  justify-content: flex-start;
+}
+
+.img-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.licon-tel,
+.licon-emal,
+.licon-dir,
+.pIcon {
+  margin: 0;
+  text-align: left;
 }
 
 /* --- 🖥️ MEDIA QUERIES (PANTALLAS MEDIANAS Y GRANDES) --- */
 
-/* Tablets (desde 768px en adelante) */
 @media (min-width: 768px) {
+  .barra-superior-room {
+    flex-direction: column;     /* El título arriba y la barra abajo en PC */
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .contenedor-titulo-room {
+    justify-content: center;
+  }
+
   h1 {
     font-size: 2.3rem;
+    text-align: center;
+  }
+
+  /* Oculta la hamburguesa en escritorio */
+  .menu-toggle-room {
+    display: none;
+  }
+
+  /* Restaura la barra horizontal clásica */
+  .barramenu-room {
+    position: static;           /* Cancela el despliegue absoluto */
+    height: auto;
+    overflow: visible;
+    background: transparent;
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%; 
+    justify-content: center; 
+    gap: 12px;
+    padding: 0;
+  }
+
+  .botonbarra-room {
+    width: auto;
+    font-size: 1rem;
+    padding: 10px 15px;
   }
 
   .imagenprincipal {
-    height: 80vh; /* Recuperamos más presencia en pantallas grandes */
+    height: 80vh;
   }
 
   .room-principal {
@@ -154,25 +252,35 @@ img {
   }
 
   .contenedor {
-    max-width: 100%; /* Que use el espacio del grid */
+    max-width: 100%;
   }
 
+  /* Footer en dos columnas en pantallas grandes */
   #footer-room {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en footer */
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 100px;
+  }
+
+  #footer-izquierdo,
+  #footer-derecho {
+    width: auto;
+    align-items: flex-start;
+  }
+
+  #footer-izquierdo h3,
+  #footer-derecho h3 {
     text-align: left;
   }
 }
 
-/* Laptops y Computadoras de escritorio (desde 1024px en adelante) */
+/* Laptops y Computadoras de escritorio */
 @media (min-width: 1024px) {
   .room-principal {
-    grid-template-columns: repeat(3, 1fr); /* 3 Columnas en pantallas grandes */
+    grid-template-columns: repeat(3, 1fr); /* 3 Columnas en PC */
     padding-left: 5%;
     padding-right: 5%;
     margin: 0 auto;
-  }
-
-  #barramenu {
-    max-width: 250px;
   }
 }

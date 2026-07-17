@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Carrusel from "../Carrusel";
 import "./restaurante.css";
 import Footer from "../footer/Footer.jsx";
+import MensajeWhatsapp from "../../components/mensajeWhatsapp.jsx";
 
 import restorante1 from "../../assets/restorante1.jpg";
 import desayunador1 from "../../assets/desayunador1.jpg";
@@ -50,6 +51,8 @@ const Restaurante = () => {
           </ul>
         </div>
       </div>
+      
+      <MensajeWhatsapp />
 
       {/* FOOTER */}
       <Footer />
