@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Concesionaria.css";
+import "./concesionaria.css";
 
 // 1. Datos simulados (Mock Data)
 const CATEGORIES = ["Todos", "Autos", "Camionetas", "4x4", "Motos"];
