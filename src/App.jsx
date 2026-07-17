@@ -9,9 +9,9 @@ import {
 } from "react-router-dom";
 import Hotel from "./hotel/hotel";
 import Room from "./hotel/room/Room";
-import Single from "./hotel/room/single/Single";
+import Single from "./hotel/room/single/single";
 import Doble from "./hotel/room/doble/Doble";
-import Suit from "./hotel/room/suite/Suite";
+import Suit from "./hotel/room/suite/suite";
 import Restaurante from "./hotel/restaurante/Restaurante";
 import ContactoHotel from "./hotel/contacto/ContactoHotel";
 import LandingPage from "./LandingPage/LandingPage";
