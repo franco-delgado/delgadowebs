@@ -16,6 +16,7 @@ import Restaurante from "./hotel/restaurante/restaurante-temp";
 import ContactoHotel from "./hotel/contacto/ContactoHotel";
 import LandingPage from "./LandingPage/LandingPage";
 import Concesionaria from "./concesionaria/Concesionaria";
+import GestorCobranzasApp from './Cobranzas_Expres/GestorDeDatos';
 /*CODIGOS DE VEHICULOS*/
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
@@ -48,6 +49,26 @@ function Inicio() {
             </p>
           </div>
         </Link>
+      </div>
+
+      <div className="conten-clienteDeuda">
+        <div className="clienteDeuda" onClick={() => navigate("/GestorCobranzasApp")}>
+          <div className="img-clienteDeuda">
+            <div className="text">
+              <h3 className="texclienteDeuda">Cobranzas Expres</h3>
+              <p className="pclienteDeuda">
+                Plataforma web diseñada para optimizar y simplificar la gestión financiera de clientes, planes de pago y seguimiento de morosidad en tiempo real.
+
+                Control Centralizado: Gestión integral de clientes por DNI, datos de contacto y planes de pago personalizados.
+
+                Métricas Clave: Tablero con KPIs en tiempo real (Saldo Pendiente, Cuotas Vencidas, Atraso Promedio y Atraso Máximo) para una toma de decisiones rápida.
+
+                Seguimiento Detallado: Desglose cuota por cuota con indicadores de estado (Pendiente, Vencida), días de mora acumulados y registro inmediato de pagos.
+
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* SECCIÓN BLOG */}
@@ -86,6 +107,7 @@ function Inicio() {
           </div>
         </div>
       </div>
+
       <div className="conten-auto">
         <div className="auto" onClick={() => navigate("/concesionaria")}>
           <div className="img-auto">
@@ -134,6 +156,7 @@ function App() {
         <Route path="/contactoHotel" element={<ContactoHotel />} />
         <Route path="/LandingPage" element={<LandingPage />} />
         <Route path="/concesionaria" element={<Concesionaria />} />
+        <Route path="/GestorCobranzasApp" element={<GestorCobranzasApp />} />
         <Route
           path="/detalles-de-vehiculos/VentoLanding"
           element={<VentoLanding />}

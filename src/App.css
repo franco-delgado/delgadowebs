@@ -59,7 +59,8 @@ h1 {
 .conten-blog,
 .conten-interno,
 .conten-cliente,
-.conten-auto {
+.conten-auto,
+.conten-clienteDeuda {
   min-height: 400px; /* Altura mínima adaptable */
   width: 90%;
   max-width: 800px;
@@ -67,6 +68,20 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover; /* Cambiado a cover para que la imagen no se deforme */
   background-position: center;
+  border-radius: 14px; /* Suaviza el borde recto original */
+  overflow: hidden; /* Para que el border-radius recorte bien el fondo */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); /* Le da profundidad a cada tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prueba:hover,
+.conten-blog:hover,
+.conten-interno:hover,
+.conten-cliente:hover,
+.conten-auto:hover,
+.conten-clienteDeuda:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
 }
 
 /* IMÁGENES DE FONDO */
@@ -82,13 +97,17 @@ h1 {
 .conten-auto {
   background-image: url("https://images.unsplash.com/photo-1692863211226-cbba732754c9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNvbmNlc2lvbmFyaW8lMjBkZSUyMGF1dG9tJUMzJUIzdmlsZXN8ZW58MHx8MHx8fDA%3D");
 }
+.conten-clienteDeuda {
+  background-image: url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?fm=jpg&q=80&w=2000&auto=format&fit=crop");
+}
 
 /* CONTENEDORES DE CLIC INTERNOS (GRID DE DOS COLUMNAS) */
 .hotel,
 .blog,
 .ecomer,
 .qr,
-.auto {
+.auto,
+.clienteDeuda {
   box-sizing: border-box;
   padding: 20px;
   display: grid;
@@ -96,10 +115,15 @@ h1 {
   gap: 20px;
   align-items: center;
   cursor: pointer;
+  min-height: 400px; /* Asegura que el área clickeable cubra toda la tarjeta */
+  transition: background 0.3s ease;
 }
 
 .text {
   background-color: #91909091;
+  border-radius: 10px; /* Combina con el redondeo general de las tarjetas */
+  padding: 16px 20px;
+  backdrop-filter: blur(2px); /* Mejora la lectura del texto sobre la imagen */
 }
 
 /* Fondos y gradientes */
@@ -107,10 +131,23 @@ h1 {
 .blog,
 .ecomer,
 .qr,
-.auto {
+.auto,
+.clienteDeuda {
   background: linear-gradient(
     rgba(233, 233, 232, 0.2),
     rgba(243, 224, 190, 0.4)
+  );
+}
+
+.hotel:hover,
+.blog:hover,
+.ecomer:hover,
+.qr:hover,
+.auto:hover,
+.clienteDeuda:hover {
+  background: linear-gradient(
+    rgba(233, 233, 232, 0.32),
+    rgba(243, 224, 190, 0.55)
   );
 }
 
@@ -119,7 +156,8 @@ h1 {
 .textblog,
 .tecomer,
 .tqr,
-.texauto {
+.texauto,
+.texclienteDeuda {
   font-size: 1.8rem;
   font-weight: bold;
 }
@@ -128,15 +166,19 @@ h1 {
 .pblog,
 .pecomer,
 .pqr,
-.pauto {
+.pauto,
+.pclienteDeuda {
   font-size: 1.1rem;
+  margin-top: 8px;
+  line-height: 1.4;
 }
 
 /* ELEMENTOS DE IMAGEN */
 .img-page,
 .img-cliente,
 .img-interno,
-.img-auto {
+.img-auto,
+.img-clienteDeuda {
   max-width: 100%;
   height: auto;
   max-height: 200px;
@@ -163,7 +205,8 @@ h1 {
   .blog,
   .ecomer,
   .qr,
-  .auto {
+  .auto,
+  .clienteDeuda {
     grid-template-columns: 3fr 1fr;
   }
 
