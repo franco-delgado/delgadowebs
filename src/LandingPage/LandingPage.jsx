@@ -160,11 +160,6 @@ const LandingPage = () => {
           </form>
         </div>
       </section>
-
-      {/* PIE DE PÁGINA */}
-      <footer className="landing-footer">
-        <p>© 2026 El Hotel - Todos los derechos reservados.</p>
-      </footer>
     </div>
   );
 };

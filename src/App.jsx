@@ -45,7 +45,13 @@ function Inicio() {
           <div className="text">
             <h3 className="thotel">HOTEL</h3>
             <p className="photel">
-              ¿Listo para dar vida a tu hotel en línea?...
+              Listo para dar vida a tu hotel en línea y multiplicar tus reservas directas? 🏨✨
+              Desarrollamos sitios web modernos, atractivos y funcionales diseñados específicamente para hoteles, posadas y alojamientos.
+              ¿Qué incluye el servicio?
+              Motor de reservas integrado: Tus huéspedes podrán verificar disponibilidad y reservar su habitación al instante las 24 horas.
+              Diseño optimizado y responsivo: Excelente experiencia visual en celulares, tablets y computadoras.
+              Catálogo de habitaciones y servicios: Presentación clara de suites, comodidades, tarifas y galerías de fotos.
+              Control y autonomía: Administra la disponibilidad y la información de tu hotel de forma rápida y sencilla.
             </p>
           </div>
         </Link>
@@ -79,8 +85,13 @@ function Inicio() {
             <div className="text">
               <h3 className="textblog">Expandí tu Presencia Digital</h3>
               <p className="pblog">
-                El portal definitivo para comunicar tus eventos, conectar con tu
-                audiencia y proyectar tu negocio hacia el próximo nivel.
+                Landing Page para Eventos, Noticias y Fidelización
+                Presento un prototipo de landing page diseñado para marcas, hoteles o espacios culturales que buscan comunicar sus novedades y conectar de manera directa con su audiencia.
+                Secciones y funcionalidades clave:
+                Hero Section Impactante: Mensaje principal con llamadas a la acción para exploración rápida de cartelera o suscripción.
+                Agenda de Eventos Destacados: Módulos visuales para promocionar festivales, conciertos y actividades especiales con reserva directa.
+                Sección de Actualidad: Espacio dedicado a noticias, logros institucionales y novedades del establecimiento.
+                Captación de Leads: Formulario de suscripción por correo electrónico para envíos prioritarios e información exclusiva.
               </p>
             </div>
           </div>
@@ -99,11 +110,14 @@ function Inicio() {
           >
             <div className="text">
               <h3 className="tecomer">CAFE-BAR pedidos por clientes</h3>
-              <p className="pecomer">Descubre la eficiencia y comodidad...</p>
+              <p className="pecomer">Descubre cómo optimizar la operativa de tu negocio y elevar la experiencia de tus clientes en tiempo real. Accede a nuestra demo y prueba todas las funcionalidades de la plataforma:
+                Experiencia para el cliente: Menú digital interactivo para autogestión de pedidos de forma rápida y sencilla.
+                Comandas en tiempo real: Envío directo e inmediato de los pedidos a la pantalla de cocina o a la caja central.
+                Control de inventario: Gestión y actualización de stock automatizada con cada venta.
+                Facturación rápida: Emisión e impresión de tickets de consumo al instante.
+                Gestión comercial: Administración de precios, carta digital y reportes de ventas en un solo lugar.
+              </p>
             </div>
-            <span className="secomer">
-              <img className="img-cliente" src="/cliente.jpg" alt="Cliente" />
-            </span>
           </div>
         </div>
       </div>
@@ -114,8 +128,13 @@ function Inicio() {
             <div className="text">
               <h3 className="texauto">Concesionaria</h3>
               <p className="pauto">
-                Explora nuestra plantilla de muestra para páginas de
-                concesionarias...
+                Impulsá las ventas de tu Concesionaria con una Web Profesional y Moderna
+                Digitalizá tu showroom y permití que tus clientes encuentren su próximo vehículo desde cualquier dispositivo, las 24 horas del día.
+                Funcionalidades destacadas del sistema:
+                Filtro por Categorías: Clasificación rápida por Autos, Camionetas, 4x4 y Motos.
+                Catálogo Multimarca: Exhibición de modelos (Toyota, Ford, Volkswagen, Chevrolet, Honda, Yamaha y más).
+                Fichas de Vehículos: Visualización de precios, fotos e información detallada de cada unidad.
+                Captación Directa de Leads: Botones inmediatos de "Consultar" en cada vehículo para recibir prospectos de forma rápida.
               </p>
             </div>
           </div>
