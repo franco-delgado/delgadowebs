@@ -45,7 +45,7 @@ function Inicio() {
           <div className="text">
             <h3 className="thotel">HOTEL</h3>
             <p className="photel">
-              Listo para dar vida a tu hotel en línea y multiplicar tus reservas directas? 🏨✨
+              Listo para dar vida a tu hotel en línea y multiplicar tus reservas directas?
               Desarrollamos sitios web modernos, atractivos y funcionales diseñados específicamente para hoteles, posadas y alojamientos.
               ¿Qué incluye el servicio?
               Motor de reservas integrado: Tus huéspedes podrán verificar disponibilidad y reservar su habitación al instante las 24 horas.
@@ -64,13 +64,9 @@ function Inicio() {
               <h3 className="texclienteDeuda">Cobranzas Expres</h3>
               <p className="pclienteDeuda">
                 Plataforma web diseñada para optimizar y simplificar la gestión financiera de clientes, planes de pago y seguimiento de morosidad en tiempo real.
-
                 Control Centralizado: Gestión integral de clientes por DNI, datos de contacto y planes de pago personalizados.
-
                 Métricas Clave: Tablero con KPIs en tiempo real (Saldo Pendiente, Cuotas Vencidas, Atraso Promedio y Atraso Máximo) para una toma de decisiones rápida.
-
                 Seguimiento Detallado: Desglose cuota por cuota con indicadores de estado (Pendiente, Vencida), días de mora acumulados y registro inmediato de pagos.
-
               </p>
             </div>
           </div>
