@@ -1,0 +1,133 @@
+.admin-login {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-teal-100);
+  padding: var(--space-5);
+}
+
+.admin-login__card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--color-paper-alt);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.admin-login__card h1 {
+  font-size: 1.4rem;
+}
+
+.admin-login__ayuda {
+  color: var(--color-slate);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.admin-login__pista {
+  font-size: 0.78rem;
+  color: var(--color-slate);
+  margin: 0;
+}
+
+.admin-login__pista code {
+  background: var(--color-teal-100);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+
+.admin {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 72px);
+}
+
+.admin__sidebar {
+  background: var(--color-teal-900);
+  color: var(--color-paper);
+  padding: var(--space-6) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.admin__sidebar-titulo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--color-paper);
+}
+
+.admin__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.admin__nav-item {
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--color-teal-100);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-family: var(--font-body);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.admin__nav-item:hover {
+  background: rgba(244, 248, 246, 0.1);
+}
+
+.admin__nav-item--activo {
+  background: var(--color-honey);
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.admin__salir {
+  background: none;
+  border: 1px solid rgba(244, 248, 246, 0.3);
+  color: var(--color-teal-100);
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.admin__salir:hover {
+  border-color: var(--color-paper);
+  color: var(--color-paper);
+}
+
+.admin__contenido {
+  padding: var(--space-6) var(--space-7);
+  background: var(--color-paper);
+}
+
+@media (max-width: 800px) {
+  .admin {
+    grid-template-columns: 1fr;
+  }
+  .admin__sidebar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4);
+  }
+  .admin__nav {
+    flex-direction: row;
+  }
+  .admin__contenido {
+    padding: var(--space-5);
+  }
+}

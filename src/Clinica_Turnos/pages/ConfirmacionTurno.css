@@ -1,0 +1,116 @@
+.confirmacion {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-4);
+  text-align: center;
+}
+
+.confirmacion--vacia {
+  gap: var(--space-4);
+}
+
+.sello {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.sello__anillo {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 3px solid var(--color-ok);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sello__anillo::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px dashed var(--color-ok);
+  opacity: 0.5;
+}
+
+.sello__check {
+  font-size: 2.2rem;
+  color: var(--color-ok);
+}
+
+.sello__etiqueta {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-teal-900);
+  margin: 0;
+}
+
+.ticket {
+  width: 100%;
+  max-width: 440px;
+  background: var(--color-paper-alt);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5) var(--space-6);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ticket__fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.ticket__clave {
+  font-size: 0.82rem;
+  color: var(--color-slate);
+}
+
+.ticket__valor {
+  font-weight: 600;
+  color: var(--color-ink);
+  text-align: right;
+}
+
+.ticket__valor--mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.ticket__separador {
+  border-top: 1px dashed var(--color-mist);
+  margin: var(--space-1) 0;
+}
+
+.confirmacion__ayuda {
+  color: var(--color-slate);
+  max-width: 40ch;
+  font-size: 0.9rem;
+}
+
+.boton-secundario {
+  text-decoration: none;
+  color: var(--color-teal-900);
+  border: 1px solid var(--color-teal-900);
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.boton-secundario:hover {
+  background: var(--color-teal-900);
+  color: var(--color-paper-alt);
+}

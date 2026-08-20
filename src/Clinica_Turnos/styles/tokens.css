@@ -1,0 +1,88 @@
+/*
+  IMPORTANTE: estas variables y resets estan escopeados bajo
+  ".clinica-app-shell" (el contenedor raiz de ClinicaTurnos) a proposito,
+  para que NO pisen los estilos globales de tu sitio (hotel, concesionaria,
+  landing, etc). No se toca html/body globalmente.
+*/
+
+.clinica-app-shell {
+  /* ---- Paleta ---- */
+  --color-ink: #16231f;
+  --color-teal-900: #1f4b44;
+  --color-teal-700: #2c655c;
+  --color-teal-100: #dfe9e5;
+  --color-paper: #f4f8f6;
+  --color-paper-alt: #ffffff;
+  --color-mist: #ccdad4;
+  --color-honey: #e3a138;
+  --color-honey-dark: #b9791f;
+  --color-rose: #c1594a;
+  --color-rose-bg: #f7e6e2;
+  --color-ok: #3d7a5c;
+  --color-ok-bg: #e2efe7;
+  --color-slate: #6b7f79;
+
+  /* ---- Tipografia ---- */
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'Work Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* ---- Espaciado ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ---- Forma ---- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-card: 0 1px 2px rgba(22, 35, 31, 0.06), 0 8px 24px rgba(22, 35, 31, 0.06);
+  --shadow-pop: 0 4px 14px rgba(31, 75, 68, 0.18);
+  --border-hairline: 1px solid var(--color-mist);
+
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.clinica-app-shell *,
+.clinica-app-shell *::before,
+.clinica-app-shell *::after {
+  box-sizing: border-box;
+}
+
+.clinica-app-shell h1,
+.clinica-app-shell h2,
+.clinica-app-shell h3,
+.clinica-app-shell h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--color-teal-900);
+  font-weight: 600;
+}
+
+.clinica-app-shell button {
+  font-family: var(--font-body);
+}
+
+.clinica-app-shell a {
+  color: inherit;
+}
+
+.clinica-app-shell :focus-visible {
+  outline: 2px solid var(--color-honey);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clinica-app-shell * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

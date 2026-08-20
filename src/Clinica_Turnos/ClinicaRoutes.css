@@ -1,0 +1,10 @@
+.clinica-app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.clinica-app-main {
+  flex: 1;
+  width: 100%;
+}

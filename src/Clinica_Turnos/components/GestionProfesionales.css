@@ -1,0 +1,106 @@
+.alta-profesional {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-end;
+  flex-wrap: wrap;
+  background: var(--color-paper-alt);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.alta-profesional .campo {
+  min-width: 200px;
+}
+
+.campo--corto {
+  min-width: 110px !important;
+  max-width: 110px;
+}
+
+.tarjetas-profesionales {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.tarjeta-profesional {
+  background: var(--color-paper-alt);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.tarjeta-profesional__info h2 {
+  font-size: 1.05rem;
+  margin-bottom: var(--space-1);
+}
+
+.tarjeta-profesional__especialidad {
+  color: var(--color-honey-dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.tarjeta-profesional__turnos {
+  color: var(--color-slate);
+  font-size: 0.82rem;
+  margin: var(--space-1) 0 0;
+}
+
+.tarjeta-profesional__acciones {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-top: 1px dashed var(--color-mist);
+  padding-top: var(--space-3);
+}
+
+.tarjeta-profesional__acciones label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-slate);
+}
+
+.control-cupo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.control-cupo button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--color-mist);
+  background: var(--color-paper);
+  color: var(--color-teal-900);
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.control-cupo button:hover {
+  border-color: var(--color-teal-700);
+}
+
+.control-cupo input {
+  width: 60px;
+  text-align: center;
+  font-family: var(--font-mono);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-mist);
+}
+
+.tarjeta-profesional .boton-peligro {
+  align-self: flex-start;
+  margin-top: var(--space-1);
+}

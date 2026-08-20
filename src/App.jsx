@@ -17,6 +17,7 @@ import ContactoHotel from "./hotel/contacto/ContactoHotel";
 import LandingPage from "./LandingPage/LandingPage";
 import Concesionaria from "./concesionaria/Concesionaria";
 import GestorCobranzasApp from './Cobranzas_Expres/GestorDeDatos';
+import ClinicaTurnos from "./Clinica_Turnos/ClinicaRoutes";
 /*CODIGOS DE VEHICULOS*/
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
@@ -118,6 +119,25 @@ function Inicio() {
         </div>
       </div>
 
+      <div className="conten-clinica">
+        <div className="clinica" onClick={() => navigate("/clinica")}>
+          <div className="img-clinica">
+            <div className="text">
+              <h3 className="texclinica">Turnos Online</h3>
+              <p className="pclinica">
+                Digitalizá la agenda de tu clínica, consultorio o centro de salud y dejá de perder turnos por teléfono.
+                Desarrollamos un sistema de reserva de turnos online pensado para pacientes y para tu equipo administrativo.
+                ¿Qué incluye el servicio?
+                Reserva 100% online: El paciente carga DNI, nombre, fecha de nacimiento y celular, y elige profesional, fecha y horario disponible al instante.
+                Cupos por profesional: Vos definís cuántos turnos por día atiende cada profesional; el sistema respeta ese límite automáticamente.
+                Panel administrativo: Visualizá todos los turnos reservados, filtrá por profesional o paciente, y cancelá cuando haga falta.
+                Gestión de profesionales: Agregá o quitá profesionales de tu equipo sin tocar código, en cualquier momento.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="conten-auto">
         <div className="auto" onClick={() => navigate("/concesionaria")}>
           <div className="img-auto">
@@ -172,6 +192,7 @@ function App() {
         <Route path="/LandingPage" element={<LandingPage />} />
         <Route path="/concesionaria" element={<Concesionaria />} />
         <Route path="/GestorCobranzasApp" element={<GestorCobranzasApp />} />
+        <Route path="/clinica/*" element={<ClinicaTurnos />} />
         <Route
           path="/detalles-de-vehiculos/VentoLanding"
           element={<VentoLanding />}
