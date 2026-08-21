@@ -44,19 +44,21 @@
 }
 
 .navbar__link {
+  background: var(--color-teal-100);
+  color: var(--color-teal-900);
   text-decoration: none;
-  color: var(--color-slate);
+/*  color: var(--color-slate);*/
   font-weight: 500;
   font-size: 0.95rem;
   padding: var(--space-2) var(--space-4);
   border-radius: 999px;
-  transition: background 0.15s ease, color 0.15s ease;
+/*  transition: background 0.15s ease, color 0.15s ease;*/
 }
 
-.navbar__link:hover {
+/*.navbar__link:hover {
   background: var(--color-teal-100);
   color: var(--color-teal-900);
-}
+}*/
 
 .navbar__link--active {
   background: var(--color-teal-900);
