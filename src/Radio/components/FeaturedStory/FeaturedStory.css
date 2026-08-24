@@ -1,0 +1,125 @@
+.featured-story {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.featured-story__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: none;
+  padding: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--cat-color) 35%, var(--color-ink)) 0%,
+    var(--color-ink) 100%
+  );
+  position: relative;
+}
+
+.featured-story__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-story__media-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 46px;
+  color: color-mix(in srgb, var(--cat-color) 65%, black);
+  opacity: 0.7;
+}
+
+.featured-story__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.featured-story__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.featured-story__cat {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cat-color);
+}
+
+.featured-story__date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-paper-faint);
+}
+
+.featured-story__title {
+  font-size: 36px;
+  line-height: 1.15;
+}
+
+.featured-story__title button {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  color: var(--color-paper);
+  font-family: var(--font-display);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.featured-story__title button:hover {
+  color: var(--color-amber);
+}
+
+.featured-story__summary {
+  font-size: 17px;
+  color: var(--color-paper-dim);
+  max-width: 56ch;
+}
+
+.featured-story__author {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-paper-faint);
+}
+
+.featured-story__link {
+  align-self: flex-start;
+  margin-top: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-amber);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.featured-story__link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .featured-story {
+    grid-template-columns: 1fr;
+  }
+  .featured-story__title {
+    font-size: 28px;
+  }
+}

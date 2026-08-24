@@ -1,0 +1,112 @@
+.news-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 8, 18, 0.75);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.news-modal {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  background: var(--color-ink-soft);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.news-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  z-index: 2;
+}
+
+.news-modal__close:hover {
+  color: var(--color-amber);
+  border-color: var(--color-amber);
+}
+
+.news-modal__media {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  background: var(--color-ink);
+}
+
+.news-modal__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-modal__body {
+  padding: 28px;
+}
+
+.news-modal__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.news-modal__cat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cat-color);
+}
+
+.news-modal__date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-paper-faint);
+}
+
+.news-modal__title {
+  font-size: 28px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.news-modal__author {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-paper-faint);
+  margin-bottom: 18px;
+}
+
+.news-modal__summary {
+  font-size: 17px;
+  color: var(--color-paper);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.news-modal__content {
+  font-size: 16px;
+  color: var(--color-paper-dim);
+  white-space: pre-line;
+}
+
+@media (max-width: 560px) {
+  .news-modal__body {
+    padding: 20px;
+  }
+  .news-modal__title {
+    font-size: 22px;
+  }
+}

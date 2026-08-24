@@ -18,6 +18,7 @@ import LandingPage from "./LandingPage/LandingPage";
 import Concesionaria from "./concesionaria/Concesionaria";
 import GestorCobranzasApp from './Cobranzas_Expres/GestorDeDatos';
 import ClinicaTurnos from "./Clinica_Turnos/ClinicaRoutes";
+import Radio from "./Radio/Radio";
 /*CODIGOS DE VEHICULOS*/
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
@@ -157,6 +158,25 @@ function Inicio() {
         </div>
       </div>
 
+      <div className="conten-radio">
+        <div className="radio" onClick={() => navigate("/Radio")}>
+          <div className="img-radio">
+            <div className="text">
+              <h3 className="texradio">Radio & Noticias</h3>
+              <p className="pradio">
+                Potenciá tu Medio de Comunicación con un Portal Web Informativo y Streaming en Vivo.
+                Llevá tu emisora al mundo digital y mantené a tu audiencia informada las 24 horas, desde cualquier dispositivo.
+                Funcionalidades destacadas del sistema:
+                Reproductor en Vivo: Streaming de audio HD continuo con control de volumen e indicador EN VIVO.
+                Secciones de Noticias: Categorización por Finanzas, Política, Deportes, Tecnología, Cultura e Internacional.
+                Placa de Último Momento: Ticker de noticias dinámico para destacar información de último minuto.
+                Panel de Administración: Gestión de contenidos, artículos y señal de radio de forma rápida y sencilla.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <footer>
         <div className="fin">
           <p className="pfin">
@@ -193,6 +213,8 @@ function App() {
         <Route path="/concesionaria" element={<Concesionaria />} />
         <Route path="/GestorCobranzasApp" element={<GestorCobranzasApp />} />
         <Route path="/clinica/*" element={<ClinicaTurnos />} />
+        <Route path="/Radio/*" element={<Radio />} />
+        <Route path="/admin/*" element={<Radio />} />
         <Route
           path="/detalles-de-vehiculos/VentoLanding"
           element={<VentoLanding />}

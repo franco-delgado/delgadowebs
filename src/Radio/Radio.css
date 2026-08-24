@@ -1,0 +1,164 @@
+.rapp-root {
+  background-color: F6F7F9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+/* ==========================================================================
+   ONDA — Tokens de diseño
+   Identidad: sala de redacción + dial de radio.
+   Fondo tinta profunda (no negro puro), acento ámbar "on air",
+   rojo "en vivo", teal para categorías. Tipografía de cartel para
+   titulares, serif editorial para lectura, mono de dial para datos.
+   ========================================================================== */
+
+:root {
+  /* Color — diario claro tradicional, acento rojo/naranja "Fénix" */
+  --color-ink: #FFFFFF;
+  --color-ink-soft: #F6F7F9;
+  --color-ink-soft-2: #ECEEF1;
+  --color-paper: #1A1B1E;
+  --color-paper-dim: #52565F;
+  --color-paper-faint: #868B94;
+  --color-amber: #E0431F;
+  --color-amber-dim: #B5300F;
+  --color-live: #C81E2C;
+  --color-teal: #1D6FB8;
+  --color-line: rgba(15, 17, 20, 0.10);
+  --color-line-strong: rgba(15, 17, 20, 0.20);
+
+  /* Tipografía */
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --max-width: 1180px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --header-height: 64px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+.container {
+  background-color: #F6F7F9;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Línea de firma bajo el header, estilo diario clásico */
+.dial-rule {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--color-amber) 0%, var(--color-amber) 100%);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-paper-faint);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-line-strong);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-live);
+  box-shadow: 0 0 0 0 rgba(228, 72, 58, 0.6);
+  animation: pulse-live 1.8s infinite;
+}
+
+@keyframes pulse-live {
+  0% { box-shadow: 0 0 0 0 rgba(228, 72, 58, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(228, 72, 58, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(228, 72, 58, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+}

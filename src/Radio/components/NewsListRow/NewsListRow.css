@@ -1,0 +1,173 @@
+.news-row {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.news-row:last-child {
+  border-bottom: none;
+}
+
+.news-row__thumb {
+  flex-shrink: 0;
+  width: 96px;
+  height: 72px;
+  border: none;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--cat-color) 25%, var(--color-ink)) 0%,
+    var(--color-ink-soft) 100%
+  );
+  position: relative;
+}
+
+.news-row__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-row__thumb-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: color-mix(in srgb, var(--cat-color) 65%, black);
+}
+
+.news-row__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.news-row__cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cat-color);
+}
+
+.news-row__title {
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.news-row__title button {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.news-row__title button:hover {
+  color: var(--color-amber);
+  text-decoration: underline;
+}
+
+.news-row__summary {
+  font-size: 13px;
+  color: var(--color-paper-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-row__date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-paper-faint);
+  margin-top: 2px;
+}
+
+@media (max-width: 480px) {
+  .news-row__thumb {
+    width: 76px;
+    height: 60px;
+  }
+  .news-row__summary {
+    display: none;
+  }
+}
+
+/* --- variante grande: listado largo tipo portada de sección --- */
+
+.news-row--large {
+  gap: 24px;
+  padding: 28px 0;
+  align-items: flex-start;
+}
+
+.news-row--large .news-row__thumb {
+  width: 340px;
+  height: 220px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.news-row--large .news-row__thumb-fallback {
+  font-size: 22px;
+}
+
+.news-row--large .news-row__body {
+  gap: 8px;
+  justify-content: center;
+}
+
+.news-row--large .news-row__title {
+  font-size: 22px;
+  line-height: 1.28;
+}
+
+.news-row--large .news-row__title button {
+  color: var(--color-teal);
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+
+.news-row--large .news-row__title button:hover {
+  color: var(--color-amber);
+}
+
+.news-row--large .news-row__summary {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-paper-dim);
+  -webkit-line-clamp: 3;
+}
+
+.news-row--large .news-row__date {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+@media (max-width: 760px) {
+  .news-row--large {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .news-row--large .news-row__thumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .news-row--large .news-row__title {
+    font-size: 19px;
+  }
+}

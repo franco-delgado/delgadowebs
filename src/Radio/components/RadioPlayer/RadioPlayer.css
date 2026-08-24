@@ -1,0 +1,148 @@
+.radio-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.radio-player__toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-amber);
+  color: var(--color-ink);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.radio-player__toggle:hover {
+  background: var(--color-amber-dim);
+  transform: scale(1.05);
+}
+
+.radio-player__spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(18, 23, 43, 0.35);
+  border-top-color: var(--color-ink);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.radio-player__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.radio-player__row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.radio-player__name {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.radio-player__freq {
+  font-family: var(--font-mono);
+  color: var(--color-paper-faint);
+}
+
+.radio-player__slogan {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-paper-dim);
+  margin-top: 2px;
+}
+
+.radio-player__status {
+  margin-top: 4px;
+  min-height: 18px;
+}
+
+.radio-player__live {
+  color: var(--color-live);
+  border-color: rgba(228, 72, 58, 0.4);
+}
+
+.radio-player__hint,
+.radio-player__error {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-paper-faint);
+}
+
+.radio-player__error {
+  color: var(--color-live);
+}
+
+.radio-player__volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-paper-dim);
+  margin-left: auto;
+}
+
+.radio-player__volume input[type='range'] {
+  width: 110px;
+  accent-color: var(--color-amber);
+}
+
+/* --- variante mini (header) --- */
+.radio-player--mini .radio-player__toggle {
+  width: 36px;
+  height: 36px;
+}
+
+.radio-player--mini .radio-player__name {
+  font-size: 13px;
+}
+
+.radio-player--mini .radio-player__freq {
+  font-size: 11px;
+}
+
+/* --- variante completa (hero) --- */
+.radio-player--full {
+  padding: 20px 24px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, var(--color-ink-soft) 0%, var(--color-ink-soft-2) 100%);
+  flex-wrap: wrap;
+}
+
+.radio-player--full .radio-player__toggle {
+  width: 56px;
+  height: 56px;
+}
+
+.radio-player--full .radio-player__name {
+  font-size: 22px;
+}
+
+.radio-player--full .radio-player__freq {
+  font-size: 14px;
+}
+
+@media (max-width: 560px) {
+  .radio-player--full {
+    padding: 16px;
+  }
+  .radio-player__volume {
+    margin-left: 0;
+    width: 100%;
+    order: 3;
+  }
+  .radio-player__volume input[type='range'] {
+    width: 100%;
+  }
+}
