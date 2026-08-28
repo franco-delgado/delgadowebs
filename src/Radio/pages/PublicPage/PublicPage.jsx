@@ -13,23 +13,33 @@ import './PublicPage.css'
 const ITEMS_PER_SECTION = 4
 
 export default function PublicPage() {
-  const [news, setNews] = useState(getNews())
-  const [radio, setRadio] = useState(getRadioConfig())
+  const [news, setNews] = useState([])
+  const [radio, setRadio] = useState(null)
   const [openItem, setOpenItem] = useState(null)
 
+  const loadData = async () => {
+    const [newsData, radioData] = await Promise.all([getNews(), getRadioConfig()])
+    setNews(newsData)
+    setRadio(radioData)
+  }
+
   useEffect(() => {
-    // Refleja cambios hechos por el administrador, incluso desde otra pestaña.
-    const onStorage = () => {
-      setNews(getNews())
-      setRadio(getRadioConfig())
+    loadData()
+
+    // Carga los datos cuando la pestaña recupera el foco
+    const onFocus = () => {
+      loadData()
     }
-    window.addEventListener('storage', onStorage)
-    window.addEventListener('focus', onStorage)
+
+    window.addEventListener('focus', onFocus)
     return () => {
-      window.removeEventListener('storage', onStorage)
-      window.removeEventListener('focus', onStorage)
+      window.removeEventListener('focus', onFocus)
     }
   }, [])
+
+  if (!radio) {
+    return null // O podés retornar un spinner/cargando si preferís
+  }
 
   const sorted = [...news].sort((a, b) => (a.date < b.date ? 1 : -1))
   const latest = sorted.slice(0, 6)
@@ -47,7 +57,7 @@ export default function PublicPage() {
             <RadioPlayer radio={radio} variant="full" />
           </section>
 
-{/*          <LatestHeadlines items={latest} onOpen={setOpenItem} /> */}
+          {/* <LatestHeadlines items={latest} onOpen={setOpenItem} /> */}
 
           {mainStory && <FeaturedStory item={mainStory} onOpen={setOpenItem} />}
 

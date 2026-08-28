@@ -1,36 +1,47 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RadioPlayer from '../../components/RadioPlayer/RadioPlayer.jsx'
 import StudioBroadcaster from '../../components/StudioBroadcaster/StudioBroadcaster.jsx'
 import { getRadioConfig, saveRadioConfig } from '../../data/store.js'
 import './AdminRadioConfig.css'
 
 export default function AdminRadioConfig() {
-  const [form, setForm] = useState(getRadioConfig())
+  const [form, setForm] = useState(null)
   const [saved, setSaved] = useState(false)
+  const [saving, setSaving] = useState(false)
   const [source, setSource] = useState('url') // 'url' | 'studio'
+
+  useEffect(() => {
+    getRadioConfig().then((data) => setForm(data))
+  }, [])
 
   const setField = (field, value) => {
     setSaved(false)
     setForm((f) => ({ ...f, [field]: value }))
   }
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
-    saveRadioConfig(form)
+    if (!form) return
+    setSaving(true)
+    await saveRadioConfig(form)
+    setSaving(false)
     setSaved(true)
   }
 
   // Usado por StudioBroadcaster para persistir sus propios cambios
-  // (datos de conexión Icecast, y opcionalmente la URL para oyentes)
-  // manteniendo sincronizado el resto del formulario y la vista previa.
-  const handleStudioSave = (partial) => {
-    setForm((f) => {
-      const updated = { ...f, ...partial }
-      saveRadioConfig(updated)
-      return updated
-    })
+  const handleStudioSave = async (partial) => {
+    if (!form) return
+    const updated = { ...form, ...partial }
+    setForm(updated)
+    setSaving(true)
+    await saveRadioConfig(updated)
+    setSaving(false)
     setSaved(true)
     setTimeout(() => setSaved(false), 2500)
+  }
+
+  if (!form) {
+    return <div className="radio-config">Cargando configuración de radio...</div>
   }
 
   return (
@@ -72,7 +83,7 @@ export default function AdminRadioConfig() {
                 <input
                   id="rc-stream"
                   type="text"
-                  value={form.streamUrl}
+                  value={form.streamUrl || ''}
                   onChange={(e) => setField('streamUrl', e.target.value)}
                   placeholder="https://tuproveedor.com/stream/tu-radio"
                 />
@@ -84,7 +95,7 @@ export default function AdminRadioConfig() {
                   <input
                     id="rc-name"
                     type="text"
-                    value={form.stationName}
+                    value={form.stationName || ''}
                     onChange={(e) => setField('stationName', e.target.value)}
                   />
                 </div>
@@ -93,7 +104,7 @@ export default function AdminRadioConfig() {
                   <input
                     id="rc-freq"
                     type="text"
-                    value={form.frequency}
+                    value={form.frequency || ''}
                     onChange={(e) => setField('frequency', e.target.value)}
                     placeholder="95.5 FM"
                   />
@@ -106,7 +117,7 @@ export default function AdminRadioConfig() {
                   <input
                     id="rc-slogan"
                     type="text"
-                    value={form.slogan}
+                    value={form.slogan || ''}
                     onChange={(e) => setField('slogan', e.target.value)}
                   />
                 </div>
@@ -116,14 +127,14 @@ export default function AdminRadioConfig() {
                     id="rc-logo"
                     type="text"
                     maxLength={3}
-                    value={form.logoText}
+                    value={form.logoText || ''}
                     onChange={(e) => setField('logoText', e.target.value.toUpperCase())}
                   />
                 </div>
               </div>
 
-              <button type="submit" className="radio-config__submit">
-                Guardar configuración de radio
+              <button type="submit" className="radio-config__submit" disabled={saving}>
+                {saving ? 'Guardando...' : 'Guardar configuración de radio'}
               </button>
               {saved && (
                 <p className="radio-config__saved">

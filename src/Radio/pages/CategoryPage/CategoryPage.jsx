@@ -8,22 +8,28 @@ import { getNews, getRadioConfig, getCategory } from '../../data/store.js'
 import './CategoryPage.css'
 
 export default function CategoryPage({ categoryId }) {
-  const [news, setNews] = useState(getNews())
-  const [radio, setRadio] = useState(getRadioConfig())
+  const [news, setNews] = useState([])
+  const [radio, setRadio] = useState(null)
   const [openItem, setOpenItem] = useState(null)
 
+  const loadData = async () => {
+    const [newsData, radioData] = await Promise.all([getNews(), getRadioConfig()])
+    setNews(newsData)
+    setRadio(radioData)
+  }
+
   useEffect(() => {
-    const onStorage = () => {
-      setNews(getNews())
-      setRadio(getRadioConfig())
+    loadData()
+
+    const onFocus = () => {
+      loadData()
     }
-    window.addEventListener('storage', onStorage)
-    window.addEventListener('focus', onStorage)
+
+    window.addEventListener('focus', onFocus)
     return () => {
-      window.removeEventListener('storage', onStorage)
-      window.removeEventListener('focus', onStorage)
+      window.removeEventListener('focus', onFocus)
     }
-  }, [])
+  }, [categoryId])
 
   const cat = getCategory(categoryId)
 
@@ -34,6 +40,10 @@ export default function CategoryPage({ categoryId }) {
   }, [news, categoryId])
 
   const latestOverall = [...news].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 6)
+
+  if (!radio) {
+    return null
+  }
 
   return (
     <div className="rapp-root">
