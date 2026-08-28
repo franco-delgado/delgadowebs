@@ -109,7 +109,7 @@ const DEFAULT_RADIO = {
   stationName: 'ONDA',
   slogan: 'Radio & Noticias, 24 horas',
   frequency: '95.5 FM',
-  streamUrl: '',
+  streamUrl: 'https://stream.zeno.fm/igo1xjsyu23vv',
   logoText: 'ON',
   // Datos del servidor Icecast/Shoutcast usados por el modo
   // "Transmitir desde el estudio" (ver StudioBroadcaster). Se guardan acá
