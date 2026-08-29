@@ -7,6 +7,7 @@
 }
 
 .category-nav__inner {
+  background-color: rgb(110, 110, 110);
   display: flex;
   gap: 0;
   overflow-x: auto;

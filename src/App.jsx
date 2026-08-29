@@ -7,6 +7,7 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
+import CategoryPage from "./Radio/pages/CategoryPage/CategoryPage.jsx"; // Componente para la vista de categorías
 import Hotel from "./hotel/hotel";
 import Room from "./hotel/room/Room";
 import Single from "./hotel/room/single/Single";
@@ -26,7 +27,7 @@ import MensajeWhatsapp from "./components/mensajeWhatsapp";
 
 // Componente para la página de inicio
 function Inicio() {
-  const navigate = useNavigate(); // 👈 Usamos el hook de React Router para navegación interna
+  const navigate = useNavigate(); // 👈 Hook de React Router para navegación interna
 
   return (
     <div className="conten-principal">
@@ -78,7 +79,6 @@ function Inicio() {
       {/* SECCIÓN BLOG */}
       <div className="conten-blog">
         <div className="conten-imgblog">
-          {/* 👈 Modificado para usar navigate en lugar de window.location.href */}
           <div className="blog" onClick={() => navigate("/LandingPage")}>
             <div className="text">
               <h3 className="textblog">Expandí tu Presencia Digital</h3>
@@ -99,7 +99,6 @@ function Inicio() {
       {/* SECCIÓN RESTORANT */}
       <div className="conten-interno">
         <div className="conten-imginterno">
-          {/* Aquí se mantiene window.location.href porque es un enlace externo a Netlify */}
           <div
             className="ecomer"
             onClick={() =>
@@ -195,13 +194,12 @@ function Inicio() {
 // Componente App que maneja el enrutamiento limpio
 function App() {
   return (
-    // 🚀 AQUÍ agregamos el basename sin la "s"
     <Router>
       <Routes>
         {/* Ruta principal */}
         <Route path="/" element={<Inicio />} />
 
-        {/* Ruta hacia el componente Hotel que migramos */}
+        {/* Rutas de módulos */}
         <Route path="/hotel" element={<Hotel />} />
         <Route path="/room" element={<Room />} />
         <Route path="/single" element={<Single />} />
@@ -215,6 +213,10 @@ function App() {
         <Route path="/clinica/*" element={<ClinicaTurnos />} />
         <Route path="/Radio/*" element={<Radio />} />
         <Route path="/admin/*" element={<Radio />} />
+        
+        {/* RUTA DE CATEGORÍAS AGREGADA */}
+        <Route path="/categoria/:categoryId" element={<CategoryPage />} />
+
         <Route
           path="/detalles-de-vehiculos/VentoLanding"
           element={<VentoLanding />}

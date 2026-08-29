@@ -3,12 +3,12 @@ import { supabase } from '../../supabaseRadio'
 export const ADMIN_PASSWORD = 'radio2026'
 
 export const CATEGORIES = [
-  { id: 'finanzas', label: 'Finanzas', freq: '101.3', color: '#F2A93C' },
-  { id: 'politica', label: 'Política', freq: '95.7', color: '#2FB8AC' },
-  { id: 'deportes', label: 'Deportes', freq: '88.5', color: '#E4483A' },
-  { id: 'tecnologia', label: 'Tecnología', freq: '104.9', color: '#7C9EF2' },
-  { id: 'cultura', label: 'Cultura', freq: '92.1', color: '#C77DE0' },
-  { id: 'internacional', label: 'Internacional', freq: '99.9', color: '#4FCB86' },
+  { id: 'finanzas', label: 'Finanzas', color: '#F2A93C' },
+  { id: 'politica', label: 'Política', color: '#2FB8AC' },
+  { id: 'deportes', label: 'Deportes', color: '#E4483A' },
+  { id: 'tecnologia', label: 'Tecnología', color: '#7C9EF2' },
+  { id: 'cultura', label: 'Cultura', color: '#C77DE0' },
+  { id: 'internacional', label: 'Internacional', color: '#4FCB86' },
 ]
 
 export function getCategory(id) {
@@ -113,6 +113,24 @@ export async function saveNews(newsItem) {
     if (error) console.error('Error guardando noticia:', error)
   } catch (e) {
     console.error('Error en saveNews:', e)
+  }
+}
+
+export async function deleteNews(id) {
+  try {
+    const { error } = await supabase
+      .from('news')
+      .delete()
+      .eq('id', id)
+
+    if (error) {
+      console.error('Error al eliminar noticia:', error)
+      return false
+    }
+    return true
+  } catch (e) {
+    console.error('Error en deleteNews:', e)
+    return false
   }
 }
 

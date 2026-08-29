@@ -11,9 +11,9 @@ import './CategoryNav.css'
 export default function CategoryNav({ active }) {
   return (
     <nav className="category-nav" aria-label="Secciones del diario">
-      <div className="container category-nav__inner">
+      <div className="category-nav__inner">
         <a
-          href="#/"
+          href="#/Radio"
           className={`category-nav__btn ${active === 'todas' ? 'is-active' : ''}`}
           style={{ '--cat-color': '#F5F3EE' }}
         >

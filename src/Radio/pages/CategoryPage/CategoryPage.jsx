@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useParams } from 'react-router-dom' // 👈 1. Importamos useParams
 import Header from '../../components/Header/Header.jsx'
 import NewsTicker from '../../components/NewsTicker/NewsTicker.jsx'
 import CategoryNav from '../../components/CategoryNav/CategoryNav.jsx'
@@ -7,7 +8,10 @@ import NewsModal from '../../components/NewsModal/NewsModal.jsx'
 import { getNews, getRadioConfig, getCategory } from '../../data/store.js'
 import './CategoryPage.css'
 
-export default function CategoryPage({ categoryId }) {
+export default function CategoryPage() {
+  // 👈 2. Obtenemos categoryId dinámicamente desde la URL
+  const { categoryId } = useParams() 
+
   const [news, setNews] = useState([])
   const [radio, setRadio] = useState(null)
   const [openItem, setOpenItem] = useState(null)
@@ -35,7 +39,7 @@ export default function CategoryPage({ categoryId }) {
 
   const sectionNews = useMemo(() => {
     return [...news]
-      .filter((n) => n.category === categoryId)
+      .filter((n) => n.category?.toLowerCase() === categoryId?.toLowerCase())
       .sort((a, b) => (a.date < b.date ? 1 : -1))
   }, [news, categoryId])
 
@@ -58,11 +62,11 @@ export default function CategoryPage({ categoryId }) {
               ← Volver a la portada
             </a>
 
-            <div className="section-page__masthead" style={{ '--cat-color': cat.color }}>
-              <span className="section-page__freq">{cat.freq} MHz</span>
-              <h1 className="section-page__title">{cat.label}</h1>
+            <div className="section-page__masthead" style={{ '--cat-color': cat?.color }}>
+              <span className="section-page__freq">{cat?.freq} MHz</span>
+              <h1 className="section-page__title">{cat?.label || categoryId}</h1>
               <p className="section-page__tagline">
-                Todo lo último de la sección {cat.label.toLowerCase()}.
+                Todo lo último de la sección {(cat?.label || categoryId)?.toLowerCase()}.
               </p>
             </div>
 
