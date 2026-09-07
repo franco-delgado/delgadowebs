@@ -1,0 +1,25 @@
+.asistencia-cliente {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.asistencia-btn {
+  width: 100%;
+}
+
+.asistencia-empty {
+  color: var(--color-text-dim);
+  font-size: 13.5px;
+}
+
+.asistencia-list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13.5px;
+  color: var(--color-text-dim);
+  text-transform: capitalize;
+}

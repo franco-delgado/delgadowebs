@@ -1,0 +1,56 @@
+.cuotas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cuota-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.cuota-row:last-child {
+  border-bottom: none;
+}
+
+.cuota-row-nombre {
+  font-family: var(--font-display);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cuota-row-actual {
+  font-size: 12px;
+  color: var(--color-text-dim);
+  margin-top: 4px;
+}
+
+.cuota-row-edit {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.cuota-row-edit input {
+  width: 140px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.cuotas-nota {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+  font-size: 12px;
+  color: var(--color-text-faint);
+}

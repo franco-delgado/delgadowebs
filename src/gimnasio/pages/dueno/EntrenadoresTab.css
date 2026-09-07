@@ -1,0 +1,11 @@
+.entrenadores-dueno {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.entrenadores-acciones {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,115 @@
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 20% 20%, rgba(162, 33, 3, 0.15), transparent 45%),
+              radial-gradient(circle at 80% 80%, rgba(31, 169, 140, 0.15), transparent 45%),
+              #121212;
+  padding: 20px;
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 400px;
+  background: var(--color-bg-elevated, #1e1e24);
+  border: 1px solid var(--color-border, #2d2d38);
+  border-radius: var(--radius-lg, 12px);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-card, 0 10px 25px rgba(0, 0, 0, 0.5));
+}
+field{
+  background-color: #363647;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.login-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--color-primary, #4d8dff), var(--color-primary-dim, #2558b5));
+  flex-shrink: 0;
+}
+
+.login-title {
+  font-size: 22px;
+  margin-top: 2px;
+  color: var(--color-text, #ffffff);
+}
+
+.login-form {
+  margin-bottom: 24px;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px;
+  background: var(--color-primary, #4d8dff);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-submit:hover {
+  background: var(--color-primary-hover, #3b73db);
+}
+
+.login-error {
+  color: var(--color-danger, #ff4d4d);
+  font-size: 12.5px;
+  margin-bottom: 12px;
+}
+
+.login-demo {
+  border-top: 1px solid var(--color-border, #2d2d38);
+  padding-top: 18px;
+}
+
+.login-demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.login-demo-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface, #282833);
+  border: 1px solid var(--color-border, #363647);
+  border-radius: var(--radius-sm, 6px);
+  color: var(--color-text, #e1e1e6);
+  padding: 10px 12px;
+  font-size: 12.5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.login-demo-btn:hover {
+  border-color: var(--color-border-strong, #52526b);
+  background: var(--color-surface-hover, #323242);
+}
+
+.login-demo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot, var(--color-primary, #4d8dff));
+  flex-shrink: 0;
+}
+
+.login-demo-hint {
+  margin-top: 12px;
+  font-size: 11.5px;
+  color: var(--color-text-faint, #a0a0b0);
+}

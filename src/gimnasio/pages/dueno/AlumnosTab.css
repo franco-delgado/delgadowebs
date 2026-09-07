@@ -1,0 +1,26 @@
+.alumnos-dueno {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.alumnos-acciones {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.alumno-detalle p {
+  font-size: 13.5px;
+  margin-bottom: 10px;
+  color: var(--color-text-dim);
+}
+
+.alumno-detalle p span {
+  color: var(--color-text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}

@@ -1,0 +1,9 @@
+.fichaje-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fichaje-btn {
+  width: 100%;
+}

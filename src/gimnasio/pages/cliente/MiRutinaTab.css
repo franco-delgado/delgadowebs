@@ -1,0 +1,62 @@
+.mirutina-empty {
+  color: var(--color-text-dim);
+  font-size: 13.5px;
+}
+
+.mirutina-nota {
+  background: var(--color-primary-bg);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.mirutina-nota-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.mirutina-dias {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mirutina-dia-titulo {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+
+.mirutina-tabla {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.mirutina-fila {
+  display: grid;
+  grid-template-columns: 2.2fr 0.8fr 0.8fr 0.9fr;
+  gap: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mirutina-fila:last-child {
+  border-bottom: none;
+}
+
+.mirutina-fila-header {
+  background: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-faint);
+}

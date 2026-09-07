@@ -20,6 +20,7 @@ import Concesionaria from "./concesionaria/Concesionaria";
 import GestorCobranzasApp from './Cobranzas_Expres/GestorDeDatos';
 import ClinicaTurnos from "./Clinica_Turnos/ClinicaRoutes";
 import Radio from "./Radio/Radio";
+import GimnasioApp from "./gimnasio/App"; // Ajusta la ruta al archivo principal del gimnasio
 /*CODIGOS DE VEHICULOS*/
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
@@ -175,6 +176,20 @@ function Inicio() {
           </div>
         </div>
       </div>
+      {/* SECCIÓN GIMNASIO */}
+      <div className="conten-gimnasio">
+        <div className="gimnasio" onClick={() => navigate("/gimnasio")}>
+          <div className="img-gimnasio">
+            <div className="text">
+              <h3 className="texgimnasio">GymFlow - Gestión de Gimnasio</h3>
+              <p className="pgimnasio">
+                Plataforma para la gestión integral de gimnasios: control de usuarios,
+                entrenadores, membresías y finanzas en tiempo real.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <footer>
         <div className="fin">
@@ -213,6 +228,8 @@ function App() {
         <Route path="/clinica/*" element={<ClinicaTurnos />} />
         <Route path="/Radio/*" element={<Radio />} />
         <Route path="/admin/*" element={<Radio />} />
+        {/* Ruta de Gimnasio */}
+        <Route path="/gimnasio/*" element={<GimnasioApp />} />
         
         {/* RUTA DE CATEGORÍAS AGREGADA */}
         <Route path="/categoria/:categoryId" element={<CategoryPage />} />

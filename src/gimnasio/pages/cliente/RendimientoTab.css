@@ -1,0 +1,17 @@
+.rendimiento-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rendimiento-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.rendimiento-nota {
+  font-size: 13.5px;
+  color: var(--color-text-dim);
+  line-height: 1.5;
+}
