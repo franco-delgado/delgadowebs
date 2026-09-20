@@ -1,17 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom' // 👈 1. Importamos useParams
 import Header from '../../components/Header/Header.jsx'
 import NewsTicker from '../../components/NewsTicker/NewsTicker.jsx'
 import CategoryNav from '../../components/CategoryNav/CategoryNav.jsx'
 import NewsListRow from '../../components/NewsListRow/NewsListRow.jsx'
 import NewsModal from '../../components/NewsModal/NewsModal.jsx'
+
 import { getNews, getRadioConfig, getCategory } from '../../data/store.js'
 import './CategoryPage.css'
 
-export default function CategoryPage() {
-  // 👈 2. Obtenemos categoryId dinámicamente desde la URL
-  const { categoryId } = useParams() 
-
+export default function CategoryPage({ categoryId }) {
   const [news, setNews] = useState([])
   const [radio, setRadio] = useState(null)
   const [openItem, setOpenItem] = useState(null)

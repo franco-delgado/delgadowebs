@@ -1,4 +1,5 @@
 import { supabase } from '../../supabaseRadio'
+import { mockNews as MOCK_SEED } from './mockNews.js'
 
 export const ADMIN_PASSWORD = 'radio2026'
 
@@ -83,7 +84,21 @@ export async function saveRadioConfig(cfg) {
 // GESTIÓN DE NOTICIAS
 // ==========================================
 
+// -------------------------------------------------------------
+// MODO DE MUESTRA
+// true  -> las noticias salen de data/mockNews.js (no se llama a Supabase).
+//          Crear/editar/borrar desde el panel funciona en memoria y se
+//          reinicia al recargar la página.
+// false -> las noticias vuelven a leerse/guardarse en Supabase (tabla `news`).
+// La configuración de la radio NO depende de este interruptor.
+// -------------------------------------------------------------
+export const USE_MOCK_NEWS = true
+
+let mockStore = MOCK_SEED.map((n) => ({ ...n }))
+
 export async function getNews() {
+  if (USE_MOCK_NEWS) return mockStore.map((n) => ({ ...n }))
+
   try {
     const { data, error } = await supabase
       .from('news')
@@ -99,6 +114,16 @@ export async function getNews() {
 }
 
 export async function saveNews(newsItem) {
+  if (USE_MOCK_NEWS) {
+    const id = newsItem.id || makeId()
+    const record = { ...newsItem, id, image: newsItem.image || '' }
+    const exists = mockStore.some((n) => n.id === id)
+    mockStore = exists
+      ? mockStore.map((n) => (n.id === id ? record : n))
+      : [record, ...mockStore]
+    return
+  }
+
   try {
     const { error } = await supabase.from('news').upsert({
       id: newsItem.id || makeId(),
@@ -117,6 +142,11 @@ export async function saveNews(newsItem) {
 }
 
 export async function deleteNews(id) {
+  if (USE_MOCK_NEWS) {
+    mockStore = mockStore.filter((n) => n.id !== id)
+    return true
+  }
+
   try {
     const { error } = await supabase
       .from('news')

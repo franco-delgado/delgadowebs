@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import AdminNewsForm from '../AdminNewsForm/AdminNewsForm.jsx'
 import AdminRadioConfig from '../AdminRadioConfig/AdminRadioConfig.jsx'
 // 1. Agregamos deleteNews a las importaciones
+
 import { getNews, saveNews, deleteNews, getCategory, formatDate, setAdminAuthed } from '../../data/store.js'
 import './AdminDashboard.css'
 
