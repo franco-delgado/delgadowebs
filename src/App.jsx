@@ -21,6 +21,7 @@ import GestorCobranzasApp from './Cobranzas_Expres/GestorDeDatos';
 import ClinicaTurnos from "./Clinica_Turnos/ClinicaRoutes";
 import Radio from "./Radio/Radio";
 import GimnasioApp from "./gimnasio/App"; // Ajusta la ruta al archivo principal del gimnasio
+import Chacarita from './Chacarita/Chacarita';
 /*CODIGOS DE VEHICULOS*/
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
@@ -238,6 +239,7 @@ function App() {
           path="/detalles-de-vehiculos/VentoLanding"
           element={<VentoLanding />}
         />
+        <Route path="/chacarita" element={<Chacarita />} />
       </Routes>
     </Router>
   );
