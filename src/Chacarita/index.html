@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Club Chacarita Jrs Aimogasta</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<a id="tempBackBtn" href="https://franco-delgado.github.io/delgadowebs/" title="Volver a la página principal">&#8592;</a>
+<!-- TEMPORAL: eliminar el bloque #tempBackBtn de arriba antes de entregar la página al cliente -->
+
+<header>
+  <div class="headwrap">
+    <div class="brand"><img class="crest" src="escudo.png" alt="Escudo Club Chacarita Jrs Aimogasta"> Club Chacarita Jrs Aimogasta</div>
+    <nav>
+      <button class="navlink" data-view="home">Inicio</button>
+      <button class="navlink" data-view="categories">Categorías</button>
+      <button class="navlink" data-view="reserve">Reservar cancha</button>
+      <button class="navlink" data-view="admin">Admin</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section id="view-home">
+    <div class="hero">
+      <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <img class="crest-hero" src="escudo.png" alt="Escudo del club">
+      <div>
+      <h1>Pasión, esfuerzo y comunidad</h1>
+      <p>Todas las novedades del club: fútbol, rugby, vóley y mucho más. Enterate de lo último y reservá la cancha en minutos.</p>
+      </div>
+      </div>
+    </div>
+    <h2 class="section-title">Novedades</h2>
+    <div class="news-grid" id="newsGrid"></div>
+  </section>
+
+  <section id="view-categories" class="hidden">
+    <h2 class="section-title">Nuestras disciplinas</h2>
+    <div class="cat-grid" id="catGrid"></div>
+  </section>
+
+  <section id="view-reserve" class="hidden">
+    <h2 class="section-title">Reservar la cancha</h2>
+    <div class="date-tabs" id="dateTabs"></div>
+    <div class="slots" id="slotsGrid"></div>
+  </section>
+
+  <section id="view-admin" class="hidden">
+    <div id="adminLogin" class="login-box">
+      <h3>Acceso administrador</h3>
+      <input type="password" id="adminPass" placeholder="Contraseña">
+      <button class="btn" id="adminLoginBtn">Ingresar</button>
+      <p class="small">Demo: contraseña "chacarita2026"</p>
+    </div>
+    <div id="adminPanel" class="hidden">
+      <div class="admin-tabs">
+        <button class="atab active" data-atab="news">Novedades</button>
+        <button class="atab" data-atab="bookings">Turnos solicitados</button>
+        <button class="atab" data-atab="prices">Precios</button>
+        <button class="atab" data-atab="cats">Categorías</button>
+      </div>
+
+      <div id="atab-news">
+        <h3>Publicar novedad</h3>
+        <div class="field"><label>Título</label><input id="nTitle"></div>
+        <div class="field"><label>Texto</label><textarea id="nText"></textarea></div>
+        <div class="field"><label>URL de imagen (opcional)</label><input id="nImg" placeholder="https://..."></div>
+        <div class="field"><label>URL de video de YouTube (opcional)</label><input id="nVideo" placeholder="https://youtube.com/watch?v=..."></div>
+        <button class="btn" id="nSaveBtn">Publicar</button>
+        <input type="hidden" id="nEditId">
+        <h3 style="margin-top:30px">Novedades publicadas</h3>
+        <div id="newsAdminList"></div>
+      </div>
+
+      <div id="atab-bookings" class="hidden">
+        <h3>Turnos solicitados</h3>
+        <div id="bookingsList"></div>
+      </div>
+
+      <div id="atab-prices" class="hidden">
+        <h3>Precios por franja</h3>
+        <div class="price-bulk">
+          <div class="field"><label>Precio turnos DÍA (08:00–18:59)</label><input type="number" id="dayPriceInput"></div>
+          <button class="btn" id="applyDayBtn">Aplicar a turnos día</button>
+          <div class="field"><label>Precio turnos NOCHE (19:00–23:59)</label><input type="number" id="nightPriceInput"></div>
+          <button class="btn" id="applyNightBtn">Aplicar a turnos noche</button>
+        </div>
+        <h3>Precio individual por horario</h3>
+        <table><thead><tr><th>Horario</th><th>Franja</th><th>Precio</th><th></th></tr></thead><tbody id="priceTableBody"></tbody></table>
+      </div>
+
+      <div id="atab-cats" class="hidden">
+        <h3>Descripciones de categorías</h3>
+        <div id="catAdminList"></div>
+        <button class="btn" id="catSaveBtn" style="margin-top:10px">Guardar descripciones</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Club Chacarita Jrs Aimogasta — Demo funcional: los datos se guardan en este navegador.</footer>
+
+<div id="modalRoot"></div>
+<div id="toastRoot"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
