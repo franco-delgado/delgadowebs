@@ -1,5 +1,4 @@
 import React from "react";
-//import { BrowserRoute as Router, Routes, Route } from "react-router-dom";
 import {
   HashRouter as Router,
   Routes,
@@ -7,7 +6,8 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
-import CategoryPage from "./Radio/pages/CategoryPage/CategoryPage.jsx"; // Componente para la vista de categorías
+
+import CategoryPage from "./Radio/pages/CategoryPage/CategoryPage.jsx";
 import Hotel from "./hotel/hotel";
 import Room from "./hotel/room/Room";
 import Single from "./hotel/room/single/Single";
@@ -17,11 +17,12 @@ import Restaurante from "./hotel/restaurante/restaurante-temp";
 import ContactoHotel from "./hotel/contacto/ContactoHotel";
 import LandingPage from "./LandingPage/LandingPage";
 import Concesionaria from "./concesionaria/Concesionaria";
-import GestorCobranzasApp from './Cobranzas_Expres/GestorDeDatos';
+import GestorCobranzasApp from "./Cobranzas_Expres/GestorDeDatos";
 import ClinicaTurnos from "./Clinica_Turnos/ClinicaRoutes";
 import Radio from "./Radio/Radio";
-import GimnasioApp from "./gimnasio/App"; // Ajusta la ruta al archivo principal del gimnasio
-import Chacarita from './Chacarita/Chacarita';
+import GimnasioApp from "./gimnasio/App";
+import Chacarita from "./Chacarita/Chacarita"; // Componente React de Chacarita
+
 /*CODIGOS DE VEHICULOS*/
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
@@ -29,7 +30,7 @@ import MensajeWhatsapp from "./components/mensajeWhatsapp";
 
 // Componente para la página de inicio
 function Inicio() {
-  const navigate = useNavigate(); // 👈 Hook de React Router para navegación interna
+  const navigate = useNavigate();
 
   return (
     <div className="conten-principal">
@@ -42,6 +43,21 @@ function Inicio() {
           En nuestra plataforma, te ofrecemos una amplia variedad de soluciones
           digitales...
         </h2>
+      </div>
+
+      {/* SECCIÓN CHACARITA */}
+      <div className="conten-chacarita">
+        <div className="chacarita" onClick={() => navigate("/chacarita")}>
+          <div className="img-chacarita">
+            <div className="text">
+              <h3 className="texchacarita">Club Chacarita Jrs Aimogasta</h3>
+              <p className="pchacarita">
+                Portal oficial del club: novedades institucionales, disciplinas
+                deportivas (fútbol, rugby, vóley) y sistema de reserva de canchas online.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* SECCIÓN HOTEL */}
@@ -62,6 +78,7 @@ function Inicio() {
         </Link>
       </div>
 
+      {/* SECCIÓN COBRANZAS */}
       <div className="conten-clienteDeuda">
         <div className="clienteDeuda" onClick={() => navigate("/GestorCobranzasApp")}>
           <div className="img-clienteDeuda">
@@ -121,6 +138,7 @@ function Inicio() {
         </div>
       </div>
 
+      {/* SECCIÓN CLÍNICA */}
       <div className="conten-clinica">
         <div className="clinica" onClick={() => navigate("/clinica")}>
           <div className="img-clinica">
@@ -140,6 +158,7 @@ function Inicio() {
         </div>
       </div>
 
+      {/* SECCIÓN CONCESIONARIA */}
       <div className="conten-auto">
         <div className="auto" onClick={() => navigate("/concesionaria")}>
           <div className="img-auto">
@@ -159,6 +178,7 @@ function Inicio() {
         </div>
       </div>
 
+      {/* SECCIÓN RADIO */}
       <div className="conten-radio">
         <div className="radio" onClick={() => navigate("/Radio")}>
           <div className="img-radio">
@@ -177,6 +197,7 @@ function Inicio() {
           </div>
         </div>
       </div>
+
       {/* SECCIÓN GIMNASIO */}
       <div className="conten-gimnasio">
         <div className="gimnasio" onClick={() => navigate("/gimnasio")}>
@@ -229,17 +250,15 @@ function App() {
         <Route path="/clinica/*" element={<ClinicaTurnos />} />
         <Route path="/Radio/*" element={<Radio />} />
         <Route path="/admin/*" element={<Radio />} />
-        {/* Ruta de Gimnasio */}
         <Route path="/gimnasio/*" element={<GimnasioApp />} />
-        
-        {/* RUTA DE CATEGORÍAS AGREGADA */}
         <Route path="/categoria/:categoryId" element={<CategoryPage />} />
-
         <Route
           path="/detalles-de-vehiculos/VentoLanding"
           element={<VentoLanding />}
         />
-        <Route path="/chacarita" element={<Chacarita />} />
+
+        {/* Ruta Chacarita con comodín por si tiene vistas internas */}
+        <Route path="/chacarita/*" element={<Chacarita />} />
       </Routes>
     </Router>
   );
