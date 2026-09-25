@@ -46,7 +46,7 @@ function Inicio() {
       </div>
 
       {/* SECCIÓN CHACARITA */}
-      <div className="conten-chacarita">
+      {/*<div className="conten-chacarita">
         <div className="chacarita" onClick={() => navigate("/chacarita")}>
           <div className="img-chacarita">
             <div className="text">
@@ -58,7 +58,7 @@ function Inicio() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* SECCIÓN HOTEL */}
       <div className="prueba">
