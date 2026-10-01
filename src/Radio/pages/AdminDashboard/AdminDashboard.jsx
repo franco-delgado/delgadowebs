@@ -91,7 +91,7 @@ export default function AdminDashboard({ onLogout }) {
             <h1 className="admin-dash__title">Sala de redacción</h1>
           </div>
           <div className="admin-dash__header-actions">
-            <a href="#/" className="admin-dash__view-site">
+            <a href="#/Radio" className="admin-dash__view-site">
               Ver sitio →
             </a>
             <button
