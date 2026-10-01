@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import CategoryPage from "./Radio/pages/CategoryPage/CategoryPage.jsx";
+import { RadioProvider } from './Radio/context/RadioContext';
 import Hotel from "./hotel/hotel";
 import Room from "./hotel/room/Room";
 import Single from "./hotel/room/single/Single";
@@ -231,36 +232,31 @@ function Inicio() {
 // Componente App que maneja el enrutamiento limpio
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Ruta principal */}
-        <Route path="/" element={<Inicio />} />
-
-        {/* Rutas de módulos */}
-        <Route path="/hotel" element={<Hotel />} />
-        <Route path="/room" element={<Room />} />
-        <Route path="/single" element={<Single />} />
-        <Route path="/doble" element={<Doble />} />
-        <Route path="/suit" element={<Suit />} />
-        <Route path="/Restaurante" element={<Restaurante />} />
-        <Route path="/contactoHotel" element={<ContactoHotel />} />
-        <Route path="/LandingPage" element={<LandingPage />} />
-        <Route path="/concesionaria" element={<Concesionaria />} />
-        <Route path="/GestorCobranzasApp" element={<GestorCobranzasApp />} />
-        <Route path="/clinica/*" element={<ClinicaTurnos />} />
-        <Route path="/Radio/*" element={<Radio />} />
-        <Route path="/admin/*" element={<Radio />} />
-        <Route path="/gimnasio/*" element={<GimnasioApp />} />
-        <Route path="/categoria/:categoryId" element={<CategoryPage />} />
-        <Route
-          path="/detalles-de-vehiculos/VentoLanding"
-          element={<VentoLanding />}
-        />
-
-        {/* Ruta Chacarita con comodín por si tiene vistas internas */}
-        <Route path="/chacarita/*" element={<Chacarita />} />
-      </Routes>
-    </Router>
+    <RadioProvider>
+      <Router>
+        <Routes>
+          {/* Umi ruta oĩmava */}
+          <Route path="/" element={<Inicio />} />
+          <Route path="/hotel" element={<Hotel />} />
+          <Route path="/room" element={<Room />} />
+          <Route path="/single" element={<Single />} />
+          <Route path="/doble" element={<Doble />} />
+          <Route path="/suit" element={<Suit />} />
+          <Route path="/Restaurante" element={<Restaurante />} />
+          <Route path="/contactoHotel" element={<ContactoHotel />} />
+          <Route path="/LandingPage" element={<LandingPage />} />
+          <Route path="/concesionaria" element={<Concesionaria />} />
+          <Route path="/GestorCobranzasApp" element={<GestorCobranzasApp />} />
+          <Route path="/clinica/*" element={<ClinicaTurnos />} />
+          <Route path="/Radio/*" element={<Radio />} />
+          <Route path="/admin/*" element={<Radio />} />
+          <Route path="/categoria/:id" element={<CategoryPage />} />
+          <Route path="/gimnasio/*" element={<GimnasioApp />} />
+          <Route path="/detalles-de-vehiculos/VentoLanding" element={<VentoLanding />} />
+          <Route path="/chacarita/*" element={<Chacarita />} />
+        </Routes>
+      </Router>
+    </RadioProvider>
   );
 }
 

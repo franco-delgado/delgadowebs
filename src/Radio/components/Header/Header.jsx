@@ -8,7 +8,9 @@ export default function Header({ radio }) {
       <div className="container site-header__inner">
         <a href="#/" className="site-header__brand">
           <span className="site-header__mark">{radio.logoText || 'ON'}</span>
-          <span className="site-header__wordmark">{radio.stationName}</span>
+          {/*<span className="site-header__wordmark">{radio.stationName}</span>*/}
+          
+          <span className="site-header__wordmark">Regresar</span>
         </a>
 
         <div className="site-header__radio">
