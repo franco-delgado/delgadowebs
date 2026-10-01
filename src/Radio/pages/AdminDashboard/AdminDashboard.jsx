@@ -3,7 +3,15 @@ import AdminNewsForm from '../AdminNewsForm/AdminNewsForm.jsx'
 import AdminRadioConfig from '../AdminRadioConfig/AdminRadioConfig.jsx'
 // 1. Agregamos deleteNews a las importaciones
 
-import { getNews, saveNews, deleteNews, getCategory, formatDate, setAdminAuthed } from '../../data/store.js'
+import {
+  getNews,
+  saveNews,
+  deleteNews,
+  resetNewsToSeed,
+  getCategory,
+  formatDate,
+  setAdminAuthed,
+} from '../../data/store.js'
 import './AdminDashboard.css'
 
 export default function AdminDashboard({ onLogout }) {
@@ -13,7 +21,7 @@ export default function AdminDashboard({ onLogout }) {
   const [editingItem, setEditingItem] = useState(null)
   const [showForm, setShowForm] = useState(false)
 
-  // Carga inicial de noticias desde Supabase
+  // Carga inicial de noticias desde localStorage
   useEffect(() => {
     fetchNews()
   }, [])
@@ -36,24 +44,38 @@ export default function AdminDashboard({ onLogout }) {
   }
 
   const handleSave = async (item) => {
-    await saveNews(item)
+    const res = await saveNews(item)
+    if (res && res.ok === false) {
+      alert(res.error || 'No se pudo guardar la noticia.')
+      return // el formulario queda abierto para que no se pierda lo escrito
+    }
     await fetchNews()
     setShowForm(false)
     setEditingItem(null)
   }
 
-  // 2. Función handleDelete actualizada para borrar en Supabase
+  const handleReset = async () => {
+    if (
+      !window.confirm(
+        'Se reemplazarán TODAS las noticias actuales por las noticias de ejemplo originales. ¿Continuar?'
+      )
+    )
+      return
+    await resetNewsToSeed()
+    await fetchNews()
+  }
+
+  // Borrado en localStorage
   const handleDelete = async (id) => {
     if (!window.confirm('¿Eliminar esta noticia? Esta acción no se puede deshacer.')) return
 
-    // Borrado en Supabase
     const success = await deleteNews(id)
 
     if (success) {
       // Actualizamos la lista local filtrando el ID eliminado
       setNews((prevNews) => prevNews.filter((n) => n.id !== id))
     } else {
-      alert('Hubo un error al intentar eliminar la noticia de la base de datos.')
+      alert('Hubo un error al intentar eliminar la noticia.')
     }
   }
 
@@ -107,14 +129,19 @@ export default function AdminDashboard({ onLogout }) {
         {tab === 'noticias' && (
           <>
             <div className="admin-dash__toolbar">
-              <p className="admin-dash__count">{safeNews.length} noticias publicadas</p>
-              <button type="button" className="admin-dash__add" onClick={openNewForm}>
-                + Agregar noticia
-              </button>
+              <p className="admin-dash__count">{safeNews.length} noticias publicadas · guardadas en este navegador</p>
+              <div className="admin-dash__toolbar-actions">
+                <button type="button" className="admin-dash__logout" onClick={handleReset}>
+                  Restaurar noticias de ejemplo
+                </button>
+                <button type="button" className="admin-dash__add" onClick={openNewForm}>
+                  + Agregar noticia
+                </button>
+              </div>
             </div>
 
             {loading ? (
-              <p>Cargando noticias desde la base de datos...</p>
+              <p>Cargando noticias...</p>
             ) : sorted.length === 0 ? (
               <div className="admin-dash__empty">
                 Todavía no cargaste ninguna noticia. Usá "Agregar noticia" para publicar

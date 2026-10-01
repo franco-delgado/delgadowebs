@@ -5,52 +5,37 @@ import CategoryNav from '../../components/CategoryNav/CategoryNav.jsx'
 import NewsListRow from '../../components/NewsListRow/NewsListRow.jsx'
 import NewsModal from '../../components/NewsModal/NewsModal.jsx'
 
-import { getNews, getRadioConfig, getCategory } from '../../data/store.js'
+import { getCategory, isValidCategory } from '../../data/store.js'
+import { useNews } from '../../data/useNews.js'
+import { useRadio } from '../../context/RadioContext.jsx'
 import './CategoryPage.css'
 
 export default function CategoryPage({ categoryId }) {
-  const [news, setNews] = useState([])
-  const [radio, setRadio] = useState(null)
+  const news = useNews()
+  const { radio } = useRadio()
   const [openItem, setOpenItem] = useState(null)
 
-  const loadData = async () => {
-    const [newsData, radioData] = await Promise.all([getNews(), getRadioConfig()])
-    setNews(newsData)
-    setRadio(radioData)
-  }
-
+  // Al cambiar de sección se cierra cualquier nota abierta
   useEffect(() => {
-    loadData()
-
-    const onFocus = () => {
-      loadData()
-    }
-
-    window.addEventListener('focus', onFocus)
-    return () => {
-      window.removeEventListener('focus', onFocus)
-    }
+    setOpenItem(null)
   }, [categoryId])
 
+  const valid = isValidCategory(categoryId)
   const cat = getCategory(categoryId)
 
   const sectionNews = useMemo(() => {
     return [...news]
-      .filter((n) => n.category?.toLowerCase() === categoryId?.toLowerCase())
+      .filter((n) => valid && String(n.category || '').toLowerCase() === cat.id)
       .sort((a, b) => (a.date < b.date ? 1 : -1))
-  }, [news, categoryId])
+  }, [news, valid, cat.id])
 
   const latestOverall = [...news].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 6)
-
-  if (!radio) {
-    return null
-  }
 
   return (
     <div className="rapp-root">
       <Header radio={radio} />
       <NewsTicker items={latestOverall} />
-      <CategoryNav active={categoryId} />
+      <CategoryNav active={valid ? cat.id : ''} />
 
       <main>
         <section className="section-page">
@@ -59,15 +44,17 @@ export default function CategoryPage({ categoryId }) {
               ← Volver a la portada
             </a>
 
-            <div className="section-page__masthead" style={{ '--cat-color': cat?.color }}>
-              <span className="section-page__freq">{cat?.freq} MHz</span>
-              <h1 className="section-page__title">{cat?.label || categoryId}</h1>
+            <div className="section-page__masthead" style={{ '--cat-color': valid ? cat.color : '#868B94' }}>
+              <span className="section-page__freq">{valid ? `${cat.freq} MHz` : '--.- MHz'}</span>
+              <h1 className="section-page__title">{valid ? cat.label : 'Sección no encontrada'}</h1>
               <p className="section-page__tagline">
-                Todo lo último de la sección {(cat?.label || categoryId)?.toLowerCase()}.
+                {valid
+                  ? `Todo lo último de la sección ${cat.label.toLowerCase()}.`
+                  : 'Elegí una de las secciones del menú de arriba.'}
               </p>
             </div>
 
-            {sectionNews.length === 0 ? (
+            {!valid ? null : sectionNews.length === 0 ? (
               <div className="section-page__empty">
                 <p>Todavía no hay noticias publicadas en esta sección.</p>
                 <p className="section-page__empty-hint">

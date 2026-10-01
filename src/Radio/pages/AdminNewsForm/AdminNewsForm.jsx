@@ -94,10 +94,10 @@ export default function AdminNewsForm({ initialItem, onCancel, onSave }) {
     return Object.keys(next).length === 0
   }
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
     if (!validate()) return
-    onSave({ ...form, id: form.id || makeId() })
+    await onSave({ ...form, id: form.id || makeId() })
   }
 
   return (

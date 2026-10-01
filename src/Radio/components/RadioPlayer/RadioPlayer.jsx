@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
+import { useRadio, useAudioEngine } from '../../context/RadioContext.jsx'
 import './RadioPlayer.css'
 
 /**
@@ -6,89 +7,39 @@ import './RadioPlayer.css'
  * Reproduce el stream de audio configurado por el administrador.
  * variant: "mini" (barra compacta para el header) | "full" (módulo destacado del hero)
  */
-export default function RadioPlayer({ radio = {}, variant = 'mini' }) {
-  const audioRef = useRef(null)
-  const [playing, setPlaying] = useState(false)
-  const [volume, setVolume] = useState(0.8)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+export default function RadioPlayer({ radio: radioProp, variant = 'mini', standalone = false }) {
+  // Por defecto controla el audio global (persistente entre páginas).
+  // Con standalone=true usa un audio propio: se usa en la vista previa del
+  // admin para probar una URL que todavía no fue guardada.
+  return standalone ? (
+    <StandalonePlayer radio={radioProp} variant={variant} />
+  ) : (
+    <GlobalPlayer variant={variant} />
+  )
+}
 
+function GlobalPlayer({ variant }) {
+  const ctx = useRadio()
+  return <PlayerView radio={ctx.radio} variant={variant} {...ctx} />
+}
+
+function StandalonePlayer({ radio, variant }) {
+  const engine = useAudioEngine(radio?.streamUrl || '')
+  return (
+    <>
+      <audio {...engine.audioProps} />
+      <PlayerView radio={radio} variant={variant} {...engine} />
+    </>
+  )
+}
+
+function PlayerView({ radio = {}, variant, playing, loading, error, volume, setVolume, toggle }) {
   const streamUrl = radio?.streamUrl || ''
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume
-    }
-  }, [volume])
-
-  useEffect(() => {
-    setPlaying(false)
-    setError('')
-    setLoading(false)
-
-    if (audioRef.current) {
-      audioRef.current.pause()
-      if (streamUrl) {
-        audioRef.current.load()
-      }
-    }
-  }, [streamUrl])
-
-  const toggle = async () => {
-    if (!streamUrl) {
-      setError('La radio todavía no tiene una señal conectada.')
-      return
-    }
-
-    const audio = audioRef.current
-    if (!audio) return
-
-    if (playing) {
-      audio.pause()
-      setPlaying(false)
-      setLoading(false)
-      return
-    }
-
-    setLoading(true)
-    setError('')
-
-    try {
-      await audio.play()
-      setPlaying(true)
-    } catch (err) {
-      if (err.name !== 'AbortError') {
-        setError('No se pudo conectar con la señal en vivo.')
-      }
-      setPlaying(false)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const hasStream = Boolean(streamUrl)
 
   return (
     <div className={`radio-player radio-player--${variant}`}>
-      <audio
-        ref={audioRef}
-        src={streamUrl || undefined}
-        preload="metadata"
-        onWaiting={() => setLoading(true)}
-        onPlaying={() => {
-          setLoading(false)
-          setPlaying(true)
-        }}
-        onError={(e) => {
-          // Solo muestra error si hay un intent de stream activo y un código de error real
-          if (streamUrl && e.currentTarget.error) {
-            setPlaying(false)
-            setLoading(false)
-            setError('No se pudo conectar con la señal en vivo.')
-          }
-        }}
-      />
-
       <button
         type="button"
         className="radio-player__toggle"

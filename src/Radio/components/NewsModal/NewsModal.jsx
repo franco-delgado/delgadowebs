@@ -3,7 +3,8 @@ import { getCategory, formatDate } from '../../data/store.js'
 import './NewsModal.css'
 
 export default function NewsModal({ item, onClose }) {
- /* useEffect(() => {
+  useEffect(() => {
+    if (!item) return undefined
     const onKey = (e) => {
       if (e.key === 'Escape') onClose()
     }
@@ -13,7 +14,7 @@ export default function NewsModal({ item, onClose }) {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [onClose])*/
+  }, [item, onClose])
 
   if (!item) return null
   const cat = getCategory(item.category)

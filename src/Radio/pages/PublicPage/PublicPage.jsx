@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Header from '../../components/Header/Header.jsx'
 import RadioPlayer from '../../components/RadioPlayer/RadioPlayer.jsx'
 import NewsTicker from '../../components/NewsTicker/NewsTicker.jsx'
@@ -7,46 +7,24 @@ import LatestHeadlines from '../../components/LatestHeadlines/LatestHeadlines.js
 import FeaturedStory from '../../components/FeaturedStory/FeaturedStory.jsx'
 import NewsSection from '../../components/NewsSection/NewsSection.jsx'
 import NewsModal from '../../components/NewsModal/NewsModal.jsx'
-import { getNews, getRadioConfig, CATEGORIES } from '../../data/store.js'
+import { CATEGORIES } from '../../data/store.js'
+import { useNews } from '../../data/useNews.js'
+import { useRadio } from '../../context/RadioContext.jsx'
 import './PublicPage.css'
 
 const ITEMS_PER_SECTION = 4
 
 export default function PublicPage() {
-  const [news, setNews] = useState([])
-  const [radio, setRadio] = useState(null)
+  const news = useNews()
+  const { radio } = useRadio()
   const [openItem, setOpenItem] = useState(null)
-
-  const loadData = async () => {
-    const [newsData, radioData] = await Promise.all([getNews(), getRadioConfig()])
-    setNews(newsData)
-    setRadio(radioData)
-  }
-
-  useEffect(() => {
-    loadData()
-
-    // Carga los datos cuando la pestaña recupera el foco
-    const onFocus = () => {
-      loadData()
-    }
-
-    window.addEventListener('focus', onFocus)
-    return () => {
-      window.removeEventListener('focus', onFocus)
-    }
-  }, [])
-
-  if (!radio) {
-    return null // O podés retornar un spinner/cargando si preferís
-  }
 
   const sorted = [...news].sort((a, b) => (a.date < b.date ? 1 : -1))
   const latest = sorted.slice(0, 6)
   const [mainStory, ...others] = sorted
 
   return (
-    <div className="app-root">
+    <div className="rapp-root">
       <Header radio={radio} />
       <NewsTicker items={latest} />
       <CategoryNav active="todas" />

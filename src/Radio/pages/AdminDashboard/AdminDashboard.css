@@ -193,3 +193,10 @@
     width: auto;
   }
 }
+
+.admin-dash__toolbar-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}

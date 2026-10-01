@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RadioPlayer from '../../components/RadioPlayer/RadioPlayer.jsx'
 import StudioBroadcaster from '../../components/StudioBroadcaster/StudioBroadcaster.jsx'
 import { getRadioConfig, saveRadioConfig } from '../../data/store.js'
+import { useRadio } from '../../context/RadioContext.jsx'
 import './AdminRadioConfig.css'
 
 export default function AdminRadioConfig() {
@@ -9,6 +10,7 @@ export default function AdminRadioConfig() {
   const [saved, setSaved] = useState(false)
   const [saving, setSaving] = useState(false)
   const [source, setSource] = useState('url') // 'url' | 'studio'
+  const { reloadRadio } = useRadio()
 
   useEffect(() => {
     getRadioConfig().then((data) => setForm(data))
@@ -24,6 +26,7 @@ export default function AdminRadioConfig() {
     if (!form) return
     setSaving(true)
     await saveRadioConfig(form)
+    await reloadRadio() // el reproductor del sitio toma la nueva señal
     setSaving(false)
     setSaved(true)
   }
@@ -35,6 +38,7 @@ export default function AdminRadioConfig() {
     setForm(updated)
     setSaving(true)
     await saveRadioConfig(updated)
+    await reloadRadio()
     setSaving(false)
     setSaved(true)
     setTimeout(() => setSaved(false), 2500)
@@ -164,7 +168,7 @@ export default function AdminRadioConfig() {
       <div className="radio-config__preview-col">
         <span className="eyebrow">Vista previa</span>
         <div className="radio-config__preview">
-          <RadioPlayer radio={form} variant="full" />
+          <RadioPlayer radio={form} variant="full" standalone />
         </div>
         <p className="radio-config__preview-hint">
           Así se ve y se escucha el reproductor que verán los usuarios en la página

@@ -49,7 +49,7 @@ export default function AdminLogin({ onSuccess }) {
 
         <p className="admin-login__hint">
           Demo: la contraseña por defecto es <code>radio2026</code>. Cambiala en{' '}
-          <code>src/data/store.js</code> antes de publicar el sitio.
+          <code>data/store.js</code> antes de publicar el sitio.
         </p>
       </div>
     </div>
