@@ -5,7 +5,13 @@ import CategoryNav from '../../components/CategoryNav/CategoryNav.jsx'
 import NewsListRow from '../../components/NewsListRow/NewsListRow.jsx'
 import NewsModal from '../../components/NewsModal/NewsModal.jsx'
 
-import { getCategory, isValidCategory } from '../../data/store.js'
+import Sponsors from '../../components/Sponsors/Sponsors.jsx'
+import {
+  getCategory,
+  isValidCategory,
+  newsInCategory,
+  sortByDateDesc,
+} from '../../data/store.js'
 import { useNews } from '../../data/useNews.js'
 import { useRadio } from '../../context/RadioContext.jsx'
 import './CategoryPage.css'
@@ -23,13 +29,13 @@ export default function CategoryPage({ categoryId }) {
   const valid = isValidCategory(categoryId)
   const cat = getCategory(categoryId)
 
-  const sectionNews = useMemo(() => {
-    return [...news]
-      .filter((n) => valid && String(n.category || '').toLowerCase() === cat.id)
-      .sort((a, b) => (a.date < b.date ? 1 : -1))
-  }, [news, valid, cat.id])
+  // Todas las noticias de esta categoría, de la más nueva a la más vieja
+  const sectionNews = useMemo(
+    () => (valid ? sortByDateDesc(newsInCategory(news, cat.id)) : []),
+    [news, valid, cat.id]
+  )
 
-  const latestOverall = [...news].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 6)
+  const latestOverall = sortByDateDesc(news).slice(0, 6)
 
   return (
     <div className="rapp-root">
@@ -40,7 +46,7 @@ export default function CategoryPage({ categoryId }) {
       <main>
         <section className="section-page">
           <div className="container">
-            <a href="#/" className="section-page__back">
+            <a href="#/Radio" className="section-page__back">
               ← Volver a la portada
             </a>
 
@@ -68,6 +74,8 @@ export default function CategoryPage({ categoryId }) {
                 ))}
               </div>
             )}
+
+            <Sponsors />
           </div>
         </section>
       </main>

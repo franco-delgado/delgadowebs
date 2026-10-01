@@ -1,50 +1,28 @@
 import React, { useRef, useState } from 'react'
-import { CATEGORIES, makeId } from '../../data/store.js'
+import { CATEGORIES, makeId, todayISO, isValidCategory, normalizeCategoryId } from '../../data/store.js'
+import { fileToOptimizedDataUrl } from '../../data/imageUtils.js'
 import './AdminNewsForm.css'
 
-const emptyForm = {
+const makeEmptyForm = () => ({
   title: '',
   category: CATEGORIES[0].id,
   summary: '',
   content: '',
   image: '',
-  date: new Date().toISOString().slice(0, 10),
+  date: todayISO(),
   author: '',
-}
-
-const MAX_IMAGE_WIDTH = 1280
-
-// Redimensiona y comprime la imagen elegida en el dispositivo antes de
-// guardarla como base64, para no llenar el localStorage con archivos
-// pesados (las fotos de un celular pueden pesar varios MB).
-function fileToOptimizedDataUrl(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.onerror = () => reject(new Error('No se pudo leer el archivo.'))
-    reader.onload = () => {
-      const img = new Image()
-      img.onerror = () => reject(new Error('El archivo no es una imagen válida.'))
-      img.onload = () => {
-        const scale = Math.min(1, MAX_IMAGE_WIDTH / img.width)
-        const canvas = document.createElement('canvas')
-        canvas.width = Math.round(img.width * scale)
-        canvas.height = Math.round(img.height * scale)
-        const ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        const isPng = file.type === 'image/png'
-        const dataUrl = isPng
-          ? canvas.toDataURL('image/png')
-          : canvas.toDataURL('image/jpeg', 0.82)
-        resolve(dataUrl)
-      }
-      img.src = reader.result
-    }
-    reader.readAsDataURL(file)
-  })
-}
+})
 
 export default function AdminNewsForm({ initialItem, onCancel, onSave }) {
-  const [form, setForm] = useState(initialItem || emptyForm)
+  const [form, setForm] = useState(() => {
+    const base = { ...makeEmptyForm(), ...initialItem }
+    // El <select> solo puede mostrar categorías válidas: se alinea el valor guardado
+    base.category = isValidCategory(base.category)
+      ? normalizeCategoryId(base.category)
+      : CATEGORIES[0].id
+    base.image = base.image || ''
+    return base
+  })
   const [errors, setErrors] = useState({})
   const initialIsUrlImage = Boolean(initialItem?.image) && !initialItem.image.startsWith('data:')
   const [imageTab, setImageTab] = useState(initialIsUrlImage ? 'url' : 'upload') // 'upload' | 'url'

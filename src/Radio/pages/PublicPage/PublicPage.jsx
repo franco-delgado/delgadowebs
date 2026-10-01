@@ -7,7 +7,8 @@ import LatestHeadlines from '../../components/LatestHeadlines/LatestHeadlines.js
 import FeaturedStory from '../../components/FeaturedStory/FeaturedStory.jsx'
 import NewsSection from '../../components/NewsSection/NewsSection.jsx'
 import NewsModal from '../../components/NewsModal/NewsModal.jsx'
-import { CATEGORIES } from '../../data/store.js'
+import Sponsors from '../../components/Sponsors/Sponsors.jsx'
+import { CATEGORIES, newsInCategory, sortByDateDesc } from '../../data/store.js'
 import { useNews } from '../../data/useNews.js'
 import { useRadio } from '../../context/RadioContext.jsx'
 import './PublicPage.css'
@@ -19,9 +20,9 @@ export default function PublicPage() {
   const { radio } = useRadio()
   const [openItem, setOpenItem] = useState(null)
 
-  const sorted = [...news].sort((a, b) => (a.date < b.date ? 1 : -1))
+  const sorted = sortByDateDesc(news)
   const latest = sorted.slice(0, 6)
-  const [mainStory, ...others] = sorted
+  const mainStory = sorted[0]
 
   return (
     <div className="rapp-root">
@@ -39,14 +40,17 @@ export default function PublicPage() {
 
           {mainStory && <FeaturedStory item={mainStory} onOpen={setOpenItem} />}
 
+          {/* Cada bloque lista las últimas notas de SU categoría, incluida la
+              nota destacada de arriba: lo que sale en la portada también sale
+              en su sección. */}
           {CATEGORIES.map((cat) => {
-            const items = others
-              .filter((n) => n.category === cat.id)
-              .slice(0, ITEMS_PER_SECTION)
+            const items = newsInCategory(sorted, cat.id).slice(0, ITEMS_PER_SECTION)
             return (
               <NewsSection key={cat.id} category={cat} items={items} onOpen={setOpenItem} />
             )
           })}
+
+          <Sponsors />
         </div>
       </main>
 

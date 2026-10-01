@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import AdminNewsForm from '../AdminNewsForm/AdminNewsForm.jsx'
 import AdminRadioConfig from '../AdminRadioConfig/AdminRadioConfig.jsx'
+import AdminSponsors from '../AdminSponsors/AdminSponsors.jsx'
 // 1. Agregamos deleteNews a las importaciones
 
 import {
@@ -8,6 +9,7 @@ import {
   saveNews,
   deleteNews,
   resetNewsToSeed,
+  sortByDateDesc,
   getCategory,
   formatDate,
   setAdminAuthed,
@@ -80,7 +82,7 @@ export default function AdminDashboard({ onLogout }) {
   }
 
   const safeNews = Array.isArray(news) ? news : []
-  const sorted = [...safeNews].sort((a, b) => (a.date < b.date ? 1 : -1))
+  const sorted = sortByDateDesc(safeNews)
 
   return (
     <div className="admin-dash">
@@ -122,6 +124,13 @@ export default function AdminDashboard({ onLogout }) {
           onClick={() => setTab('radio')}
         >
           Señal de radio
+        </button>
+        <button
+          type="button"
+          className={`admin-dash__tab ${tab === 'sponsors' ? 'is-active' : ''}`}
+          onClick={() => setTab('sponsors')}
+        >
+          Sponsors
         </button>
       </div>
 
@@ -184,6 +193,7 @@ export default function AdminDashboard({ onLogout }) {
         )}
 
         {tab === 'radio' && <AdminRadioConfig />}
+        {tab === 'sponsors' && <AdminSponsors />}
       </main>
 
       {showForm && (

@@ -12,13 +12,40 @@ export const CATEGORIES = [
   { id: 'internacional', label: 'Internacional', color: '#4FCB86', freq: '104.9' },
 ]
 
-export function isValidCategory(id) {
-  return CATEGORIES.some((c) => c.id === String(id || '').toLowerCase())
+// Quita tildes y mayúsculas: "Política " -> "politica". Se usa SIEMPRE para
+// comparar categorías, así la portada y cada sección coinciden.
+export function normalizeCategoryId(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
 }
 
+export function isValidCategory(id) {
+  const key = normalizeCategoryId(id)
+  return CATEGORIES.some((c) => c.id === key)
+}
+
+// Categoría neutra para noticias con una categoría que ya no existe
+// (antes caían en "Finanzas" y se mostraban con la etiqueta equivocada).
+const UNKNOWN_CATEGORY = { id: 'otras', label: 'Otras', color: '#868B94', freq: '--.-' }
+
 export function getCategory(id) {
-  const key = String(id || '').toLowerCase()
-  return CATEGORIES.find((c) => c.id === key) || CATEGORIES[0]
+  const key = normalizeCategoryId(id)
+  return CATEGORIES.find((c) => c.id === key) || UNKNOWN_CATEGORY
+}
+
+// TODAS las noticias de una categoría (sin excluir ninguna).
+export function newsInCategory(list, categoryId) {
+  const key = normalizeCategoryId(categoryId)
+  return list.filter((n) => normalizeCategoryId(n.category) === key)
+}
+
+// Más nuevas primero. El comparador anterior devolvía -1 también cuando las
+// fechas eran iguales, lo que deja el orden de esas noticias indefinido.
+export function sortByDateDesc(list) {
+  return [...list].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
 }
 
 export const DEFAULT_RADIO = {
@@ -192,6 +219,75 @@ export async function resetNewsToSeed() {
 }
 
 // ==========================================
+// SPONSORS (100% localStorage)
+// ==========================================
+//
+// Se administran desde el panel (pestaña "Sponsors"). Mientras no haya
+// ninguno cargado, el sitio muestra espacios reservados "Tu marca acá".
+// Formato: { id, name, url, image }   (url e image son opcionales)
+
+const SPONSORS_KEY = 'onda_sponsors_v1'
+export const SPONSORS_EVENT = 'onda:sponsors-changed'
+
+function readSponsors() {
+  try {
+    const raw = localStorage.getItem(SPONSORS_KEY)
+    const parsed = raw ? JSON.parse(raw) : []
+    return Array.isArray(parsed) ? parsed : []
+  } catch (e) {
+    console.error('Error leyendo sponsors:', e)
+    return []
+  }
+}
+
+function writeSponsors(list) {
+  try {
+    localStorage.setItem(SPONSORS_KEY, JSON.stringify(list))
+    window.dispatchEvent(new Event(SPONSORS_EVENT))
+    return { ok: true }
+  } catch (e) {
+    console.error('Error guardando sponsors:', e)
+    const quota = e && (e.name === 'QuotaExceededError' || e.code === 22)
+    return {
+      ok: false,
+      error: quota
+        ? 'No hay espacio en el navegador. Probá con un logo más liviano o usá una URL de imagen.'
+        : 'No se pudo guardar en el navegador.',
+    }
+  }
+}
+
+// Solo se aceptan enlaces http/https (evita enlaces tipo "javascript:").
+export function normalizeSponsorUrl(url) {
+  const value = String(url || '').trim()
+  if (!value) return ''
+  const withProtocol = /^[a-z][a-z0-9+.-]*:/i.test(value) ? value : `https://${value}`
+  return /^https?:\/\//i.test(withProtocol) ? withProtocol : ''
+}
+
+export async function getSponsors() {
+  return readSponsors()
+}
+
+export async function saveSponsor(sponsor) {
+  const list = readSponsors()
+  const id = sponsor.id || makeId()
+  const record = {
+    id,
+    name: String(sponsor.name || '').trim(),
+    url: normalizeSponsorUrl(sponsor.url),
+    image: sponsor.image || '',
+  }
+  const exists = list.some((x) => x.id === id)
+  const next = exists ? list.map((x) => (x.id === id ? record : x)) : [...list, record]
+  return writeSponsors(next)
+}
+
+export async function deleteSponsor(id) {
+  return writeSponsors(readSponsors().filter((x) => x.id !== id)).ok
+}
+
+// ==========================================
 // AUTENTICACIÓN ADMIN Y AUXILIARES
 // ==========================================
 
@@ -209,6 +305,14 @@ export function setAdminAuthed(value) {
 
 export function makeId() {
   return 'n_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7)
+}
+
+// Fecha de hoy en hora LOCAL (YYYY-MM-DD). toISOString() usa UTC y, de noche
+// en Argentina, devolvía la fecha de mañana.
+export function todayISO() {
+  const d = new Date()
+  const pad = (n) => String(n).padStart(2, '0')
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
 }
 
 export function formatDate(isoDate) {
