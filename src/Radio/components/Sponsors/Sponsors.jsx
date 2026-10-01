@@ -21,6 +21,8 @@ export default function Sponsors() {
 
   return (
     <section className="sponsors" aria-label="Sponsors">
+      {/*
+      QUITA LA SECCION DE SPONSORS DE ESTA PARTE
       <div className="sponsors__header">
         <span className="sponsors__title">Nuestros sponsors</span>
         <span className="sponsors__line" aria-hidden="true" />
@@ -39,7 +41,7 @@ export default function Sponsors() {
                 <span className="sponsors__slot-hint">Espacio disponible</span>
               </li>
             ))}
-      </ul>
+      </ul>*/}
     </section>
   )
 }

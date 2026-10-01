@@ -1,19 +1,85 @@
-import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { getRadioConfig, getCachedRadioConfig } from '../data/store.js'
+import {
+  getRadioState,
+  subscribeRadio,
+  playRadio,
+  stopRadio,
+  setRadioVolume,
+  stopIfPlaying,
+} from '../data/radioEngine.js'
 
 /**
  * RadioContext
- * Mantiene UN SOLO <audio> montado en la raíz de la app. Como no pertenece
- * a ninguna página, al navegar entre Portada / Finanzas / Deportes / etc.
- * la transmisión NO se corta. Todos los RadioPlayer (header, portada)
- * son solo botones/indicadores que controlan este mismo audio.
+ *
+ * El audio vive en data/radioEngine.js (fuera de React) y la configuración de
+ * la radio se guarda a nivel de módulo. Por eso:
+ *  - la transmisión NO se corta al navegar entre Portada / Finanzas / Deportes
+ *  - useRadio() funciona en CUALQUIER página, esté o no dentro de <RadioProvider>
+ *    (por ejemplo cuando App.jsx dibuja CategoryPage por su cuenta).
+ *
+ * <RadioProvider> se mantiene por compatibilidad, pero ya no es obligatorio.
  */
-const RadioContext = createContext(null)
+
+let radioConfig = getCachedRadioConfig()
+let started = false
+const configSubscribers = new Set()
+
+async function reloadRadioConfig() {
+  const next = await getRadioConfig()
+  if (JSON.stringify(next) === JSON.stringify(radioConfig)) return next
+
+  // Si cambió la URL del stream, se detiene la anterior para que no quede sonando
+  if (next.streamUrl !== radioConfig.streamUrl) stopIfPlaying(radioConfig.streamUrl)
+  radioConfig = next
+  configSubscribers.forEach((fn) => fn(radioConfig))
+  return next
+}
+
+function startConfigSync() {
+  if (started) return
+  started = true
+  reloadRadioConfig()
+}
 
 export function useRadio() {
-  const ctx = useContext(RadioContext)
-  if (!ctx) throw new Error('useRadio debe usarse dentro de <RadioProvider>')
-  return ctx
+  const [radio, setRadio] = useState(radioConfig)
+  const [engine, setEngine] = useState(getRadioState())
+
+  useEffect(() => {
+    startConfigSync()
+    setRadio(radioConfig)
+    setEngine(getRadioState())
+    configSubscribers.add(setRadio)
+    const unsubscribe = subscribeRadio(setEngine)
+    return () => {
+      configSubscribers.delete(setRadio)
+      unsubscribe()
+    }
+  }, [])
+
+  const streamUrl = radio.streamUrl || ''
+  // ¿El audio del motor es el stream de esta radio?
+  const isMine = engine.url === streamUrl
+  const playing = isMine && engine.status === 'playing'
+  const loading = isMine && engine.status === 'loading'
+  const error = isMine && engine.status === 'error' ? engine.error : ''
+
+  const toggle = useCallback(() => {
+    if (playing || loading) stopRadio()
+    else playRadio(streamUrl)
+  }, [playing, loading, streamUrl])
+
+  return {
+    radio,
+    reloadRadio: reloadRadioConfig,
+    playing,
+    loading,
+    error,
+    volume: engine.volume,
+    setVolume: setRadioVolume,
+    toggle,
+  }
 }
 
 // Lógica de audio reutilizable (también la usa la vista previa del admin)
@@ -58,6 +124,7 @@ export function useAudioEngine(streamUrl) {
       return
     }
 
+    stopRadio() // la vista previa no debe sonar encima de la radio del sitio
     setLoading(true)
     setError('')
     try {
@@ -95,35 +162,10 @@ export function useAudioEngine(streamUrl) {
 }
 
 export function RadioProvider({ children }) {
-  const [radio, setRadio] = useState(getCachedRadioConfig)
-
-  const reloadRadio = useCallback(async () => {
-    const cfg = await getRadioConfig()
-    setRadio(cfg)
-  }, [])
-
+  // Ya no hace falta para que funcione el audio; solo asegura que la
+  // configuración se cargue al abrir la app.
   useEffect(() => {
-    reloadRadio()
-  }, [reloadRadio])
-
-  const engine = useAudioEngine(radio.streamUrl || '')
-
-  const value = {
-    radio,
-    reloadRadio,
-    playing: engine.playing,
-    loading: engine.loading,
-    error: engine.error,
-    volume: engine.volume,
-    setVolume: engine.setVolume,
-    toggle: engine.toggle,
-  }
-
-  return (
-    <RadioContext.Provider value={value}>
-      {/* Único elemento de audio de toda la app: nunca se desmonta */}
-      <audio {...engine.audioProps} />
-      {children}
-    </RadioContext.Provider>
-  )
+    startConfigSync()
+  }, [])
+  return <>{children}</>
 }

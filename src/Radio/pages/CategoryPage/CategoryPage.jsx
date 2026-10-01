@@ -16,7 +16,34 @@ import { useNews } from '../../data/useNews.js'
 import { useRadio } from '../../context/RadioContext.jsx'
 import './CategoryPage.css'
 
-export default function CategoryPage({ categoryId }) {
+// La sección se toma de la URL (#/categoria/finanzas), que es lo que cambia
+// al tocar el menú. Si la URL no la trae, se usa la prop `categoryId`.
+// Así la página funciona igual si la dibuja Radio.jsx o App.jsx.
+function readCategoryFromUrl() {
+  const where = `${window.location.hash} ${window.location.pathname}`
+  const match = where.match(/categoria\/([a-z0-9_-]+)/i)
+  return match ? match[1].toLowerCase() : ''
+}
+
+function useCategoryId(propId) {
+  const [fromUrl, setFromUrl] = useState(readCategoryFromUrl)
+
+  useEffect(() => {
+    const update = () => setFromUrl(readCategoryFromUrl())
+    update()
+    window.addEventListener('hashchange', update)
+    window.addEventListener('popstate', update)
+    return () => {
+      window.removeEventListener('hashchange', update)
+      window.removeEventListener('popstate', update)
+    }
+  }, [])
+
+  return fromUrl || propId || ''
+}
+
+export default function CategoryPage({ categoryId: categoryIdProp }) {
+  const categoryId = useCategoryId(categoryIdProp)
   const news = useNews()
   const { radio } = useRadio()
   const [openItem, setOpenItem] = useState(null)
