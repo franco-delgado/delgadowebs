@@ -1,0 +1,97 @@
+.sponsors {
+  margin-top: 40px;
+  padding-bottom: 8px;
+}
+
+.sponsors__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.sponsors__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-paper-faint);
+  white-space: nowrap;
+}
+
+.sponsors__line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-line-strong);
+}
+
+.sponsors__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.sponsors__item {
+  display: flex;
+}
+
+.sponsors__card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sponsors__card--link:hover {
+  border-color: var(--color-amber);
+  box-shadow: 0 2px 10px rgba(15, 17, 20, 0.08);
+}
+
+.sponsors__card img {
+  max-width: 100%;
+  max-height: 64px;
+  object-fit: contain;
+}
+
+.sponsors__name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--color-paper);
+}
+
+/* Espacios reservados (cuando todavía no hay sponsors cargados) */
+.sponsors__item--slot {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 92px;
+  padding: 14px;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.sponsors__slot-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--color-paper-dim);
+}
+
+.sponsors__slot-hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-paper-faint);
+}

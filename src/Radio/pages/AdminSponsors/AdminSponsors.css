@@ -1,0 +1,29 @@
+.admin-sponsor__thumb {
+  flex-shrink: 0;
+  width: 96px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  color: var(--color-paper-faint);
+}
+
+.admin-sponsor__thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* La vista previa del logo no debe estirarse como la foto de una noticia */
+.admin-sponsor__preview img {
+  max-height: 120px;
+  width: auto;
+  object-fit: contain;
+  background: #fff;
+}
