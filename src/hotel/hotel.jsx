@@ -1,3 +1,4 @@
+import "./base.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./hotel.css";
@@ -70,13 +71,14 @@ export default function Hotel() {
       </div>
 
       {/* IMAGEN PRINCIPAL */}
-      <span className="contenedor-imagen">
-        <img
-          className="img-principal"
-          src="./hotel.jpg"
-          alt="Imagen ilustrativa"
-        />
-      </span>
+      <section className="hero">
+        <img src="./hotel.jpg" alt="Fachada del hotel" />
+        <div className="hero-texto">
+          <h2>Descansá como en casa, con todo el confort</h2>
+          <p>Habitaciones cómodas, desayuno regional y atención cercana en el corazón de la ciudad.</p>
+          <button className="btn-principal" onClick={() => navegarA("/room")}>Ver habitaciones</button>
+        </div>
+      </section>
       <MensajeWhatsapp />
 
       {/* FOOTER */}

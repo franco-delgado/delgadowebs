@@ -1,3 +1,4 @@
+import "../base.css";
 import "./Footer.css";
 const Footer = () => {
   return (
@@ -54,6 +55,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <p className="footer-copy">© {new Date().getFullYear()} EL HOTEL. Todos los derechos reservados.</p>
       </div>
     </>
   );
