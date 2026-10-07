@@ -1,3 +1,4 @@
+import "../base.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./ContactoHotel.css";
@@ -196,6 +197,7 @@ const ContactoHotel = () => {
         <div className="back" onClick={() => navigate(-1)}></div>
       </div>
 
+      <main className="contacto-grid">
       {/* CALENDARIO */}
       <div className="calendario">
         <h4>Calendario</h4>
@@ -243,17 +245,7 @@ const ContactoHotel = () => {
 
         {/* Banner informativo de la habitación preseleccionada si existe */}
         {formulario.habitacion && (
-          <div
-            style={{
-              backgroundColor: "#f0f7f4",
-              borderLeft: "4px solid #128C7E",
-              padding: "10px",
-              marginBottom: "15px",
-              borderRadius: "4px",
-              fontSize: "0.9em",
-              textAlign: "left",
-            }}
-          >
+          <div className="aviso-hab">
             Estás consultando por la habitación:{" "}
             <strong>{formulario.habitacion}</strong>
           </div>
@@ -291,6 +283,7 @@ const ContactoHotel = () => {
 
         <input id="enviarForm" type="submit" value="Enviar por WhatsApp" />
       </form>
+      </main>
     </>
   );
 };

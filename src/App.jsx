@@ -4,11 +4,10 @@ import {
   Routes,
   Route,
   Link,
-  useNavigate,
 } from "react-router-dom";
 
 import CategoryPage from "./Radio/pages/CategoryPage/CategoryPage.jsx";
-import { RadioProvider } from './Radio/context/RadioContext';
+import { RadioProvider } from "./Radio/context/RadioContext";
 import Hotel from "./hotel/hotel";
 import Room from "./hotel/room/Room";
 import Single from "./hotel/room/single/Single";
@@ -22,220 +21,220 @@ import GestorCobranzasApp from "./Cobranzas_Expres/GestorDeDatos";
 import ClinicaTurnos from "./Clinica_Turnos/ClinicaRoutes";
 import Radio from "./Radio/Radio";
 import GimnasioApp from "./gimnasio/App";
-import Chacarita from "./Chacarita/Chacarita"; // Componente React de Chacarita
+import Chacarita from "./Chacarita/Chacarita";
 
-/*CODIGOS DE VEHICULOS*/
+/* CÓDIGOS DE VEHÍCULOS */
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
 import "./App.css";
 import MensajeWhatsapp from "./components/mensajeWhatsapp";
 
-// Componente para la página de inicio
-function Inicio() {
-  const navigate = useNavigate();
+const EMAIL = "delgadofranco992@gmail.com";
+
+/* Proyectos: para agregar o quitar uno, editá solo esta lista.
+   - `to` es una ruta interna; `href` es un link externo.
+   - `img` es la clase de imagen definida en App.css (img-hotel, etc.). */
+const PROYECTOS = [
+  {
+    id: "hotel",
+    img: "img-hotel",
+    titulo: "Web con reservas para hoteles y posadas",
+    resumen:
+      "Un sitio que muestra tus habitaciones y deja que el huésped reserve directo, a cualquier hora, sin pasar por intermediarios.",
+    puntos: [
+      "Motor de reservas con disponibilidad en tiempo real",
+      "Catálogo de habitaciones con tarifas, servicios y fotos",
+      "Diseño pensado para celular, tablet y computadora",
+    ],
+    etiquetas: ["Hotelería", "Reservas online"],
+    to: "/hotel",
+  },
+  {
+    id: "cobranzas",
+    img: "img-cobranzas",
+    titulo: "Cobranzas Express: control de deudas y cuotas",
+    resumen:
+      "Un sistema para saber quién te debe, cuánto y desde cuándo, con los pagos registrados en el momento.",
+    puntos: [
+      "Clientes y planes de pago ordenados por DNI",
+      "Tablero con saldo pendiente, cuotas vencidas y atraso",
+      "Detalle cuota por cuota con días de mora y registro de pagos",
+    ],
+    etiquetas: ["Gestión", "Finanzas"],
+    to: "/GestorCobranzasApp",
+  },
+  {
+    id: "landing",
+    img: "img-blog",
+    titulo: "Landing page para eventos y novedades",
+    resumen:
+      "Una página de presentación para marcas, hoteles y espacios culturales que quieren mostrar su agenda y sumar contactos.",
+    puntos: [
+      "Portada con llamadas a la acción claras",
+      "Agenda de eventos con reserva directa",
+      "Sección de noticias y suscripción por correo",
+    ],
+    etiquetas: ["Marketing", "Eventos"],
+    to: "/LandingPage",
+  },
+  {
+    id: "cafe",
+    img: "img-cafe",
+    titulo: "Café-bar con pedidos desde la mesa",
+    resumen:
+      "El cliente pide desde su celular y el pedido llega solo a cocina o caja. Menos errores y mesas atendidas más rápido.",
+    puntos: [
+      "Menú digital para que el cliente haga su pedido",
+      "Comandas en tiempo real y stock que se actualiza con cada venta",
+      "Tickets al instante, precios y reportes de ventas en un solo lugar",
+    ],
+    etiquetas: ["Gastronomía", "Pedidos QR"],
+    href: "https://pedidos-qr.netlify.app/",
+    externo: true,
+  },
+  {
+    id: "clinica",
+    img: "img-clinica",
+    titulo: "Turnos online para clínicas y consultorios",
+    resumen:
+      "Los pacientes sacan turno solos, sin llamar, y tu equipo ve toda la agenda en un panel.",
+    puntos: [
+      "Reserva por profesional, fecha y horario disponible",
+      "Cupo diario por profesional que el sistema respeta",
+      "Panel para filtrar, cancelar turnos y gestionar el equipo",
+    ],
+    etiquetas: ["Salud", "Agenda"],
+    to: "/clinica",
+  },
+  {
+    id: "concesionaria",
+    img: "img-auto",
+    titulo: "Catálogo web para concesionarias",
+    resumen:
+      "Tu showroom abierto las 24 horas: el cliente filtra, compara y te consulta por el vehículo que le interesa.",
+    puntos: [
+      "Filtros por autos, camionetas, 4x4 y motos",
+      "Fichas con fotos, precio y datos de cada unidad",
+      "Botón «Consultar» en cada vehículo para recibir contactos",
+    ],
+    etiquetas: ["Automotriz", "Catálogo"],
+    to: "/concesionaria",
+  },
+  {
+    id: "radio",
+    img: "img-radio",
+    titulo: "Portal de noticias con radio en vivo",
+    resumen:
+      "El sitio de tu emisora con audio en directo y noticias por sección, administrable sin tocar código.",
+    puntos: [
+      "Reproductor en vivo con control de volumen",
+      "Noticias por categoría y cintillo de último momento",
+      "Panel para cargar artículos y gestionar la señal",
+    ],
+    etiquetas: ["Medios", "Streaming"],
+    to: "/Radio",
+  },
+  {
+    id: "gimnasio",
+    img: "img-gimnasio",
+    titulo: "GymFlow: gestión integral de gimnasios",
+    resumen:
+      "Un solo lugar para administrar socios, entrenadores, membresías y cobros.",
+    puntos: [
+      "Alta y seguimiento de socios y entrenadores",
+      "Control de membresías y vencimientos",
+      "Resumen de ingresos y finanzas en tiempo real",
+    ],
+    etiquetas: ["Deporte", "Administración"],
+    to: "/gimnasio",
+  },
+];
+
+function Proyecto({ p }) {
+  const enlace = p.externo ? (
+    <a className="proyecto-link" href={p.href} target="_blank" rel="noopener noreferrer">
+      Ver demo
+      <span className="sr-only"> de {p.titulo} (se abre en una pestaña nueva)</span>
+    </a>
+  ) : (
+    <Link className="proyecto-link" to={p.to}>
+      Ver demo
+      <span className="sr-only"> de {p.titulo}</span>
+    </Link>
+  );
 
   return (
-    <div className="conten-principal">
-      <div className="title">
-        <h1 title="etiqueta">DELGADO WEBS</h1>
+    <article className="proyecto">
+      <div className={`proyecto-img ${p.img}`} role="img" aria-label={`Imagen del proyecto: ${p.titulo}`} />
+      <div className="proyecto-cuerpo">
+        <ul className="etiquetas">
+          {p.etiquetas.map((e) => (
+            <li key={e}>{e}</li>
+          ))}
+        </ul>
+        <h3>{p.titulo}</h3>
+        <p className="proyecto-resumen">{p.resumen}</p>
+        <ul className="puntos">
+          {p.puntos.map((pt) => (
+            <li key={pt}>{pt}</li>
+          ))}
+        </ul>
+        {enlace}
       </div>
+    </article>
+  );
+}
 
-      <div className="primerp">
-        <h2 className="pprimer">
-          En nuestra plataforma, te ofrecemos una amplia variedad de soluciones
-          digitales...
-        </h2>
-      </div>
-
-      {/* SECCIÓN CHACARITA */}
-      {/*<div className="conten-chacarita">
-        <div className="chacarita" onClick={() => navigate("/chacarita")}>
-          <div className="img-chacarita">
-            <div className="text">
-              <h3 className="texchacarita">Club Chacarita Jrs Aimogasta</h3>
-              <p className="pchacarita">
-                Portal oficial del club: novedades institucionales, disciplinas
-                deportivas (fútbol, rugby, vóley) y sistema de reserva de canchas online.
-              </p>
-            </div>
-          </div>
+// Página de inicio
+function Inicio() {
+  return (
+    <div className="portfolio">
+      <header className="hero">
+        <p className="hero-marca">Delgado Webs</p>
+        <h1>Sitios y sistemas web para que tu negocio venda y trabaje mejor.</h1>
+        <p className="hero-texto">
+          Soy Franco Delgado, desarrollador web. Diseño y programo páginas
+          y herramientas a medida: reservas, turnos, pedidos, catálogos y
+          paneles de gestión. Abajo tenés demos que podés abrir y probar.
+        </p>
+        <div className="hero-acciones">
+          <a className="boton boton-primario" href="#proyectos">
+            Ver proyectos
+          </a>
+          <a className="boton" href={`mailto:${EMAIL}`}>
+            Escribime
+          </a>
         </div>
-      </div> */}
+      </header>
 
-      {/* SECCIÓN HOTEL */}
-      <div className="prueba">
-        <Link to="/hotel" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="text">
-            <h3 className="thotel">HOTEL</h3>
-            <p className="photel">
-              Listo para dar vida a tu hotel en línea y multiplicar tus reservas directas?
-              Desarrollamos sitios web modernos, atractivos y funcionales diseñados específicamente para hoteles, posadas y alojamientos.
-              ¿Qué incluye el servicio?
-              Motor de reservas integrado: Tus huéspedes podrán verificar disponibilidad y reservar su habitación al instante las 24 horas.
-              Diseño optimizado y responsivo: Excelente experiencia visual en celulares, tablets y computadoras.
-              Catálogo de habitaciones y servicios: Presentación clara de suites, comodidades, tarifas y galerías de fotos.
-              Control y autonomía: Administra la disponibilidad y la información de tu hotel de forma rápida y sencilla.
-            </p>
-          </div>
-        </Link>
-      </div>
+      <main id="proyectos" className="proyectos">
+        <h2 className="seccion-titulo">Proyectos de ejemplo</h2>
+        {PROYECTOS.map((p) => (
+          <Proyecto key={p.id} p={p} />
+        ))}
+      </main>
 
-      {/* SECCIÓN COBRANZAS */}
-      <div className="conten-clienteDeuda">
-        <div className="clienteDeuda" onClick={() => navigate("/GestorCobranzasApp")}>
-          <div className="img-clienteDeuda">
-            <div className="text">
-              <h3 className="texclienteDeuda">Cobranzas Expres</h3>
-              <p className="pclienteDeuda">
-                Plataforma web diseñada para optimizar y simplificar la gestión financiera de clientes, planes de pago y seguimiento de morosidad en tiempo real.
-                Control Centralizado: Gestión integral de clientes por DNI, datos de contacto y planes de pago personalizados.
-                Métricas Clave: Tablero con KPIs en tiempo real (Saldo Pendiente, Cuotas Vencidas, Atraso Promedio y Atraso Máximo) para una toma de decisiones rápida.
-                Seguimiento Detallado: Desglose cuota por cuota con indicadores de estado (Pendiente, Vencida), días de mora acumulados y registro inmediato de pagos.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SECCIÓN BLOG */}
-      <div className="conten-blog">
-        <div className="conten-imgblog">
-          <div className="blog" onClick={() => navigate("/LandingPage")}>
-            <div className="text">
-              <h3 className="textblog">Expandí tu Presencia Digital</h3>
-              <p className="pblog">
-                Landing Page para Eventos, Noticias y Fidelización
-                Presento un prototipo de landing page diseñado para marcas, hoteles o espacios culturales que buscan comunicar sus novedades y conectar de manera directa con su audiencia.
-                Secciones y funcionalidades clave:
-                Hero Section Impactante: Mensaje principal con llamadas a la acción para exploración rápida de cartelera o suscripción.
-                Agenda de Eventos Destacados: Módulos visuales para promocionar festivales, conciertos y actividades especiales con reserva directa.
-                Sección de Actualidad: Espacio dedicado a noticias, logros institucionales y novedades del establecimiento.
-                Captación de Leads: Formulario de suscripción por correo electrónico para envíos prioritarios e información exclusiva.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SECCIÓN RESTORANT */}
-      <div className="conten-interno">
-        <div className="conten-imginterno">
-          <div
-            className="ecomer"
-            onClick={() =>
-              (window.location.href = "https://pedidos-qr.netlify.app/")
-            }
-          >
-            <div className="text">
-              <h3 className="tecomer">CAFE-BAR pedidos por clientes</h3>
-              <p className="pecomer">Descubre cómo optimizar la operativa de tu negocio y elevar la experiencia de tus clientes en tiempo real. Accede a nuestra demo y prueba todas las funcionalidades de la plataforma:
-                Experiencia para el cliente: Menú digital interactivo para autogestión de pedidos de forma rápida y sencilla.
-                Comandas en tiempo real: Envío directo e inmediato de los pedidos a la pantalla de cocina o a la caja central.
-                Control de inventario: Gestión y actualización de stock automatizada con cada venta.
-                Facturación rápida: Emisión e impresión de tickets de consumo al instante.
-                Gestión comercial: Administración de precios, carta digital y reportes de ventas en un solo lugar.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SECCIÓN CLÍNICA */}
-      <div className="conten-clinica">
-        <div className="clinica" onClick={() => navigate("/clinica")}>
-          <div className="img-clinica">
-            <div className="text">
-              <h3 className="texclinica">Turnos Online</h3>
-              <p className="pclinica">
-                Digitalizá la agenda de tu clínica, consultorio o centro de salud y dejá de perder turnos por teléfono.
-                Desarrollamos un sistema de reserva de turnos online pensado para pacientes y para tu equipo administrativo.
-                ¿Qué incluye el servicio?
-                Reserva 100% online: El paciente carga DNI, nombre, fecha de nacimiento y celular, y elige profesional, fecha y horario disponible al instante.
-                Cupos por profesional: Vos definís cuántos turnos por día atiende cada profesional; el sistema respeta ese límite automáticamente.
-                Panel administrativo: Visualizá todos los turnos reservados, filtrá por profesional o paciente, y cancelá cuando haga falta.
-                Gestión de profesionales: Agregá o quitá profesionales de tu equipo sin tocar código, en cualquier momento.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SECCIÓN CONCESIONARIA */}
-      <div className="conten-auto">
-        <div className="auto" onClick={() => navigate("/concesionaria")}>
-          <div className="img-auto">
-            <div className="text">
-              <h3 className="texauto">Concesionaria</h3>
-              <p className="pauto">
-                Impulsá las ventas de tu Concesionaria con una Web Profesional y Moderna
-                Digitalizá tu showroom y permití que tus clientes encuentren su próximo vehículo desde cualquier dispositivo, las 24 horas del día.
-                Funcionalidades destacadas del sistema:
-                Filtro por Categorías: Clasificación rápida por Autos, Camionetas, 4x4 y Motos.
-                Catálogo Multimarca: Exhibición de modelos (Toyota, Ford, Volkswagen, Chevrolet, Honda, Yamaha y más).
-                Fichas de Vehículos: Visualización de precios, fotos e información detallada de cada unidad.
-                Captación Directa de Leads: Botones inmediatos de "Consultar" en cada vehículo para recibir prospectos de forma rápida.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SECCIÓN RADIO */}
-      <div className="conten-radio">
-        <div className="radio" onClick={() => navigate("/Radio")}>
-          <div className="img-radio">
-            <div className="text">
-              <h3 className="texradio">Radio & Noticias</h3>
-              <p className="pradio">
-                Potenciá tu Medio de Comunicación con un Portal Web Informativo y Streaming en Vivo.
-                Llevá tu emisora al mundo digital y mantené a tu audiencia informada las 24 horas, desde cualquier dispositivo.
-                Funcionalidades destacadas del sistema:
-                Reproductor en Vivo: Streaming de audio HD continuo con control de volumen e indicador EN VIVO.
-                Secciones de Noticias: Categorización por Finanzas, Política, Deportes, Tecnología, Cultura e Internacional.
-                Placa de Último Momento: Ticker de noticias dinámico para destacar información de último minuto.
-                Panel de Administración: Gestión de contenidos, artículos y señal de radio de forma rápida y sencilla.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SECCIÓN GIMNASIO */}
-      <div className="conten-gimnasio">
-        <div className="gimnasio" onClick={() => navigate("/gimnasio")}>
-          <div className="img-gimnasio">
-            <div className="text">
-              <h3 className="texgimnasio">GymFlow - Gestión de Gimnasio</h3>
-              <p className="pgimnasio">
-                Plataforma para la gestión integral de gimnasios: control de usuarios,
-                entrenadores, membresías y finanzas en tiempo real.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <footer>
-        <div className="fin">
-          <p className="pfin">
-            Contactanos a nuestro email: delgadofranco992@gmail.com o haciendo{" "}
-            <b className="email">
-              <a href="hotel/contacto/index.php">click aqui.</a>
-            </b>
-          </p>
-        </div>
+      <footer className="contacto">
+        <h2>¿Tenés un negocio y querés tu propia web?</h2>
+        <p>
+          Contame qué necesitás y te respondo con una propuesta. Escribime a{" "}
+          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+        </p>
+        <a className="boton boton-primario" href={`mailto:${EMAIL}?subject=Consulta%20desde%20tu%20portfolio`}>
+          Enviar un correo
+        </a>
       </footer>
+
       <MensajeWhatsapp />
     </div>
   );
 }
 
-// Componente App que maneja el enrutamiento limpio
+// Enrutamiento
 function App() {
   return (
     <RadioProvider>
       <Router>
         <Routes>
-          {/* Umi ruta oĩmava */}
           <Route path="/" element={<Inicio />} />
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/room" element={<Room />} />

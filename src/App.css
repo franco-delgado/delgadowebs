@@ -1,10 +1,15 @@
-/* RESET Y GLOBALES */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap");
+
+/* ==========================================================
+   GLOBALES HEREDADOS (se mantienen para no alterar las demás
+   páginas de la app: hotel, clínica, radio, etc.)
+   ========================================================== */
 body {
   background: #0a0c1a;
   margin: 0;
   padding: 0;
   color: #000;
-  font-family: sans-serif; /* Un cambio a sans-serif suele verse más moderno en web */
+  font-family: sans-serif;
 }
 
 p,
@@ -15,234 +20,285 @@ h2 {
   margin: 0;
 }
 
-/* CONTENEDOR PRINCIPAL - Flexible con max-width */
-.conten-principal {
-  width: 90%;
-  max-width: 1200px; /* Evita que en monitores gigantes se estire infinito */
-  margin: 0 auto; /* Lo centra perfectamente sin importar el porcentaje */
-  background: linear-gradient(#91fad2, #6caafc);
-  border: solid 6px #000;
+/* ==========================================================
+   PORTFOLIO (todo va dentro de .portfolio)
+   ========================================================== */
+.portfolio {
+  --ink: #0a0c1a;
+  --panel: #121631;
+  --line: rgba(233, 236, 248, 0.12);
+  --text: #e9ecf8;
+  --muted: #a7adc8;
+  --mint: #7ef0c9;
+  --sky: #6caafc;
+
+  color: var(--text);
+  background: var(--ink);
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 clamp(20px, 5vw, 48px);
   box-sizing: border-box;
 }
 
-/* ENCABEZADO Y PRESENTACIÓN */
-.title {
-  background: linear-gradient(#020758, #87ebf8);
-  width: 100%;
-  min-height: 80px; /* Usamos min-height en vez de vh para que no colapse */
-  padding: 20px;
+.portfolio > * {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolio h1,
+.portfolio h2,
+.portfolio h3 {
+  font-family: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-align: left;
+  cursor: auto;
+}
+
+.portfolio a:focus-visible {
+  outline: 3px solid var(--mint);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* HERO */
+.hero {
+  padding: clamp(64px, 12vw, 140px) 0 clamp(48px, 8vw, 96px);
+}
+
+.hero-marca {
+  color: var(--mint);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.portfolio .hero h1 {
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  max-width: 16ch;
+  margin-bottom: 28px;
+}
+
+.hero-texto {
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: 1.15rem;
+  margin-bottom: 36px;
+}
+
+.hero-acciones {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-h1 {
-  font-size: 2.5rem; /* Unidades rem son mucho más estables para textos */
-  text-align: center;
+/* BOTONES */
+.boton {
+  display: inline-block;
+  padding: 13px 24px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
-.primerp {
-  width: 100%;
-  margin: 40px 0;
+.boton:hover {
+  border-color: var(--mint);
+  color: var(--mint);
 }
 
-.pprimer {
-  font-size: 1.2rem;
-  text-align: center;
-  padding: 0 5%;
-  line-height: 1.5;
+.boton-primario {
+  background: var(--mint);
+  border-color: var(--mint);
+  color: var(--ink);
 }
 
-/* CONTENEDORES DE BLOQUE (TARJETAS) */
-.prueba,
-.conten-blog,
-.conten-interno,
-.conten-cliente,
-.conten-auto,
-.conten-clienteDeuda,
-.conten-clinica,
-.conten-radio,
-.conten-gimnasio {
-  min-height: 400px; /* Altura mínima adaptable */
-  width: 90%;
-  max-width: 800px;
-  margin: 40px auto; /* Centrado automático y márgenes más amigables */
-  background-repeat: no-repeat;
-  background-size: cover; /* Cambiado a cover para que la imagen no se deforme */
+.boton-primario:hover {
+  background: #a6f7de;
+  border-color: #a6f7de;
+  color: var(--ink);
+}
+
+/* LISTA DE PROYECTOS */
+.seccion-titulo {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  padding-bottom: 20px;
+}
+
+.proyecto {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+}
+
+.proyecto-img {
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  background-color: var(--panel);
+  background-size: cover;
   background-position: center;
-  border-radius: 14px; /* Suaviza el borde recto original */
-  overflow: hidden; /* Para que el border-radius recorte bien el fondo */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); /* Le da profundidad a cada tarjeta */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-repeat: no-repeat;
 }
 
-.prueba:hover,
-.conten-blog:hover,
-.conten-interno:hover,
-.conten-cliente:hover,
-.conten-auto:hover,
-.conten-clienteDeuda:hover,
-.conten-clinica:hover,
-.conten-radio:hover,
-.conten-gimnasio:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
+.proyecto-cuerpo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* IMÁGENES DE FONDO */
-.prueba {
+.portfolio .proyecto h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 14px 0 12px;
+}
+
+.proyecto-resumen {
+  color: var(--text);
+  max-width: 60ch;
+}
+
+.etiquetas,
+.puntos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.etiquetas li {
+  font-size: 0.85rem;
+  padding: 3px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.puntos {
+  margin: 18px 0 26px;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.puntos li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.puntos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 2px;
+  background: var(--mint);
+}
+
+.proyecto-link {
+  color: var(--mint);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--mint);
+  padding-bottom: 2px;
+}
+
+.proyecto-link:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+/* IMÁGENES DE CADA PROYECTO */
+.img-hotel {
   background-image: url("/hotel-background.jpg");
 }
-.conten-blog {
-  background-image: url("https://images.pexels.com/photos/3584923/pexels-photo-3584923.jpeg");
-}
-.conten-interno {
-  background-image: url("../src/assets/cliente2.jpg");
-}
-.conten-clinica {
-  background-image: url("../src/assets/clinica-bg.jpg");
-}
-.conten-auto {
-  background-image: url("https://images.unsplash.com/photo-1692863211226-cbba732754c9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNvbmNlc2lvbmFyaW8lMjBkZSUyMGF1dG9tJUMzJUIzdmlsZXN8ZW58MHx8MHx8fDA%3D");
-}
-.conten-clienteDeuda {
+.img-cobranzas {
   background-image: url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?fm=jpg&q=80&w=2000&auto=format&fit=crop");
 }
-.conten-radio {
+.img-blog {
+  background-image: url("https://images.pexels.com/photos/3584923/pexels-photo-3584923.jpeg");
+}
+.img-cafe {
+  background-image: url("../src/assets/cliente2.jpg");
+}
+.img-clinica {
+  background-image: url("../src/assets/clinica-bg.jpg");
+}
+.img-auto {
+  background-image: url("https://images.unsplash.com/photo-1692863211226-cbba732754c9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNvbmNlc2lvbmFyaW8lMjBkZSUyMGF1dG9tJUMzJUIzdmlsZXN8ZW58MHx8MHx8fDA%3D");
+}
+.img-radio {
   background-image: url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?fm=jpg&q=80&w=2000&auto=format&fit=crop");
 }
-.conten-gimnasio {
+.img-gimnasio {
   background-image: url("../public/gimnasio.png");
 }
 
-/* CONTENEDORES DE CLIC INTERNOS (GRID DE DOS COLUMNAS) */
-.hotel,
-.blog,
-.ecomer,
-.qr,
-.auto,
-.clienteDeuda,
-.clinica,
-.radio {
-  box-sizing: border-box;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr; /* Por defecto en móviles es 1 columna */
-  gap: 20px;
-  align-items: center;
-  cursor: pointer;
-  min-height: 400px; /* Asegura que el área clickeable cubra toda la tarjeta */
-  transition: background 0.3s ease;
+/* CONTACTO */
+.contacto {
+  border-top: 1px solid var(--line);
+  padding: clamp(56px, 9vw, 112px) 0 120px;
 }
 
-.text {
-  background-color: #91909091;
-  border-radius: 10px; /* Combina con el redondeo general de las tarjetas */
-  padding: 16px 20px;
-  backdrop-filter: blur(2px); /* Mejora la lectura del texto sobre la imagen */
+.portfolio .contacto h2 {
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  max-width: 20ch;
+  margin-bottom: 16px;
 }
 
-/* Fondos y gradientes */
-.hotel,
-.blog,
-.ecomer,
-.qr,
-.auto,
-.clienteDeuda,
-.clinica,
-.radio {
-  background: linear-gradient(
-    rgba(233, 233, 232, 0.2),
-    rgba(243, 224, 190, 0.4)
-  );
+.contacto p {
+  color: var(--muted);
+  max-width: 52ch;
+  margin-bottom: 28px;
+  cursor: auto;
 }
 
-.hotel:hover,
-.blog:hover,
-.ecomer:hover,
-.qr:hover,
-.auto:hover,
-.clienteDeuda:hover,
-.clinica:hover,
-.radio:hover {
-  background: linear-gradient(
-    rgba(233, 233, 232, 0.32),
-    rgba(243, 224, 190, 0.55)
-  );
-}
-
-/* TEXTOS DE TARJETAS */
-.thotel,
-.textblog,
-.tecomer,
-.tqr,
-.texauto,
-.texclienteDeuda,
-.texclinica,
-.texradio {
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.photel,
-.pblog,
-.pecomer,
-.pqr,
-.pauto,
-.pclienteDeuda,
-.pclinica,
-.pradio {
-  font-size: 1.1rem;
-  margin-top: 8px;
-  line-height: 1.4;
-}
-
-/* ELEMENTOS DE IMAGEN */
-.img-page,
-.img-cliente,
-.img-interno,
-.img-auto,
-.img-clienteDeuda,
-.img-clinica,
-.img-radio {
-  max-width: 100%;
-  height: auto;
-  max-height: 200px;
-  object-fit: contain;
-  margin: 0 auto;
-}
-
-/* FOOTER */
-.pfin {
-  text-align: center;
-  padding: 30px 10px;
-  font-size: 1rem;
-}
-.email {
-  cursor: pointer;
-  word-break: break-all; /* Evita que correos largos rompan la pantalla en celular */
+.contacto p a {
+  color: var(--text);
+  word-break: break-all;
 }
 
 /* ==========================================================
-   MEDIA QUERIES (PANTALLAS MEDIANAS Y GRANDES)
+   PANTALLAS MEDIANAS Y GRANDES
    ========================================================== */
 @media screen and (min-width: 768px) {
-  /* En pantallas grandes, activamos el diseño de dos columnas */
-  .blog,
-  .ecomer,
-  .qr,
-  .auto,
-  .clienteDeuda,
-  .clinica,
-  .radio {
-    grid-template-columns: 3fr 1fr;
+  .proyecto {
+    grid-template-columns: 5fr 6fr;
+    gap: 48px;
+    padding: 56px 0;
+    align-items: center;
   }
+}
 
-  .conten-principal {
-    width: 80%;
+/* Movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .boton {
+    transition: none;
   }
+}
 
+/* h1 heredado (otras páginas) */
+@media screen and (min-width: 768px) {
   h1 {
     font-size: 3.5rem;
   }

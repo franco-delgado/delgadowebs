@@ -1,3 +1,4 @@
+import "./base.css";
 import { useState, useEffect } from "react";
 //import "./carrusel.css"; // Movés tus estilos del carrusel acá
 
