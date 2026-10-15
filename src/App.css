@@ -78,13 +78,16 @@ h2 {
 .hero {
   padding: clamp(64px, 12vw, 140px) 0 clamp(48px, 8vw, 96px);
 }
-
 .hero-marca {
-  color: var(--mint);
-  font-weight: 600;
-  margin-bottom: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #6ee7b7; /* O var(--mint) si tenés definido este tono menta/turquesa */
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  margin: 0;
 }
-
 .portfolio .hero h1 {
   font-size: clamp(2.4rem, 7vw, 5rem);
   max-width: 16ch;
@@ -100,8 +103,17 @@ h2 {
 
 .hero-acciones {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 1rem;
+  margin-top: auto; /* Empuja los botones hacia abajo */
+}
+
+.hero-acciones-principal {
+  background-image: url("../public/portada-principal.jpg") ;
+  position: relative;
+  /* Espacio superior suficiente para que el h1 no se solape con el nombre de la marca */
+  padding-top: 50px; 
+  display: flex;
+  flex-direction: column;
 }
 
 /* BOTONES */
@@ -128,6 +140,11 @@ h2 {
 }
 
 .boton-primario:hover {
+  background: #a6f7de;
+  border-color: #a6f7de;
+  color: var(--ink);
+}
+.boton-email{
   background: #a6f7de;
   border-color: #a6f7de;
   color: var(--ink);

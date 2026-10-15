@@ -188,7 +188,7 @@ function Proyecto({ p }) {
 function Inicio() {
   return (
     <div className="portfolio">
-      <header className="hero">
+      <header className="hero-acciones-principal">
         <p className="hero-marca">Delgado Webs</p>
         <h1>Sitios y sistemas web para que tu negocio venda y trabaje mejor.</h1>
         <p className="hero-texto">
@@ -200,7 +200,7 @@ function Inicio() {
           <a className="boton boton-primario" href="#proyectos">
             Ver proyectos
           </a>
-          <a className="boton" href={`mailto:${EMAIL}`}>
+          <a className="boton boton-email" href={`mailto:${EMAIL}`}>
             Escribime
           </a>
         </div>
