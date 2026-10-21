@@ -22,6 +22,7 @@ import ClinicaTurnos from "./Clinica_Turnos/ClinicaRoutes";
 import Radio from "./Radio/Radio";
 import GimnasioApp from "./gimnasio/App";
 import Chacarita from "./Chacarita/Chacarita";
+import Entradas from './Entradas/Entradas';
 
 /* CÓDIGOS DE VEHÍCULOS */
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
@@ -47,6 +48,20 @@ const PROYECTOS = [
     ],
     etiquetas: ["Hotelería", "Reservas online"],
     to: "/hotel",
+  },
+  {
+    id: "entradas",
+    img: "img-entradas", // Asegurate de definir esta clase en App.css o usar una existente
+    titulo: "Sistema de venta y gestión de entradas",
+    resumen:
+      "Plataforma para comercializar tickets de eventos, recitales o espacios, con control de acceso y pagos.",
+    puntos: [
+      "Selección y compra de entradas online",
+      "Control y validación de accesos",
+      "Panel de control para organizadores",
+    ],
+    etiquetas: ["Eventos", "Venta online"],
+    to: "/entradas",
   },
   {
     id: "cobranzas",
@@ -253,6 +268,7 @@ function App() {
           <Route path="/gimnasio/*" element={<GimnasioApp />} />
           <Route path="/detalles-de-vehiculos/VentoLanding" element={<VentoLanding />} />
           <Route path="/chacarita/*" element={<Chacarita />} />
+          <Route path="/entradas/*" element={<Entradas />} />
         </Routes>
       </Router>
     </RadioProvider>

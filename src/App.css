@@ -246,6 +246,9 @@ h2 {
 }
 
 /* IMÁGENES DE CADA PROYECTO */
+.img-entradas{
+  background-image: url("../src/assets/img-teatro.png");
+}
 .img-hotel {
   background-image: url("/hotel-background.jpg");
 }
