@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import './Entradas.css'
 import MensajeWhatsapp from "../components/mensajeWhatsapp.jsx";
 
@@ -60,6 +61,16 @@ export default function Entradas() {
     }, 30000)
     return () => clearInterval(t)
   }, [ses])
+
+  // Mientras hay un modal abierto: se bloquea el scroll del fondo y Escape lo cierra
+  useEffect(() => {
+    if (!view) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = e => { if (e.key === 'Escape') setView(null) }
+    window.addEventListener('keydown', onKey)
+    return () => { document.body.style.overflow = prev; window.removeEventListener('keydown', onKey) }
+  }, [view])
 
   const toast = m => { setMsg(m); setTimeout(() => setMsg(''), 3200) }
   const taken = id => res.filter(r => r.fid === id).reduce((s, r) => s + r.people.length, 0)
@@ -148,13 +159,18 @@ export default function Entradas() {
   }
 
   /* ---- Render helpers (funciones, no componentes, para no perder el foco al escribir) ---- */
-  const modal = (wide, content) => (
-    <div className="ov">
-      <div className={'box' + (wide ? ' wide' : '')}>
-        <button className="x" aria-label="Cerrar" onClick={close}>×</button>
-        {content}
+  // El modal se renderiza en document.body (portal) para que ningún header/navbar
+  // de la app, ni su contexto de apilamiento, pueda quedar por encima y tapar la "X".
+  const modal = (wide, content) => createPortal(
+    <div className="cine cine-portal">
+      <div className="ov">
+        <div className={'box' + (wide ? ' wide' : '')}>
+          <button className="x" aria-label="Cerrar" onClick={close}>×</button>
+          {content}
+        </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 
   const renderBook = () => {
@@ -344,7 +360,10 @@ export default function Entradas() {
       {view === 'book' && renderBook()}
       {view === 'done' && done && renderDone()}
       {view === 'admin' && renderAdmin()}
-      {msg && <div className="toast" role="status">{msg}</div>}
+      {msg && createPortal(
+        <div className="cine cine-portal"><div className="toast" role="status">{msg}</div></div>,
+        document.body
+      )}
     </div>
   )
 }
