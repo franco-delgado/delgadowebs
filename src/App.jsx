@@ -21,7 +21,7 @@ import GestorCobranzasApp from "./Cobranzas_Expres/GestorDeDatos";
 import ClinicaTurnos from "./Clinica_Turnos/ClinicaRoutes";
 import Radio from "./Radio/Radio";
 import GimnasioApp from "./gimnasio/App";
-import Chacarita from "./Chacarita/Chacarita";
+import AlquilerDeCanchas from "./AlquilerDeCanchas/AlquilerDeCanchas";
 import Entradas from './Entradas/Entradas';
 
 /* CÓDIGOS DE VEHÍCULOS */
@@ -51,7 +51,7 @@ const PROYECTOS = [
   },
   {
     id: "entradas",
-    img: "img-entradas", // Asegurate de definir esta clase en App.css o usar una existente
+    img: "img-entradas",
     titulo: "Sistema de venta y gestión de entradas",
     resumen:
       "Plataforma para comercializar tickets de eventos, recitales o espacios, con control de acceso y pagos.",
@@ -62,6 +62,20 @@ const PROYECTOS = [
     ],
     etiquetas: ["Eventos", "Venta online"],
     to: "/entradas",
+  },
+  {
+    id: "AlquilerDeCanchas",
+    img: "img-canchas",
+    titulo: "Alquiler de canchas y gestión de turnos",
+    resumen:
+      "Plataforma para administrar turnos de canchas de fútbol, pádel o tenis, con grilla horaria y control de reservas.",
+    puntos: [
+      "Selección de cancha, fecha y horarios disponibles",
+      "Grilla visual de turnos y estados (libre, señado, ocupado)",
+      "Registro de clientes y control de pagos o señas",
+    ],
+    etiquetas: ["Deportes", "Reservas online"],
+    to: "/AlquilerDeCanchas",
   },
   {
     id: "cobranzas",
@@ -267,7 +281,7 @@ function App() {
           <Route path="/categoria/:id" element={<CategoryPage />} />
           <Route path="/gimnasio/*" element={<GimnasioApp />} />
           <Route path="/detalles-de-vehiculos/VentoLanding" element={<VentoLanding />} />
-          <Route path="/chacarita/*" element={<Chacarita />} />
+          <Route path="/AlquilerDeCanchas/*" element={<AlquilerDeCanchas />} />
           <Route path="/entradas/*" element={<Entradas />} />
         </Routes>
       </Router>

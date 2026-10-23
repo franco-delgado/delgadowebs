@@ -249,6 +249,9 @@ h2 {
 .img-entradas{
   background-image: url("../src/assets/img-teatro.png");
 }
+.img-canchas{
+  background-image: url("../src/assets/img-canchas.jpg");
+}
 .img-hotel {
   background-image: url("/hotel-background.jpg");
 }

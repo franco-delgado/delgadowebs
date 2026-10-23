@@ -1,0 +1,32 @@
+.cl-login{display:grid;place-items:center;padding:36px 0}
+.cl-login__box{width:100%;max-width:380px;display:flex;flex-direction:column;gap:14px;padding:30px}
+.cl-login__box h1{font-size:2rem;font-weight:800}
+.cl-login__box p{margin:0;color:var(--muted)}
+
+.cl-admin{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;align-items:start}
+.cl-admin__nav{position:sticky;top:84px;display:flex;flex-direction:column;gap:4px;padding:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m)}
+.cl-admin__tab{display:flex;align-items:center;gap:10px;padding:11px 12px;border:0;border-radius:var(--r-s);background:none;color:var(--muted);font:600 .93rem var(--font-body);text-align:left;cursor:pointer}
+.cl-admin__tab:hover{background:var(--paper);color:var(--ink)}
+.cl-admin__tab.is-on{background:var(--accent-tint);color:var(--accent-deep)}
+.cl-admin__tab em{margin-left:auto;min-width:22px;height:22px;padding:0 6px;border-radius:99px;background:var(--accent);color:var(--accent-ink);font:700 .75rem/22px var(--font-body);text-align:center}
+.cl-admin__out{margin-top:8px;border-top:1px solid var(--line);border-radius:0 0 var(--r-s) var(--r-s);padding-top:14px}
+.cl-admin__content{min-width:0}
+
+/* piezas comunes de los paneles */
+.cl-panel-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.cl-panel-head h1{font-size:2rem;font-weight:800}
+.cl-panel-head p{margin:4px 0 0;color:var(--muted)}
+.cl-block{margin-bottom:22px}
+.cl-block>h2{font-size:1.3rem;font-weight:800;margin-bottom:4px}
+.cl-block__lead{margin:0 0 14px;color:var(--muted);font-size:.92rem}
+.cl-form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;align-items:end}
+.cl-form-row--full{grid-template-columns:1fr}
+.cl-inline{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
+.cl-inline .cl-field{flex:1 1 150px}
+
+@media (max-width:860px){
+  .cl-admin{grid-template-columns:1fr;gap:16px}
+  .cl-admin__nav{position:static;flex-direction:row;overflow-x:auto;padding:6px}
+  .cl-admin__tab{flex:0 0 auto;white-space:nowrap}
+  .cl-admin__out{margin:0;border:0;padding:11px 12px}
+}

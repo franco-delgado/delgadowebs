@@ -1,0 +1,27 @@
+.cl-filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:14px;align-items:end;margin-bottom:16px}
+.cl-filters>.cl-btn{grid-column:1/-1;justify-self:start}
+.cl-count{margin:0 0 10px;font-size:.88rem;color:var(--muted)}
+.cl-rlist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cl-rrow{display:grid;grid-template-columns:64px 1.3fr 1fr auto;gap:8px 18px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r-m);background:var(--surface)}
+.cl-rrow__date{display:flex;flex-direction:column;align-items:center;padding:6px 0;border-radius:var(--r-s);background:var(--paper);font-size:.75rem;color:var(--muted);text-transform:capitalize}
+.cl-rrow__date strong{font:800 1.5rem/1 var(--font-display);font-stretch:80%;color:var(--ink)}
+.cl-rrow__who,.cl-rrow__what{display:flex;flex-direction:column;font-size:.88rem;color:var(--muted);min-width:0}
+.cl-rrow__who strong,.cl-rrow__what strong{color:var(--ink);font-size:1rem;overflow-wrap:anywhere}
+.cl-rrow__status{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.cl-rrow__proof{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;color:var(--muted)}
+.cl-rrow__actions{grid-column:2/-1;display:flex;flex-wrap:wrap;gap:8px;padding-top:10px;border-top:1px solid var(--line)}
+
+.cl-detail h3{font-size:1.15rem;font-weight:800;margin:6px 0 10px}
+.cl-proof{display:grid;gap:10px}
+.cl-proof__img{display:block;padding:0;border:1.5px solid var(--line-strong);border-radius:var(--r-s);background:var(--paper);cursor:zoom-in;overflow:hidden}
+.cl-proof__img img{display:block;width:100%;max-height:460px;object-fit:contain}
+.cl-proof__pdf{display:flex;align-items:center;gap:12px;padding:16px;border:1.5px solid var(--line-strong);border-radius:var(--r-s);color:var(--accent-deep)}
+.cl-proof__pdf span{color:var(--ink);overflow-wrap:anywhere}
+
+@media (max-width:900px){.cl-filters{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  .cl-filters{grid-template-columns:1fr}
+  .cl-rrow{grid-template-columns:56px 1fr}
+  .cl-rrow__what,.cl-rrow__status,.cl-rrow__actions{grid-column:1/-1}
+  .cl-rrow__status{flex-direction:row;align-items:center;gap:12px}
+}

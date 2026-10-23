@@ -1,0 +1,12 @@
+.cl-st__gap{margin-top:14px}
+.cl-st__brand{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start}
+.cl-st__logo{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.cl-st__logo .cl-actions{margin:0}
+.cl-swatches{display:flex;gap:10px;flex-wrap:wrap;margin-top:2px}
+.cl-swatch{position:relative;width:40px;height:40px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--line-strong);cursor:pointer;padding:0}
+.cl-swatch.is-on{box-shadow:0 0 0 3px var(--ink)}
+.cl-swatch--custom{overflow:hidden;background:conic-gradient(#e11,#ea0,#2b4,#18d,#92d,#e11)}
+.cl-swatch--custom input{position:absolute;inset:-6px;width:60px;height:60px;opacity:0;cursor:pointer}
+.cl-meter{height:10px;border-radius:99px;background:var(--paper);overflow:hidden;margin-bottom:6px}
+.cl-meter i{display:block;height:100%;background:var(--accent)}
+.cl-st__label{display:block;margin-bottom:8px;font-size:.88rem;font-weight:600}

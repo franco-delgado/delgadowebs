@@ -1,0 +1,45 @@
+/* Botones */
+.cl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:var(--r-s);border:1.5px solid transparent;font:600 .95rem/1 var(--font-body);cursor:pointer;text-decoration:none;transition:background-color .15s,border-color .15s,color .15s}
+.cl-btn--primary{background:var(--accent);color:var(--accent-ink)}
+.cl-btn--primary:hover:not(:disabled){background:color-mix(in srgb,var(--accent) 86%,black)}
+.cl-btn--soft{background:var(--accent-tint);color:var(--accent-deep)}
+.cl-btn--soft:hover:not(:disabled){background:color-mix(in srgb,var(--accent) 18%,white)}
+.cl-btn--ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.cl-btn--ghost:hover:not(:disabled){border-color:var(--ink)}
+.cl-btn--danger{background:var(--danger);color:#fff}
+.cl-btn--danger:hover:not(:disabled){background:color-mix(in srgb,var(--danger) 85%,black)}
+.cl-btn--light{background:#fff;color:#14201b}
+.cl-btn--light:hover:not(:disabled){background:#eef2ee}
+.cl-btn--sm{min-height:36px;padding:0 12px;font-size:.85rem}
+.cl-btn--block{width:100%}
+.cl-btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* Campos */
+.cl-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.cl-field label{font-size:.88rem;font-weight:600;color:var(--ink)}
+.cl-field input,.cl-field textarea,.cl-field select{width:100%;min-height:44px;padding:10px 12px;border:1.5px solid var(--line-strong);border-radius:var(--r-s);background:#fff;color:var(--ink);font:inherit}
+.cl-field input,.cl-field select{height:44px}
+.cl-field input[type=checkbox]{height:auto}
+.cl-field textarea{min-height:110px;resize:vertical;line-height:1.5}
+.cl-field input:focus,.cl-field textarea:focus,.cl-field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-tint)}
+.cl-field [aria-invalid="true"]{border-color:var(--danger)}
+.cl-field__hint{font-size:.82rem;color:var(--muted);margin:0}
+.cl-field__error{font-size:.82rem;color:var(--danger);margin:0;font-weight:500}
+.cl-check{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;line-height:1.4;cursor:pointer}
+.cl-check input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--accent);flex:0 0 auto}
+
+/* Etiquetas de estado */
+.cl-badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700;white-space:nowrap}
+.cl-badge--pendiente{background:#fdf0d5;color:#8a5a00}
+.cl-badge--confirmada{background:#dcf3e5;color:#13633a}
+.cl-badge--rechazada{background:#fbe0de;color:#9c241b}
+.cl-badge--cancelada{background:#e8ebe9;color:#4b5852}
+
+/* Vacíos y varios */
+.cl-empty{padding:32px 20px;text-align:center;border:1.5px dashed var(--line-strong);border-radius:var(--r-m);color:var(--muted)}
+.cl-empty__title{margin:0 0 4px;font-weight:700;color:var(--ink)}
+.cl-empty__text{margin:0 0 14px}
+.cl-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:center}
+.cl-actions--end{justify-content:flex-end}
+.cl-confirm__msg{margin:0;line-height:1.55}
+.cl-icon{flex:0 0 auto}
