@@ -7,12 +7,21 @@ Componente React sin referencias a ningún club en particular. El nombre, el esc
 Requiere solo `react` y `react-dom`. Copiá esta carpeta a tu proyecto e importá el componente:
 
 ```jsx
-import Chacarita from './Chacarita/Chacarita.jsx'
+import AlquilerDeCanchas from './AlquilerDeCanchas/AlquilerDeCanchas.jsx'
 
 <AlquilerDeCanchas />
 ```
 
-(El archivo de entrada conserva el nombre `Chacarita.jsx` para no romper tus imports; podés renombrarlo.)
+### Botón "Volver al portfolio"
+
+Aparece arriba del encabezado. Props opcionales:
+
+```jsx
+<AlquilerDeCanchas onBack={() => navigate('/')} />        // con react-router
+<AlquilerDeCanchas backHref="/" />                        // link simple
+<AlquilerDeCanchas backLabel="Volver" showBack={false} /> // cambiar texto u ocultar
+```
+Sin props, vuelve a la página anterior del navegador.
 
 ## Acceso al panel
 

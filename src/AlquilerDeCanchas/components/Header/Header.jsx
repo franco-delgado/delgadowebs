@@ -10,13 +10,30 @@ const LINKS = [
   ['reserve', 'Reservar cancha'],
 ]
 
-export default function Header() {
+export default function Header({ onBack, backHref, backLabel = 'Volver al portfolio', showBack = true }) {
   const { view, go, settings, isAdmin, pendingCount } = useClub()
   const [open, setOpen] = useState(false)
   const nav = v => { go(v); setOpen(false) }
 
+  const goBack = () => (onBack ? onBack() : window.history.back())
+
   return (
     <header className="cl-header">
+      {showBack && (
+        <div className="cl-header__back">
+          {backHref && !onBack ? (
+            <a className="cl-header__backlink" href={backHref}>
+              <Icon name="left" size={16} />
+              {backLabel}
+            </a>
+          ) : (
+            <button type="button" className="cl-header__backlink" onClick={goBack}>
+              <Icon name="left" size={16} />
+              {backLabel}
+            </button>
+          )}
+        </div>
+      )}
       <div className="cl-header__bar">
         <button type="button" className="cl-header__brand" onClick={() => nav('home')}>
           <Logo size={38} />

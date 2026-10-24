@@ -1,4 +1,7 @@
 .cl-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.cl-header__back{background:var(--ink);border-bottom:1px solid var(--line)}
+.cl-header__backlink{max-width:1120px;margin:0 auto;padding:0 20px;min-height:36px;display:flex;align-items:center;gap:6px;width:100%;background:none;border:0;color:#fff;font:600 .85rem var(--font-body);cursor:pointer;text-decoration:none;text-align:left}
+.cl-header__backlink:hover{color:var(--accent-bright)}
 .cl-header__bar{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
 .cl-header__brand{display:flex;align-items:center;gap:12px;background:none;border:0;padding:4px 0;cursor:pointer;color:var(--ink);font:700 1.3rem/1 var(--font-display);font-stretch:80%;min-width:0;text-align:left}
 .cl-header__brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
