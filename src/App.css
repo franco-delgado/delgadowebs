@@ -276,6 +276,9 @@ h2 {
 .img-gimnasio {
   background-image: url("../public/gimnasio.png");
 }
+.img-tienda{
+  background-image: url(../public/img-tienda.jpg);
+}
 
 /* CONTACTO */
 .contacto {

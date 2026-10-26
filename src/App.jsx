@@ -23,6 +23,7 @@ import Radio from "./Radio/Radio";
 import GimnasioApp from "./gimnasio/App";
 import AlquilerDeCanchas from "./AlquilerDeCanchas/AlquilerDeCanchas";
 import Entradas from './Entradas/Entradas';
+import Tienda from './Tienda/Tienda';
 
 /* CÓDIGOS DE VEHÍCULOS */
 import VentoLanding from "./concesionaria/detalles-de-vehiculos/VentoLanding/VentoLanding";
@@ -176,6 +177,20 @@ const PROYECTOS = [
     etiquetas: ["Deporte", "Administración"],
     to: "/gimnasio",
   },
+  {
+    id: "tienda",
+    img: "img-tienda",
+    titulo: "GymFlow: gestión integral de la tienda",
+    resumen:
+      "Un solo lugar para administrar articulos.",
+    puntos: [
+      "Alta y seguimiento de socios y entrenadores",
+      "Control de membresías y vencimientos",
+      "Resumen de ingresos y finanzas en tiempo real",
+    ],
+    etiquetas: ["ventas", "Administración"],
+    to: "/tienda",
+  },
 ];
 
 function Proyecto({ p }) {
@@ -283,6 +298,7 @@ function App() {
           <Route path="/detalles-de-vehiculos/VentoLanding" element={<VentoLanding />} />
           <Route path="/AlquilerDeCanchas/*" element={<AlquilerDeCanchas />} />
           <Route path="/entradas/*" element={<Entradas />} />
+          <Route path="/tienda/*" element={<Tienda />} />
         </Routes>
       </Router>
     </RadioProvider>
